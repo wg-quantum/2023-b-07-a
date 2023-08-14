@@ -27,9 +27,6 @@ class: slides
 4. Tゲート
 5. Sゲート
 
-</details>
-
-
 <details>
 <summary>答えはこちら</summary>
 Z軸の周りを回転することを位相回転（Phase flip）という
@@ -52,8 +49,7 @@ Z軸の周りを回転することを位相回転（Phase flip）という
 
 <details>
 <summary>答えはこちら</summary>
-
-### パウリX行列をつかうと|0>が|1>に|1>が|0>になる。これをビット反転（bit flip）という.
+パウリX行列をつかうと|0>が|1>に|1>が|0>になる。これをビット反転（bit flip）という.
 
 1. Xゲート
 
@@ -69,8 +65,7 @@ Z軸の周りを回転することを位相回転（Phase flip）という
 
 <details>
 <summary>答えはこちら</summary>
-
-### アダマールゲートのあとCCXゲートを通している事を確認してください
+アダマールゲートのあとCCXゲートを通している事を確認してください
 
 Bell状態になります
 
@@ -88,7 +83,6 @@ Bell状態になります
 <details>
 <summary>答えはこちら</summary>
 
-### 
 GHZ状態になります
 
 </details>
@@ -103,9 +97,6 @@ GHZ状態になります
 
 <details>
 <summary>答えはこちら</summary>
-
-### 
-
 Zゲートになります
 
 </details>
@@ -120,9 +111,6 @@ Zゲートになります
 
 <details>
 <summary>答えはこちら</summary>
-
-###
-
 Xゲートになります
 
 </details>
@@ -141,9 +129,6 @@ Xゲートになります
 
 <details>
 <summary>答えはこちら</summary>
-
-### 
-
 1. π/2
 
 </details>
@@ -155,17 +140,14 @@ Xゲートになります
 
 ### Tゲートのフェーズの値は？
 
-- π/2
-- π/4
-- π/8
-- π
+1. π/2
+2. π/4
+3. π/8
+4. π
 
 <details>
 <summary>答えはこちら</summary>
-
-### 
-
-1. π/4
+2. π/4
 
 </details>
 
@@ -186,9 +168,6 @@ Xゲートになります
 
 <details>
 <summary>答えはこちら</summary>
-
-### 
-
 すべて正しい記述です。
 
 </details>
