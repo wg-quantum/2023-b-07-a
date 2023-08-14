@@ -31,11 +31,15 @@ class: slides
 
 ## 回答1
 
-### Z軸の周りを回転することを位相回転（Phase flip）という
+<details>
+<summary>答えはこちら</summary>
+Z軸の周りを回転することを位相回転（Phase flip）という
 
 3. Zゲート
 4. Tゲート
 5. ゲート
+
+</details>
 
 ---
 
