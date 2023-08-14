@@ -27,10 +27,6 @@ class: slides
 4. Tゲート
 5. Sゲート
 
----
-
-## 回答1
-
 <details>
 <summary>答えはこちら</summary>
 Z軸の周りを回転することを位相回転（Phase flip）という
@@ -52,12 +48,14 @@ Z軸の周りを回転することを位相回転（Phase flip）という
 3. Tゲート
 4. Sゲート
 
----
-## 回答2
+<details>
+<summary>答えはこちら</summary>
 
 ### パウリX行列をつかうと|0>が|1>に|1>が|0>になる。これをビット反転（bit flip）という.
 
 1. Xゲート
+
+</details>
 
 ---
 
@@ -67,13 +65,15 @@ Z軸の周りを回転することを位相回転（Phase flip）という
 
 ![100%](./image/3.png)
 
----
-
-## 回答３
+<details>
+<summary>答えはこちら</summary>
 
 ### アダマールゲートのあとCCXゲートを通している事を確認してください
 
 Bell状態になります
+
+</details>
+
 
 ---
 
@@ -83,12 +83,13 @@ Bell状態になります
 
 ![100%](./image/4.png)
 
----
-
-## 回答４
+<details>
+<summary>答えはこちら</summary>
 
 ### 
 GHZ状態になります
+
+</details>
 
 ---
 
@@ -98,13 +99,14 @@ GHZ状態になります
 
 ![100%](./image/5.png)
 
----
-
-## 回答５
+<details>
+<summary>答えはこちら</summary>
 
 ### 
 
 Zゲートになります
+
+</details>
 
 ---
 
@@ -114,13 +116,15 @@ Zゲートになります
 
 ![100%](./image/6.png)
 
----
-
-## 回答６
+<details>
+<summary>答えはこちら</summary>
 
 ###
 
 Xゲートになります
+
+</details>
+
 
 ---
 
@@ -133,13 +137,15 @@ Xゲートになります
 3. π/8
 4. π
 
----
-
-## 回答７
+<details>
+<summary>答えはこちら</summary>
 
 ### 
 
 1. π/2
+
+</details>
+
 
 ---
 
@@ -152,15 +158,14 @@ Xゲートになります
 - π/8
 - π
 
----
-
-## 回答8
+<details>
+<summary>答えはこちら</summary>
 
 ### 
 
 1. π/4
 
-
+</details>
 
 ---
 
@@ -177,14 +182,14 @@ Xゲートになります
   cr = ClassicalRegister(2)
   qc = QuantumCircuit(cr[0:2],qr[0:2])
 
----
-
-## 回答９
+<details>
+<summary>答えはこちら</summary>
 
 ### 
 
 すべて正しい記述です。
 
+</details>
 
 
 ---
@@ -205,5 +210,9 @@ Xゲートになります
 4. circuit = QuantumCircuit(qreg, creg)
   circuit.measure(qreg[0], creg[0])
 
----
-問題10 Measure　正しくない記述は？
+<details>
+<summary>答えはこちら</summary>
+
+回答作成中です
+
+</details>
