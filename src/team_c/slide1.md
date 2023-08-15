@@ -97,8 +97,7 @@ GHZ状態になります
 
 <details>
 <summary>答えはこちら</summary>
-図と同じゲートは
-Zゲートになります
+図と同じゲートはZゲートになります
 
 </details>
 
@@ -112,8 +111,7 @@ Zゲートになります
 
 <details>
 <summary>答えはこちら</summary>
-図と同じゲートは
-Xゲートになります
+図と同じゲートはXゲートになります
 
 </details>
 
