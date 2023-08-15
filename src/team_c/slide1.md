@@ -97,6 +97,7 @@ GHZ状態になります
 
 <details>
 <summary>答えはこちら</summary>
+図と同じゲートは
 Zゲートになります
 
 </details>
@@ -111,6 +112,7 @@ Zゲートになります
 
 <details>
 <summary>答えはこちら</summary>
+図と同じゲートは
 Xゲートになります
 
 </details>
@@ -162,8 +164,8 @@ Xゲートになります
 3. QuantumCircuit(QuantumRegister(4, 'qr0'), QuantumRegister(2, 'qr1'))
 4. QuantumCircuit（4,4)
 5. QuantumCircuit（cr,qr)
-6. qr = QuantumRegister(2)
-  cr = ClassicalRegister(2)
+6. qr = QuantumRegister(2)<br>
+  cr = ClassicalRegister(2)<br>
   qc = QuantumCircuit(cr[0:2],qr[0:2])
 
 <details>
@@ -179,16 +181,16 @@ Xゲートになります
 
 ### Measure　正しくない記述は？
 
-1. circuit = QuantumCircuit(2, 2)
+1. circuit = QuantumCircuit(2, 2)<br>
   circuit.measure([0,1], [0,1])
-2. circuit = QuantumCircuit(2, 2)
-  circuit.measure(0, 0)
+2. circuit = QuantumCircuit(2, 2)<br>
+  circuit.measure(0, 0)<br>
   circuit.measure(1, 1)
-3. qreg = QuantumRegister(2, "qreg")
-  creg = ClassicalRegister(2, "creg")
-  circuit = QuantumCircuit(qreg, creg)
+3. qreg = QuantumRegister(2, "qreg")<br>
+  creg = ClassicalRegister(2, "creg")<br>
+  circuit = QuantumCircuit(qreg, creg)<br>
   circuit.measure(qreg, creg)
-4. circuit = QuantumCircuit(qreg, creg)
+4. circuit = QuantumCircuit(qreg, creg)<br>
   circuit.measure(qreg[0], creg[0])
 
 <details>
