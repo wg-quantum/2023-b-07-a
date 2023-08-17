@@ -61,7 +61,7 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'team_c/slide1';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'team_c/slide4';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -224,7 +224,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/wg-quantum/2023-b-07-a/issues/new?title=Issue%20on%20page%20%2Fteam_c/slide1.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/wg-quantum/2023-b-07-a/issues/new?title=Issue%20on%20page%20%2Fteam_c/slide4.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -254,7 +254,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../_sources/team_c/slide1.md" target="_blank"
+      <li><a href="../_sources/team_c/slide4.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -482,7 +482,7 @@ Z軸の周りを回転することを位相回転（Phase flip）という
 <p><img alt="100%" src="../_images/5.png" /></p>
 <details>
 <summary>答えはこちら</summary>
-Zゲートになります
+図と同じゲートはZゲートになります
 </details>
 </section>
 </section>
@@ -494,7 +494,7 @@ Zゲートになります
 <p><img alt="100%" src="../_images/6.png" /></p>
 <details>
 <summary>答えはこちら</summary>
-Xゲートになります
+図と同じゲートはXゲートになります
 </details>
 </section>
 </section>
@@ -543,8 +543,8 @@ Xゲートになります
 <li><p>QuantumCircuit(QuantumRegister(4, ‘qr0’), QuantumRegister(2, ‘qr1’))</p></li>
 <li><p>QuantumCircuit（4,4)</p></li>
 <li><p>QuantumCircuit（cr,qr)</p></li>
-<li><p>qr = QuantumRegister(2)
-cr = ClassicalRegister(2)
+<li><p>qr = QuantumRegister(2)<br>
+cr = ClassicalRegister(2)<br>
 qc = QuantumCircuit(cr[0:2],qr[0:2])</p></li>
 </ol>
 <details>
@@ -559,16 +559,16 @@ qc = QuantumCircuit(cr[0:2],qr[0:2])</p></li>
 <section id="measure">
 <h3>Measure　正しくない記述は？<a class="headerlink" href="#measure" title="Permalink to this heading">#</a></h3>
 <ol class="arabic simple">
-<li><p>circuit = QuantumCircuit(2, 2)
+<li><p>circuit = QuantumCircuit(2, 2)<br>
 circuit.measure([0,1], [0,1])</p></li>
-<li><p>circuit = QuantumCircuit(2, 2)
-circuit.measure(0, 0)
+<li><p>circuit = QuantumCircuit(2, 2)<br>
+circuit.measure(0, 0)<br>
 circuit.measure(1, 1)</p></li>
-<li><p>qreg = QuantumRegister(2, “qreg”)
-creg = ClassicalRegister(2, “creg”)
-circuit = QuantumCircuit(qreg, creg)
+<li><p>qreg = QuantumRegister(2, “qreg”)<br>
+creg = ClassicalRegister(2, “creg”)<br>
+circuit = QuantumCircuit(qreg, creg)<br>
 circuit.measure(qreg, creg)</p></li>
-<li><p>circuit = QuantumCircuit(qreg, creg)
+<li><p>circuit = QuantumCircuit(qreg, creg)<br>
 circuit.measure(qreg[0], creg[0])</p></li>
 </ol>
 <details>
