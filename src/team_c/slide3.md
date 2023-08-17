@@ -41,13 +41,13 @@
     - パターン３ この条件のゲートってどれ？（X Y Z S T などから、○○の時、BetWeen |+>and |-> unchange）
     - パターン４ コーディング並べ変え問題（少ないが、確実にある）
     -  パターン５ ヒストグラム表示、executeなどのオプション問題（少ないが確実にある）
-    - パターン６ 英文を理解しないと解けない問題がある・・・（Barrierはどういった機能を有しているか？説明している文章を
-選べ・・みたいな）
+    - パターン６ 英文を理解しないと解けない問題がある・・・（Barrierはどういった機能を有しているか？説明している文章を選べ・・みたいな）
     - パターン７ Visualizetionの問題も多い
-    - パターン８ こんなコードあったっけ？.compose() plot_state_qsphere(state) plot_state_city(state)
-plot_state_hinton(state)
-    - パターン９ 意外に出る.initialize
+    - パターン８ こんなコードあったっけ？
+    .compose() <br>
+    plot_state_qsphere(state) plot_state_city(state) <br>
+    plot_state_hinton(state) <br>
+    - パターン９ 意外に出る.initialize 
     - パターン１０ Def ループ文 などもでて、ノーマーク
     - 実は、虎の巻の実装解説が、キラーコンテンツな気がしてきました
-quantum-education-2022/2_basic/2-2_basic_textbook_11-4-1-2/bible_4-1/Dev.pdf at main · wg-quantum/quantum-education-
-2022 (github.com)
+    quantum-education-2022/2_basic/2-2_basic_textbook_11-4-1-2/bible_4-1/Dev.pdf at main · wg-quantum/quantum-education-2022 (github.com)
