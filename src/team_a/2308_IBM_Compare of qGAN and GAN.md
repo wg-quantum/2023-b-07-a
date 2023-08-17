@@ -8,7 +8,7 @@
  </br>
 従って、qGANは、GeneratorとDiscriminatorにパラメーター化された2つの量子回路を使用する。量子回路を実行すると、本物の場合は「1」、偽物の場合は「-1」を意味する単一の二値決定変数が出力される。
 
-<img width="413" alt="image" src="https://github.com/hiatanakou/prep/assets/50878026/5694a761-ee0f-44a1-8e1b-14ab8ac56485">
+<img width="404" alt="image" src="https://github.com/wg-quantum/2023-b-07-a/assets/50878026/f1ab9ecd-632a-4165-bc7b-2242bcd5e85a">
 
 （[Pavan  2018](https://pavanjayasinha.medium.com/quantum-generative-adversarial-networks-76243d1c6888)）
 
