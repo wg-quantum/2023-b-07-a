@@ -61,7 +61,7 @@ Z軸の周りを回転することを位相回転（Phase flip）という
 
 ### 下記を実行すると、量子状態はどうなりますか1？
 
-![100%](./image/3.png)
+![問題画像](./image/question/q3.png)
 
 <details>
 <summary>答えはこちら</summary>
@@ -78,7 +78,7 @@ Bell状態になります
 
 ### 下記を実行すると、量子状態はどうなりますか2？
 
-![100%](./image/4.png)
+![問題画像](./image/question/q4.png)
 
 <details>
 <summary>答えはこちら</summary>
@@ -93,7 +93,7 @@ GHZ状態になります
 
 ### 下記と等価なゲートは1？
 
-![100%](./image/5.png)
+![問題画像](./image/question/q5.png)
 
 <details>
 <summary>答えはこちら</summary>
@@ -107,7 +107,7 @@ GHZ状態になります
 
 ### 下記と等価なゲートは2？
 
-![100%](./image/6.png)
+![問題画像](./image/question/q6.png)
 
 <details>
 <summary>答えはこちら</summary>
@@ -197,3 +197,92 @@ GHZ状態になります
 回答作成中です
 
 </details>
+
+---
+
+## 問題11
+
+### plot_histogram()のオプションで、ラベルを追加するのは？
+
+1. legend
+2. short
+3. number_to_keep
+4. bar_labels
+<details>
+<summary>答えはこちら</summary>
+ラベルは1.legendオプションで追加します。<br>
+ラベルに表記する文字は、リストとして渡す必要があります。
+
+![問題画像](./image/question/q11.png)
+
+</details>
+
+---
+
+## 問題12
+
+### plot_histogram()のオプションで、バーの色を変更するのは？
+
+1. legend
+2. color
+3. number_to_keep
+4. bar_labels
+<details>
+<summary>答えはこちら</summary>
+ラベルは2.colorオプションで変更します。<br>
+
+</details>
+
+---
+
+
+## 問題13
+
+### 以下のコードで出力されるのはどちらですか？
+qc = QuantumCircuit(2)<br>
+qc.h(0)<br>
+qc.cx(0, 1)<br>
+<br>
+state = DensityMatrix(qc)<br>
+plot_state_city(state)<br>
+
+
+1. [問題画像](./image/question/q13_1.png)
+
+
+2. [問題画像](./image/question/q13_2.png)
+<details>
+<summary>答えはこちら</summary>
+
+1.が正解です。bell状態をplot_state_cityで表示したものです。
+2,は<br>
+qc.h(0)<br>
+qc.x(0)<br>
+qc.cx(0, 1)<br>
+の状態です
+
+</details>
+
+
+
+---
+以下テンプレート
+改行は\#<br>
+
+---
+
+## 問題??
+
+### 問題文text
+
+1. 
+2. 
+3. 
+4. 
+<details>
+<summary>答えはこちら</summary>
+
+回答text
+
+</details>
+
