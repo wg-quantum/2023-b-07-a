@@ -259,9 +259,102 @@ plot_state_city(state)<br>
 qc.h(0)<br>
 qc.x(0)<br>
 qc.cx(0, 1)<br>
-の状態です
+の状態です<br>
+plot_state_cityは状態行列の実部と虚部が都市のようにプロットされている、量子状態の標準的なビュー。
 
 </details>
+
+---
+
+## 問題14
+
+### 以下のコードで出力されるのはどちらですか？
+qc = QuantumCircuit(2)<br>
+qc.h(0)<br>
+qc.cx(0, 1)<br>
+<br>
+state = DensityMatrix(qc)<br>
+plot_state_hinton(state)<br>
+
+1. <br> ![問題画像](./image/question/q14_1.png)
+
+
+2. <br> ![問題画像](./image/question/q14_2.png)
+
+<details>
+<summary>答えはこちら</summary>
+1.が正解です。bell状態をplot_state_cityで表示したものです。
+2,は<br>
+qc.h(0)<br>
+qc.x(0)<br>
+qc.cx(0, 1)<br>
+の状態です<br>
+
+</details>
+
+---
+
+## 問題15
+
+### 下記のコードで出力されるのは？
+ Importing standard Qiskit libraries
+from qiskit.quantum_info import random_statevector, random_unita
+
+random_statevector(2)
+
+1. Operator([[ 0.74182434-0.14258211j,  0.03447796+0.65435332j],
+          [ 0.13139464-0.64195206j, -0.71237596-0.25130361j]],
+         input_dims=(2,), output_dims=(2,))
+
+
+2. Statevector([ 0.13919545-0.10896992j, -0.24642315-0.95290389j],
+            dims=(2,))
+
+3. Statevector([ 0.22981074-0.11260163j, -0.42290579+0.31550685j,
+              0.46396693+0.58555583j, -0.21718184-0.22539993j],
+            dims=(2, 2))
+
+4. Operator([[ 0.74182434-0.14258211j,  0.03447796+0.65435332j],
+          [ 0.13139464-0.64195206j, -0.71237596-0.25130361j]],
+         input_dims=(2,), output_dims=(2,))
+<details>
+<summary>答えはこちら</summary>
+
+2．が正解です。
+
+</details>
+
+---
+
+### 問題16 下記のコードで出力されるのは？
+Importing standard Qiskit libraries
+from qiskit.quantum_info import random_statevector, random_unita
+
+random_unitary(2)
+
+1. Operator([[ 0.74182434-0.14258211j,  0.03447796+0.65435332j],
+          [ 0.13139464-0.64195206j, -0.71237596-0.25130361j]],
+         input_dims=(2,), output_dims=(2,))
+
+
+2. Statevector([ 0.13919545-0.10896992j, -0.24642315-0.95290389j],
+            dims=(2,))
+
+3. Statevector([ 0.22981074-0.11260163j, -0.42290579+0.31550685j,
+              0.46396693+0.58555583j, -0.21718184-0.22539993j],
+            dims=(2, 2))
+
+4. Operator([[ 0.74182434-0.14258211j,  0.03447796+0.65435332j],
+          [ 0.13139464-0.64195206j, -0.71237596-0.25130361j]],
+         input_dims=(2,), output_dims=(2,))
+<details>
+<summary>答えはこちら</summary>
+
+1．が正解です。
+
+</details>
+
+
 
 
 
