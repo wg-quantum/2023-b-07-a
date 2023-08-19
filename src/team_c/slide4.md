@@ -247,10 +247,10 @@ state = DensityMatrix(qc)<br>
 plot_state_city(state)<br>
 
 
-1. [問題画像](./image/question/q13_1.png)
+1. <br> ![問題画像](./image/question/q13_1.png)
 
 
-2. [問題画像](./image/question/q13_2.png)
+2. <br> ![問題画像](./image/question/q13_2.png)
 <details>
 <summary>答えはこちら</summary>
 
