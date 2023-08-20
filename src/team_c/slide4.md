@@ -363,10 +363,11 @@ random_unitary(2)
 
   qc = QuantumCircuit(3,3)<br>
   qc.x(0)<br>
-  qc.cx(0,1)<br>
+  qc.ccx(0,1,2)<br>
   qc.h(2)<br>
   qc.ccx(0, 1, 2)<br>
   qc.h(0)<br>
+  qc.depth()<br>
 
 1. 4
 2. 5
@@ -374,13 +375,117 @@ random_unitary(2)
 4. 7
 <details>
 <summary>答えはこちら</summary>
+Depthは5です。
 
 ![問題画像](./image/question/q17.png)
 
 </details>
 
+--
+
+## 問題18
+
+### 下記のコードでDepthはいくつになりますか？
+
+  qc = QuantumCircuit(3,3)<br>
+  qc.x(0)<br>
+  qc.h(2)<br>
+  qc.ccx(0,1,2)<br>
+  qc.ccx(0, 1, 2)<br>
+  qc.h(0)<br>
+  qc.depth()<br>
+
+1. 4
+2. 5
+3. 6
+4. 7
+<details>
+<summary>答えはこちら</summary>
+Depthは4です。
+
+![問題画像](./image/question/q18.png)
+
+</details>
 
 
+---
+
+## 問題19
+
+### 下記が表示されるコードは？
+![問題画像](./image/question/q19_1.png)
+
+  1. <br>
+  qc = QuantumCircuit(3,3)<br>
+  qc.measure(0,0)<br>
+  qc.measure(1,1)<br>
+  qc.measure(2,2)<br>
+  2. <br>
+  qc = QuantumCircuit(3,3)<br>
+  qc.measure([0,1,2],[0,1,2])<br>
+  3. <br>
+  qc = QuantumCircuit(3,3)<br>
+  qc.measure_all()<br>
+  4. <br>
+  qr = QuantumRegister(3, 'q')<br>
+  cr = ClassicalRegister(3, 'c')<br>
+  qc = QuantumCircuit(qr, cr)<br>
+  qc.measure(qr, cr)<br>
+<details>
+<summary>答えはこちら</summary>
+
+3.が不正解。ほかの選択肢は全て正解。<br>
+mesure_allを利用すると、下記になります<br>
+
+![問題画像](./image/question/q19_2.png)
+
+
+</details>
+
+
+---
+
+## 問題20
+
+### 下記のコードで得られる図形は？
+
+num_qbits = 5<br>
+coupling_map=[[0,1],[1,2],[1,3],[3,4]]<br>
+qbit_coordinates=[[1,0],[0,1],[1,1],[1,2],[2,1]]<br>
+plot_coupling_map(num_qbits,qbit_coordinates,coupling_map)<br>
+ <br>
+
+1. <br>
+
+![問題画像](./image/question/q20_1.png) <br>
+
+  2. <br>
+
+![問題画像](./image/question/q20_2.png) <br>
+
+  3. <br>
+
+![問題画像](./image/question/q20_3.png) <br>
+
+  4. <br>
+
+![問題画像](./image/question/q20_4.png) <br>
+
+<details>
+<summary>答えはこちら</summary>
+
+3.が正解<br>
+coupling_mapはビット同士のつながりを示す。<br>
+qbit_coordinatesは、０から始まる平面座標上のどこにあるかを示す。<br>
+qbit_coordinates=[[1,0],[0,1],[1,1],[1,2],[2,1]]<br>
+0ビットは[1,0]で、縦方向に1、横方向に0<br>
+1ビットは[0,1]で、縦方向に0、横方向に1<br>
+2ビットは[1,1]で、縦方向に1、横方向に1<br>
+3ビットは[1,2]で、縦方向に1、横方向に2<br>
+4ビットは[2,1]で、縦方向に2、横方向に1<br>
+![問題画像](./image/question/q20_5.png) <br>
+
+</details>
 
 ---
 以下テンプレート
