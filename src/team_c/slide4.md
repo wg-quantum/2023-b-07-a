@@ -355,6 +355,30 @@ random_unitary(2)
 </details>
 
 
+--
+
+## 問題17
+
+### 下記のコードでDepthはいくつになりますか？
+
+  qc = QuantumCircuit(3,3)<br>
+  qc.x(0)<br>
+  qc.cx(0,1)<br>
+  qc.h(2)<br>
+  qc.ccx(0, 1, 2)<br>
+  qc.h(0)<br>
+
+1. 4
+2. 5
+3. 6
+4. 7
+<details>
+<summary>答えはこちら</summary>
+
+![問題画像](./image/question/q17.png)
+
+</details>
+
 
 
 
