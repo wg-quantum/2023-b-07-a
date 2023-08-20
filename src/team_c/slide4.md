@@ -488,6 +488,122 @@ qbit_coordinates=[[1,0],[0,1],[1,1],[1,2],[2,1]]<br>
 </details>
 
 ---
+
+## 問題21
+
+### 下記コードの値は？
+
+qc = QuantumCircuit(2)
+qc.cx(0,1)
+qc.measure_all()
+qc.draw()
+
+1. {'00': 1024}
+2. {'01': 1024}
+3. {'10': 1024}
+4. {'11': 1024}
+<details>
+<summary>答えはこちら</summary>
+
+1. {'00': 1024}
+
+</details>
+
+---
+
+## 問題22
+
+### 下記コードの値は？
+
+qc = QuantumCircuit(2)
+qc.x(0)
+qc.measure_all()
+qc.draw()
+
+1. {'00': 1024}
+2. {'01': 1024}
+3. {'10': 1024}
+4. {'11': 1024}
+<details>
+<summary>答えはこちら</summary>
+
+2. {'01': 1024}
+
+</details>
+
+---
+
+## 問題23
+
+### 下記コードの値は？
+
+qc = QuantumCircuit(3)
+qc.ccx(0,1,2)
+qc.measure_all()
+qc.draw()
+
+1. {'000': 1024}
+2. {'001': 1024}
+3. {'100': 1024}
+4. {'111': 1024}
+<details>
+<summary>答えはこちら</summary>
+
+1. {'000': 1024}
+
+</details>
+
+
+---
+
+## 問題24
+
+### 下記コードの値は？
+
+qc = QuantumCircuit(3)
+qc.x(0)
+qc.ccx(0,1,2)
+qc.measure_all()
+qc.draw()
+
+1. {'000': 1024}
+2. {'001': 1024}
+3. {'100': 1024}
+4. {'111': 1024}
+
+<details>
+<summary>答えはこちら</summary>
+
+2. {'001': 1024}
+
+</details>
+
+---
+
+## 問題25
+
+### 下記コードの値は？
+
+qc = QuantumCircuit(3)
+qc.x(0)
+qc.x(1)
+qc.ccx(0,1,2)
+qc.measure_all()
+qc.draw()
+
+1. {'000': 1024}
+2. {'001': 1024}
+3. {'100': 1024}
+4. {'111': 1024}
+
+<details>
+<summary>答えはこちら</summary>
+
+4. {'111': 1024}
+
+</details>
+
+---
 以下テンプレート
 改行は\#<br>
 
