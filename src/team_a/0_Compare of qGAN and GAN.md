@@ -21,11 +21,11 @@
 
 ### qGANの実装
 1. pennylane_mnist.ipynb
-* pennylaneが開発したQuantum GANsでtutorialのMNISTを実行したもの
-    * [ref](https://pennylane.ai/qml/demos/tutorial_quantum_gans)
+    * pennylaneが開発したQuantum GANsでtutorialのMNISTを実行したもの
+        * [ref](https://pennylane.ai/qml/demos/tutorial_quantum_gans)
 2. ibm_quiskit_mnist.ipynb
-* IBMが開発したQnantum GANsでMNISTを実行したもの
-    * pennylaneのdatasetを用いて独自で実装を行った
+    * IBMが開発したQnantum GANsでMNISTを実行したもの
+        * pennylaneのdatasetを用いて独自で実装を行った
 3. ibm_quisikt_tutorial.ipynb
-* IBMが開発したQnantum GANsでtutorialの一次元分布作成を実行したもの
-    * [ref](https://qiita.com/ucc_white/items/1fccf6bff9f1f3dc16fa)
+    * IBMが開発したQnantum GANsでtutorialの一次元分布作成を実行したもの
+        * [ref](https://qiita.com/ucc_white/items/1fccf6bff9f1f3dc16fa)
