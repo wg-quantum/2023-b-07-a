@@ -20,12 +20,12 @@
 　現実世界のデータを量子回路にエンコードすることは困難だが、qGANは、非常に高次元のデータセットで作成されたデータを生成する際に、指数関数的に高速化する可能性がある。従って、qGANには、古典的に扱いにくい (古典的にサンプリングすることが指数関数的に困難である) 確率分布のサンプリングと操作を飛躍的に高速化する可能性がある
 
 ### qGANの実装
-##### 1_pennylane_mnist.ipynb
+1. pennylane_mnist.ipynb
 * pennylaneが開発したQuantum GANsでtutorialのMNISTを実行したもの
     * [ref](https://pennylane.ai/qml/demos/tutorial_quantum_gans)
-##### 2_ibm_quiskit_mnist.ipynb
+2. ibm_quiskit_mnist.ipynb
 * IBMが開発したQnantum GANsでMNISTを実行したもの
     * pennylaneのdatasetを用いて独自で実装を行った
-##### 3_ibm_quisikt_tutorial.ipynb
+3. ibm_quisikt_tutorial.ipynb
 * IBMが開発したQnantum GANsでtutorialの一次元分布作成を実行したもの
     * [ref](https://qiita.com/ucc_white/items/1fccf6bff9f1f3dc16fa)
