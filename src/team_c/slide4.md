@@ -617,14 +617,15 @@ qc.cx(0,1)
 
 ![問題画像](./image/question/q26.png) <br>
 
-1. qc.draw('text')
-2. qc.draw('mpl')
-3. qc.draw('latex_source')
-4. print(qc)
+1. qc.draw('mpl')
+2. qc.draw('text')
+3. print(qc)
+4. qc.draw('latex_source')
+
 <details>
 <summary>答えはこちら</summary>
 
-回答text
+2. qc.draw('text')
 
 </details>
 
@@ -642,14 +643,15 @@ qc.cx(0,1)
 
 ![問題画像](./image/question/q27.png) <br>
 
-1. qc.draw('text')
-2. qc.draw('mpl')
-3. qc.draw('latex_source')
-4. print(qc)
+1. qc.draw('mpl')
+2. qc.draw('text')
+3. print(qc)
+4. qc.draw('latex_source')
+
 <details>
 <summary>答えはこちら</summary>
 
-回答text
+1. qc.draw('mpl')
 
 </details>
 
@@ -667,14 +669,15 @@ qc.cx(0,1)
 
 ![問題画像](./image/question/q28.png) <br>
 
-1. qc.draw('text')
-2. qc.draw('mpl')
-3. qc.draw('latex_source')
-4. print(qc)
+1. qc.draw('mpl')
+2. qc.draw('text')
+3. print(qc)
+4. qc.draw('latex_source')
+
 <details>
 <summary>答えはこちら</summary>
 
-回答text
+4. qc.draw('latex_source')
 
 </details>
 
@@ -692,14 +695,15 @@ qc.cx(0,1)
 
 ![問題画像](./image/question/q29.png) <br>
 
-1. qc.draw('text')
-2. qc.draw('mpl')
-3. qc.draw('latex_source')
-4. print(qc)
+1. qc.draw('mpl')
+2. qc.draw('text')
+3. print(qc)
+4. qc.draw('latex_source')
+
 <details>
 <summary>答えはこちら</summary>
 
-回答text
+3. print(qc)
 
 </details>
 
