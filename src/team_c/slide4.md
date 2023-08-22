@@ -604,6 +604,107 @@ qc.draw()
 </details>
 
 ---
+
+## 問題26
+
+### 以下の結果が表示されるコードは？
+qc = QuantumCircuit(2)
+
+qc.h(0)
+qc.cx(0,1)
+
+#insert code 下記選択しから選んでください
+
+![問題画像](./image/question/q26.png) <br>
+
+1. qc.draw('text')
+2. qc.draw('mpl')
+3. qc.draw('latex_source')
+4. print(qc)
+<details>
+<summary>答えはこちら</summary>
+
+回答text
+
+</details>
+
+---
+
+## 問題27
+
+### 以下の結果が表示されるコードは？
+qc = QuantumCircuit(2)
+
+qc.h(0)
+qc.cx(0,1)
+
+#insert code 下記選択しから選んでください
+
+![問題画像](./image/question/q27.png) <br>
+
+1. qc.draw('text')
+2. qc.draw('mpl')
+3. qc.draw('latex_source')
+4. print(qc)
+<details>
+<summary>答えはこちら</summary>
+
+回答text
+
+</details>
+
+---
+
+## 問題28
+
+### 以下の結果が表示されるコードは？
+qc = QuantumCircuit(2)
+
+qc.h(0)
+qc.cx(0,1)
+
+#insert code 下記選択しから選んでください
+
+![問題画像](./image/question/q28.png) <br>
+
+1. qc.draw('text')
+2. qc.draw('mpl')
+3. qc.draw('latex_source')
+4. print(qc)
+<details>
+<summary>答えはこちら</summary>
+
+回答text
+
+</details>
+
+---
+
+## 問題29
+
+### 以下の結果が表示されるコードは？
+qc = QuantumCircuit(2)
+
+qc.h(0)
+qc.cx(0,1)
+
+#insert code 下記選択しから選んでください
+
+![問題画像](./image/question/q29.png) <br>
+
+1. qc.draw('text')
+2. qc.draw('mpl')
+3. qc.draw('latex_source')
+4. print(qc)
+<details>
+<summary>答えはこちら</summary>
+
+回答text
+
+</details>
+
+
+---
 以下テンプレート
 改行は\#<br>
 
