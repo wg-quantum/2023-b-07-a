@@ -1,10 +1,4 @@
 ---
-marp: true
-theme: test
-footer: "**2023-B-07-a**"
-paginate: true 
-
----
 <!--
 class: title
 _backgroundColor: orange
@@ -493,10 +487,10 @@ qbit_coordinates=[[1,0],[0,1],[1,1],[1,2],[2,1]]<br>
 
 ### 下記コードの値は？
 
-qc = QuantumCircuit(2)
-qc.cx(0,1)
-qc.measure_all()
-qc.draw()
+qc = QuantumCircuit(2)<br>
+qc.cx(0,1)<br>
+qc.measure_all()<br>
+qc.draw()<br>
 
 1. {'00': 1024}
 2. {'01': 1024}
@@ -515,10 +509,10 @@ qc.draw()
 
 ### 下記コードの値は？
 
-qc = QuantumCircuit(2)
-qc.x(0)
-qc.measure_all()
-qc.draw()
+qc = QuantumCircuit(2)<br>
+qc.x(0)<br>
+qc.measure_all()<br>
+qc.draw()<br>
 
 1. {'00': 1024}
 2. {'01': 1024}
@@ -537,10 +531,10 @@ qc.draw()
 
 ### 下記コードの値は？
 
-qc = QuantumCircuit(3)
-qc.ccx(0,1,2)
-qc.measure_all()
-qc.draw()
+qc = QuantumCircuit(3)<br>
+qc.ccx(0,1,2)<br>
+qc.measure_all()<br>
+qc.draw()<br>
 
 1. {'000': 1024}
 2. {'001': 1024}
@@ -560,11 +554,11 @@ qc.draw()
 
 ### 下記コードの値は？
 
-qc = QuantumCircuit(3)
-qc.x(0)
-qc.ccx(0,1,2)
-qc.measure_all()
-qc.draw()
+qc = QuantumCircuit(3)<br>
+qc.x(0)<br>
+qc.ccx(0,1,2)<br>
+qc.measure_all()<br>
+qc.draw()<br>
 
 1. {'000': 1024}
 2. {'001': 1024}
@@ -584,12 +578,12 @@ qc.draw()
 
 ### 下記コードの値は？
 
-qc = QuantumCircuit(3)
-qc.x(0)
-qc.x(1)
-qc.ccx(0,1,2)
-qc.measure_all()
-qc.draw()
+qc = QuantumCircuit(3)<br>
+qc.x(0)<br>
+qc.x(1)<br>
+qc.ccx(0,1,2)<br>
+qc.measure_all()<br>
+qc.draw()<br>
 
 1. {'000': 1024}
 2. {'001': 1024}
@@ -608,12 +602,12 @@ qc.draw()
 ## 問題26
 
 ### 以下の結果が表示されるコードは？
-qc = QuantumCircuit(2)
-
-qc.h(0)
-qc.cx(0,1)
-
-#insert code 下記選択しから選んでください
+qc = QuantumCircuit(2)<br>
+<br>
+qc.h(0)<br>
+qc.cx(0,1)<br>
+<br>
+#insert code 下記選択しから選んでください<br>
 
 ![問題画像](./image/question/q26.png) <br>
 
@@ -634,11 +628,11 @@ qc.cx(0,1)
 ## 問題27
 
 ### 以下の結果が表示されるコードは？
-qc = QuantumCircuit(2)
-
-qc.h(0)
-qc.cx(0,1)
-
+qc = QuantumCircuit(2)<br>
+<br>
+qc.h(0)<br>
+qc.cx(0,1)<br>
+<br>
 #insert code 下記選択しから選んでください
 
 ![問題画像](./image/question/q27.png) <br>
@@ -660,12 +654,13 @@ qc.cx(0,1)
 ## 問題28
 
 ### 以下の結果が表示されるコードは？
-qc = QuantumCircuit(2)
-
-qc.h(0)
-qc.cx(0,1)
-
-#insert code 下記選択しから選んでください
+qc = QuantumCircuit(2)<br>
+<br>
+qc.h(0)<br>
+qc.cx(0,1)<br>
+<br>
+#insert code 下記選択しから選んでください<br>
+<br>
 
 ![問題画像](./image/question/q28.png) <br>
 
@@ -686,12 +681,13 @@ qc.cx(0,1)
 ## 問題29
 
 ### 以下の結果が表示されるコードは？
-qc = QuantumCircuit(2)
-
-qc.h(0)
-qc.cx(0,1)
-
-#insert code 下記選択しから選んでください
+qc = QuantumCircuit(2)<br>
+<br>
+qc.h(0)<br>
+qc.cx(0,1)<br>
+<br>
+#insert code 下記選択しから選んでください<br>
+<br>
 
 ![問題画像](./image/question/q29.png) <br>
 
