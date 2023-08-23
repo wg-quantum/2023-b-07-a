@@ -792,7 +792,53 @@ qc.cx(0,1)<br>
 
 </details>
 
+---
 
+## 問題34
+
+### 一番早く実行できるマシンはどれか？
+
+![問題画像](./image/question/q34.png) <br>
+
+
+1. ibm_perth
+2. ibm_nairobi
+3. ibm_lagos
+4．ibmq_manila
+
+
+<details>
+<summary>答えはこちら</summary>
+
+Pending jobsが少ないものを選択します<br>
+2. ibm_nairobi
+
+
+</details>
+
+---
+
+## 問題35
+
+### 誤りが少ない可能性が高いのは？
+
+![問題画像](./image/question/q34.png) <br>
+
+
+1. ibm_perth
+2. ibm_nairobi
+3. ibm_lagos
+4．ibmq_manila
+
+
+<details>
+<summary>答えはこちら</summary>
+
+コヒーレンス時間のながさをAvg T1/t2で確認<br>
+1. ibm_perth
+
+
+</details>
 
 ---
 以下テンプレート
