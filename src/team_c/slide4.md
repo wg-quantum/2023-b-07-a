@@ -840,6 +840,29 @@ Pending jobsが少ないものを選択します<br>
 
 </details>
 
+--
+
+## 問題36
+
+### 単一量子ビットゲートを分解するコードは？
+
+1. qc.converts
+2. qc.traspiler
+3. qc.decompose
+4. qc.operators
+
+<details>
+<summary>答えはこちら</summary>
+
+![問題画像](./image/question/q36.png) <br>
+
+
+
+</details>
+
+
+
+
 ---
 以下テンプレート
 改行は\#<br>
