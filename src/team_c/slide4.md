@@ -703,6 +703,96 @@ qc.cx(0,1)<br>
 
 </details>
 
+---
+
+## 問題30
+
+### 以下の結果をPng形式で保存するコードは？
+qc = QuantumCircuit(2)<br>
+<br>
+qc.h(0)<br>
+qc.cx(0,1)<br>
+<br>
+#insert code 下記選択しから選んでください
+
+![問題画像](./image/question/q27.png) <br>
+
+1. qc.draw('mpl', filename='test.png')
+2. qc.draw('text', filename='test.png')
+3. print(qc, filename='test.png')
+4. qc.draw('latex_source', filename='test.png')
+
+<details>
+<summary>答えはこちら</summary>
+
+1. qc.draw('mpl', filename='test.png')
+
+</details>
+
+---
+
+## 問題31
+
+### 以下のQiskit version情報を表示するコードは？
+
+![問題画像](./image/question/q31.png) <br>
+
+
+1. print(qiskit.__qiskit_version__)
+2. %qiskit_version_table
+3. print(qiskit.__version__)
+
+
+<details>
+<summary>答えはこちら</summary>
+
+3. print(qiskit.__version__)
+
+</details>
+
+---
+
+## 問題32
+
+### 以下のQiskit version情報を表示するコードは？
+
+![問題画像](./image/question/q32.png) <br>
+
+
+1. print(qiskit.__qiskit_version__)
+2. %qiskit_version_table
+3. print(qiskit.__version__)
+
+
+<details>
+<summary>答えはこちら</summary>
+
+1. print(qiskit.__qiskit_version__)
+
+</details>
+
+---
+
+## 問題33
+
+### 以下のQiskit version情報を表示するコードは？
+
+![問題画像](./image/question/q33.png) <br>
+
+
+1. print(qiskit.__qiskit_version__)
+2. %qiskit_version_table
+3. print(qiskit.__version__)
+
+
+<details>
+<summary>答えはこちら</summary>
+
+2. %qiskit_version_table
+
+</details>
+
+
 
 ---
 以下テンプレート
