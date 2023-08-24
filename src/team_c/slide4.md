@@ -804,7 +804,7 @@ qc.cx(0,1)<br>
 1. ibm_perth
 2. ibm_nairobi
 3. ibm_lagos
-4．ibmq_manila
+4. ibmq_manila
 
 
 <details>
@@ -837,10 +837,9 @@ Pending jobsが少ないものを選択します<br>
 コヒーレンス時間のながさをAvg T1/t2で確認<br>
 1. ibm_perth
 
-
 </details>
 
---
+---
 
 ## 問題36
 
@@ -856,11 +855,34 @@ Pending jobsが少ないものを選択します<br>
 
 ![問題画像](./image/question/q36.png) <br>
 
-
-
 </details>
 
+---
 
+## 問題37
+
+### 下記になるコードは？
+qc = QuantumCircuit(3)
+<br>
+#insert code 下記選択しから選んでください
+<br>
+qc.draw()
+
+![問題画像](./image/question/q37.png) <br>
+
+
+1. qc.barrier([0,2])
+2. qc.barrier()
+3. qc.barrier(q0,q2)
+4. qc.barrier(0,2)
+
+<details>
+<summary>答えはこちら</summary>
+
+1. qc.barrier([0,2])と
+4. qc.barrier(0,2)
+
+</details>
 
 
 ---
