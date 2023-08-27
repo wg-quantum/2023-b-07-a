@@ -864,7 +864,7 @@ Pending jobsが少ないものを選択します<br>
 ### 下記になるコードは？
 qc = QuantumCircuit(3)
 <br>
-#insert code 下記選択しから選んでください
+#insert code 下記選択肢から選んでください
 <br>
 qc.draw()
 
@@ -881,6 +881,83 @@ qc.draw()
 
 1. qc.barrier([0,2])と
 4. qc.barrier(0,2)
+
+</details>
+
+---
+
+## 問題38
+
+### 量子回路の最適化を行わないためのoptimization_levelは？
+
+optimization_level()
+
+1. 0
+2. 1
+3. 2
+4. 3
+
+<details>
+<summary>答えはこちら</summary>
+
+1. 0
+
+</details>
+
+---
+
+## 問題39
+
+### 画像内で赤く囲んだ部分は何ですか？
+
+![問題画像](./image/question/q39.png) <br>
+
+1. 読み取り時のエラー率
+2. 論理ゲートのエラー率
+3. 物理的なビットの結びつき
+
+<details>
+<summary>答えはこちら</summary>
+
+1. 読み取り時のエラー率
+
+</details>
+
+---
+
+## 問題40
+
+### 画像内で赤く囲んだ部分は何ですか？
+
+![問題画像](./image/question/q40.png) <br>
+
+1. 読み取り時のエラー率
+2. 論理ゲートのエラー率
+3. 物理的なビットの結びつき
+
+<details>
+<summary>答えはこちら</summary>
+
+2. 論理ゲートのエラー率
+
+</details>
+
+---
+
+## 問題41
+
+###  画像内で赤く囲んだ部分は何ですか？
+
+![問題画像](./image/question/q41.png) <br>
+
+1. 読み取り時のエラー率
+2. 論理ゲートのエラー率
+3. 物理的なビットの結びつき
+
+<details>
+<summary>答えはこちら</summary>
+
+3. 物理的なビットの結びつき
 
 </details>
 
