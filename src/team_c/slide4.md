@@ -961,6 +961,129 @@ optimization_level()
 
 </details>
 
+---
+
+## 問題42
+
+###  電子回路をシミュレーションするパッケージで、BasicAerにふくまれるもののうち、複素ベクトルである量子状態を返すのはどれか？
+
+1. qasm_simulator
+2. statevector_simulator
+3. unitary_simulator
+
+<details>
+<summary>答えはこちら</summary>
+
+2. statevector_simulator
+
+</details>
+
+---
+
+## 問題43
+
+###  電子回路をシミュレーションするパッケージで、BasicAerにふくまれるもののうち、複素ベクトルである量子状態を返すのはどれか？
+
+1. qasm_simulator
+2. statevector_simulator
+3. unitary_simulator
+
+<details>
+<summary>答えはこちら</summary>
+
+2. statevector_simulator
+
+</details>
+
+---
+
+## 問題44
+
+###  電子回路をシミュレーションするパッケージで、BasicAerにふくまれるもののうち、ユニタリー演算で利用するものは？
+
+1. qasm_simulator
+2. statevector_simulator
+3. unitary_simulator
+
+<details>
+<summary>答えはこちら</summary>
+
+3. unitary_simulator
+
+</details>
+
+
+---
+
+## 問題45
+
+###  ２つの量子状態の類似性を計算するもので、２つの状態ベクトルから計算するのは？
+
+1. state_fidelity()
+2. process_fidelity()
+3. average_gate_simulator
+
+<details>
+<summary>答えはこちら</summary>
+
+1. state_fidelity()
+
+</details>
+
+---
+
+## 問題46
+
+###  、２つのオペレータ間の類似性を計算するもので、２つのユニタリ行列の近さを表わすのは？
+
+1. state_fidelity()
+2. process_fidelity()
+3. average_gate_simulator
+
+<details>
+<summary>答えはこちら</summary>
+
+2. process_fidelity()
+
+</details>
+
+---
+
+## 問題47
+
+###  量子チャネルとオペレータ、あるいは２つのオペレータ間の類似性を計算するものだが、 （に等しい
+
+1. state_fidelity()
+2. process_fidelity()
+3. average_gate_simulator
+
+<details>
+<summary>答えはこちら</summary>
+
+3. average_gate_simulator
+
+両者のprocess_fidelity×次元数＋１）/（ 次元数＋１）に等しい
+
+</details>
+
+---
+
+## 問題48
+
+###  state_fidelity()、process_fidelity()は類似性が高いと数字はどうなるか？
+
+1. 0
+2. 0.5 
+3. 1
+4. 10
+
+<details>
+<summary>答えはこちら</summary>
+
+3. 1
+類似性がたかいと１に近づきます
+
+</details>
 
 ---
 以下テンプレート
