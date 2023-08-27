@@ -1086,6 +1086,103 @@ optimization_level()
 </details>
 
 ---
+
+## 問題49
+
+### 以下のコードで得られるのは？
+
+qr = QuantumRegister(4)<br>
+cr = ClassicalRegister(4)<br>
+qc=QuantumCircuit(qr, cr)<br>
+qc.x(0)<br>
+qc.measure(qr[0:5],cr[0:5])<br>
+<br>
+simulator = BasicAer.get_backend('qasm_simulator')<br>
+result = execute(qc, simulator).result()<br>
+counts = result.get_counts(qc)<br>
+print(counts)<br>
+
+1. {'1000': 1024}
+2. {'0100': 1024}
+3. {'0010': 1024}
+4. {'0001': 1024}
+<details>
+<summary>答えはこちら</summary>
+
+4. {'0001': 1024}
+
+![問題画像](./image/question/q49.png) <br>
+
+</details>
+
+---
+
+## 問題50
+
+### 以下のコードで得られるのは？
+
+qr = QuantumRegister(4)<br>
+cr = ClassicalRegister(4)<br>
+qc=QuantumCircuit(qr, cr)<br>
+qc.x(0)<br>
+qc.measure(qr[0],cr[0])<br>
+qc.barrier()<br>
+qc.measure(qr[1:4],cr[1:4])<br>
+<br>
+simulator = BasicAer.get_backend('qasm_simulator')<br>
+result = execute(qc, simulator).result()<br>
+counts = result.get_counts(qc)<br>
+print(counts)<br>
+
+1. {'1000': 1024}
+2. {'0100': 1024}
+3. {'0010': 1024}
+4. {'0001': 1024}
+<details>
+<summary>答えはこちら</summary>
+
+4. {'0001': 1024}
+
+![問題画像](./image/question/q50.png) <br>
+
+</details>
+
+---
+
+## 問題51
+
+### 以下のコードで得られるのは？
+
+qr = QuantumRegister(4)<br>
+cr = ClassicalRegister(4)<br>
+qc=QuantumCircuit(qr, cr)<br>
+qc.x(0)<br>
+qc.measure(qr[0],cr[3])<br>
+qc.measure(qr[1],cr[2])<br>
+qc.measure(qr[2],cr[1])<br>
+qc.measure(qr[3],cr[0])<br>
+qc.draw('mpl')
+<br>
+simulator = BasicAer.get_backend('qasm_simulator')<br>
+result = execute(qc, simulator).result()<br>
+counts = result.get_counts(qc)<br>
+print(counts)<br>
+
+1. {'1000': 1024}
+2. {'0100': 1024}
+3. {'0010': 1024}
+4. {'0001': 1024}
+<details>
+<summary>答えはこちら</summary>
+
+1. {'1000': 1024}
+
+![問題画像](./image/question/q51.png) <br>
+
+</details>
+
+
+---
 以下テンプレート
 改行は\#<br>
 
