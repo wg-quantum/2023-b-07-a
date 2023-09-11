@@ -4,11 +4,11 @@
 format: jb-book
 root: intro
 parts:
-  - caption: 量子コンピューター研究会
+  - caption: コンテンツ
     chapters:
-    - file: result_a
-    - file: result_b
     - file: result_c
+    - file: result_b
+    - file: result_a
 
 
 
