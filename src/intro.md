@@ -1,12 +1,10 @@
 # 2023年度 IBM Community Japan ナレッジモール研究会 
-# 量子コンピューターの活用研究 (2023-b-07-a ) の活動成果
+# 量子コンピューターの活用研究 (2023-b-07-a) の活動成果
 
-This is a small sample book to give you a feel for how book content is
-structured.
-It shows off a few of the major file types, as well as some sample content.
-It does not go in-depth into any particular topic - check out [the Jupyter Book documentation](https://jupyterbook.org) for more information.
+このページは、[2023年度「IBM Community Japan ナレッジモール研究」](https://www.ibm.com/community/japan/jp-ja/knowledge-mall-research-application.html) におけるワーキンググループ「2023-b-07-a：量子コンピューターの活用研究」 の研究成果物です。
 
-Check out the content pages bundled with this sample book to see more.
-
+## コンテンツ
 ```{tableofcontents}
 ```
+問合せ窓口：IBM 沼田 (kifumi@jp.ibm.com)<br>
+© Copyright IBM Corp. 2023
