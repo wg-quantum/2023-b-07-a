@@ -1,4 +1,5 @@
-# Welcome to your Jupyter Book
+# 2023年度 IBM Community Japan ナレッジモール研究会 
+# 量子コンピューターの活用研究 (2023-b-07-a ) の活動成果
 
 This is a small sample book to give you a feel for how book content is
 structured.
