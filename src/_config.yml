@@ -3,6 +3,7 @@
 
 title: IBM Community Japan 2023 ナレッジモール研究会
 author: IBM Community Japan チーム 2023-b-07-a
+copyright                   : "2023"  # Copyright year to be placed in the footer
 # logo: logo.png
 
 # Force re-execution of notebooks on each build.
