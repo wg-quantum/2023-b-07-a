@@ -1,0 +1,767 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Quantum GANs &#8212; IBM Community Japan 2023 ナレッジモール研究会</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'team_a/3_ibm_quiskit_tutorial';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    量子コンピューターの活用研究
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">コンテンツ</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../result_c.html">1. Qiskit認定資格取得のための基礎学習</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../result_b.html">2. ショアのアルゴリズム（初学者向け解説）</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../result_a.html">3. 量子機械学習</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../result_d.html">4. 成果公開に向けたGitHub環境活用</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/wg-quantum/2023-b-07-a" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/wg-quantum/2023-b-07-a/issues/new?title=Issue%20on%20page%20%2Fteam_a/3_ibm_quiskit_tutorial.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/team_a/3_ibm_quiskit_tutorial.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Quantum GANs</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Quantum GANs</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reference">Reference</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#training">Training</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="quantum-gans">
+<h1>Quantum GANs<a class="headerlink" href="#quantum-gans" title="Permalink to this heading">#</a></h1>
+<p>In this tutorial, we will try to explore quantum GANs to generate original probability distribution.</p>
+</br>
+<section id="reference">
+<h2>Reference<a class="headerlink" href="#reference" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://qiskit.org/ecosystem/machine-learning/stubs/qiskit_machine_learning.algorithms.QGAN.html">qiskit-tutrial</a></p></li>
+<li><p><a class="reference external" href="https://github.com/qiskit-community/qiskit-machine-learning">github</a></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span><span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span><span class="nv">watermark</span><span class="o">==</span><span class="m">2</span>.4.2
+<span class="o">!</span><span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span><span class="nv">pylatexenc</span><span class="o">==</span><span class="m">2</span>.10
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: watermark==2.4.2 in /Users/kifumi/local/qiskit_0441_2/lib/python3.9/site-packages (2.4.2)
+Requirement already satisfied: ipython&gt;=6.0 in /Users/kifumi/local/qiskit_0441_2/lib/python3.9/site-packages (from watermark==2.4.2) (8.15.0)
+Requirement already satisfied: importlib-metadata&gt;=1.4 in /Users/kifumi/local/qiskit_0441_2/lib/python3.9/site-packages (from watermark==2.4.2) (6.8.0)
+Requirement already satisfied: py3nvml&gt;=0.2 in /Users/kifumi/local/qiskit_0441_2/lib/python3.9/site-packages (from watermark==2.4.2) (0.2.7)
+Requirement already satisfied: setuptools in /Users/kifumi/local/qiskit_0441_2/lib/python3.9/site-packages (from watermark==2.4.2) (58.0.4)
+Requirement already satisfied: zipp&gt;=0.5 in /Users/kifumi/local/qiskit_0441_2/lib/python3.9/site-packages (from importlib-metadata&gt;=1.4-&gt;watermark==2.4.2) (3.16.2)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: backcall in /Users/kifumi/local/qiskit_0441_2/lib/python3.9/site-packages (from ipython&gt;=6.0-&gt;watermark==2.4.2) (0.2.0)
+Requirement already satisfied: decorator in /Users/kifumi/local/qiskit_0441_2/lib/python3.9/site-packages (from ipython&gt;=6.0-&gt;watermark==2.4.2) (5.1.1)
+Requirement already satisfied: jedi&gt;=0.16 in /Users/kifumi/local/qiskit_0441_2/lib/python3.9/site-packages (from ipython&gt;=6.0-&gt;watermark==2.4.2) (0.19.0)
+Requirement already satisfied: matplotlib-inline in /Users/kifumi/local/qiskit_0441_2/lib/python3.9/site-packages (from ipython&gt;=6.0-&gt;watermark==2.4.2) (0.1.6)
+Requirement already satisfied: pickleshare in /Users/kifumi/local/qiskit_0441_2/lib/python3.9/site-packages (from ipython&gt;=6.0-&gt;watermark==2.4.2) (0.7.5)
+Requirement already satisfied: prompt-toolkit!=3.0.37,&lt;3.1.0,&gt;=3.0.30 in /Users/kifumi/local/qiskit_0441_2/lib/python3.9/site-packages (from ipython&gt;=6.0-&gt;watermark==2.4.2) (3.0.39)
+Requirement already satisfied: pygments&gt;=2.4.0 in /Users/kifumi/local/qiskit_0441_2/lib/python3.9/site-packages (from ipython&gt;=6.0-&gt;watermark==2.4.2) (2.16.1)
+Requirement already satisfied: stack-data in /Users/kifumi/local/qiskit_0441_2/lib/python3.9/site-packages (from ipython&gt;=6.0-&gt;watermark==2.4.2) (0.6.2)
+Requirement already satisfied: traitlets&gt;=5 in /Users/kifumi/local/qiskit_0441_2/lib/python3.9/site-packages (from ipython&gt;=6.0-&gt;watermark==2.4.2) (5.9.0)
+Requirement already satisfied: typing-extensions in /Users/kifumi/local/qiskit_0441_2/lib/python3.9/site-packages (from ipython&gt;=6.0-&gt;watermark==2.4.2) (4.7.1)
+Requirement already satisfied: exceptiongroup in /Users/kifumi/local/qiskit_0441_2/lib/python3.9/site-packages (from ipython&gt;=6.0-&gt;watermark==2.4.2) (1.1.3)
+Requirement already satisfied: pexpect&gt;4.3 in /Users/kifumi/local/qiskit_0441_2/lib/python3.9/site-packages (from ipython&gt;=6.0-&gt;watermark==2.4.2) (4.8.0)
+Requirement already satisfied: appnope in /Users/kifumi/local/qiskit_0441_2/lib/python3.9/site-packages (from ipython&gt;=6.0-&gt;watermark==2.4.2) (0.1.3)
+Requirement already satisfied: xmltodict in /Users/kifumi/local/qiskit_0441_2/lib/python3.9/site-packages (from py3nvml&gt;=0.2-&gt;watermark==2.4.2) (0.13.0)
+Requirement already satisfied: parso&lt;0.9.0,&gt;=0.8.3 in /Users/kifumi/local/qiskit_0441_2/lib/python3.9/site-packages (from jedi&gt;=0.16-&gt;ipython&gt;=6.0-&gt;watermark==2.4.2) (0.8.3)
+Requirement already satisfied: ptyprocess&gt;=0.5 in /Users/kifumi/local/qiskit_0441_2/lib/python3.9/site-packages (from pexpect&gt;4.3-&gt;ipython&gt;=6.0-&gt;watermark==2.4.2) (0.7.0)
+Requirement already satisfied: wcwidth in /Users/kifumi/local/qiskit_0441_2/lib/python3.9/site-packages (from prompt-toolkit!=3.0.37,&lt;3.1.0,&gt;=3.0.30-&gt;ipython&gt;=6.0-&gt;watermark==2.4.2) (0.2.6)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: executing&gt;=1.2.0 in /Users/kifumi/local/qiskit_0441_2/lib/python3.9/site-packages (from stack-data-&gt;ipython&gt;=6.0-&gt;watermark==2.4.2) (1.2.0)
+Requirement already satisfied: asttokens&gt;=2.1.0 in /Users/kifumi/local/qiskit_0441_2/lib/python3.9/site-packages (from stack-data-&gt;ipython&gt;=6.0-&gt;watermark==2.4.2) (2.4.0)
+Requirement already satisfied: pure-eval in /Users/kifumi/local/qiskit_0441_2/lib/python3.9/site-packages (from stack-data-&gt;ipython&gt;=6.0-&gt;watermark==2.4.2) (0.2.2)
+Requirement already satisfied: six&gt;=1.12.0 in /Users/kifumi/local/qiskit_0441_2/lib/python3.9/site-packages (from asttokens&gt;=2.1.0-&gt;stack-data-&gt;ipython&gt;=6.0-&gt;watermark==2.4.2) (1.16.0)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: pylatexenc==2.10 in /Users/kifumi/local/qiskit_0441_2/lib/python3.9/site-packages (2.10)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span><span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>qiskit<span class="o">[</span>machine-learning<span class="o">]==</span><span class="m">0</span>.44.0
+<span class="o">!</span><span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>qiskit<span class="o">[</span>finance<span class="o">]==</span><span class="m">0</span>.44.0
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zsh:1: no matches found: qiskit[machine-learning]==0.44.0
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zsh:1: no matches found: qiskit[finance]==0.44.0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">matplotlib.gridspec</span> <span class="k">as</span> <span class="nn">gridspec</span>
+
+<span class="c1"># Qiskit</span>
+<span class="kn">from</span> <span class="nn">qiskit_machine_learning.algorithms</span> <span class="kn">import</span> <span class="n">QGAN</span>
+
+<span class="kn">from</span> <span class="nn">qiskit</span> <span class="kn">import</span> <span class="n">BasicAer</span><span class="p">,</span> <span class="n">ClassicalRegister</span><span class="p">,</span> <span class="n">QuantumCircuit</span><span class="p">,</span> <span class="n">execute</span>
+<span class="kn">from</span> <span class="nn">qiskit.circuit.library</span> <span class="kn">import</span> <span class="n">TwoLocal</span>
+<span class="kn">from</span> <span class="nn">qiskit.quantum_info</span> <span class="kn">import</span> <span class="n">random_statevector</span>
+<span class="kn">from</span> <span class="nn">qiskit_finance.circuit.library.probability_distributions</span> <span class="kn">import</span> <span class="n">UniformDistribution</span><span class="p">,</span> <span class="n">NormalDistribution</span>
+<span class="kn">from</span> <span class="nn">qiskit.utils</span> <span class="kn">import</span> <span class="n">QuantumInstance</span> <span class="c1"># qiskit &gt;0.25</span>
+
+<span class="kn">from</span> <span class="nn">qiskit_machine_learning.algorithms.distribution_learners</span> <span class="kn">import</span> <span class="n">NumPyDiscriminator</span><span class="p">,</span> <span class="n">PyTorchDiscriminator</span>  <span class="c1"># qiskit &gt;0.25</span>
+<span class="kn">from</span> <span class="nn">qiskit_machine_learning.datasets.dataset_helper</span> <span class="kn">import</span> <span class="n">discretize_and_truncate</span> <span class="c1"># qiskit &gt;0.25</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">line</span> <span class="mi">9</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="kn">import</span> <span class="nn">matplotlib.gridspec</span> <span class="k">as</span> <span class="nn">gridspec</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="c1"># Qiskit</span>
+<span class="ne">----&gt; </span><span class="mi">9</span> <span class="kn">from</span> <span class="nn">qiskit_machine_learning.algorithms</span> <span class="kn">import</span> <span class="n">QGAN</span>
+<span class="g g-Whitespace">     </span><span class="mi">11</span> <span class="kn">from</span> <span class="nn">qiskit</span> <span class="kn">import</span> <span class="n">BasicAer</span><span class="p">,</span> <span class="n">ClassicalRegister</span><span class="p">,</span> <span class="n">QuantumCircuit</span><span class="p">,</span> <span class="n">execute</span>
+<span class="g g-Whitespace">     </span><span class="mi">12</span> <span class="kn">from</span> <span class="nn">qiskit.circuit.library</span> <span class="kn">import</span> <span class="n">TwoLocal</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;qiskit_machine_learning&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># @title create probability distribution</span>
+
+<span class="c1"># import numpy as np</span>
+<span class="c1"># from qiskit_machine_learning.datasets.dataset_helper import discretize_and_truncate</span>
+
+<span class="n">N</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">mu</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">sigma</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">real_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">lognormal</span><span class="p">(</span><span class="n">mean</span><span class="o">=</span><span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="n">sigma</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">N</span><span class="p">)</span>
+
+<span class="n">bounds</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">])</span>
+<span class="n">num_qubits</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+
+<span class="n">data_trunc</span><span class="p">,</span> <span class="n">data_grid_trunc</span><span class="p">,</span> <span class="n">elements_trunc</span><span class="p">,</span> <span class="n">prob_data</span> <span class="o">=</span> <span class="n">discretize_and_truncate</span><span class="p">(</span>
+    <span class="n">real_data</span><span class="p">,</span>
+    <span class="n">bounds</span><span class="p">,</span>
+    <span class="n">num_qubits</span><span class="p">,</span>
+    <span class="n">return_data_grid_elements</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">return_prob</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">prob_non_zero</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># from qiskit_machine_learning.algorithms import QGAN</span>
+
+<span class="n">batch_size</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">num_epochs</span> <span class="o">=</span> <span class="mi">10</span>
+
+
+<span class="c1"># Initialize qGAN</span>
+<span class="n">qgan</span> <span class="o">=</span> <span class="n">QGAN</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">real_data</span><span class="p">,</span> <span class="c1"># k_dimension</span>
+            <span class="n">bounds</span><span class="o">=</span><span class="n">bounds</span><span class="p">,</span> <span class="c1"># k_min/max</span>
+            <span class="n">num_qubits</span><span class="o">=</span><span class="n">num_qubits</span><span class="p">,</span> <span class="c1"># 2**n</span>
+            <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span>
+            <span class="n">num_epochs</span><span class="o">=</span><span class="n">num_epochs</span>
+            <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># @title create of quantum circuits</span>
+
+<span class="c1"># from qiskit import BasicAer, ClassicalRegister, QuantumCircuit, execute</span>
+<span class="c1"># from qiskit.circuit.library import TwoLocal</span>
+<span class="c1"># from qiskit.quantum_info import random_statevector</span>
+<span class="c1"># from qiskit_finance.circuit.library.probability_distributions import UniformDistribution, NormalDistribution</span>
+
+<span class="c1"># 初期分布作成回路の設定</span>
+<span class="c1"># 一様分布</span>
+<span class="n">init_dist</span> <span class="o">=</span> <span class="n">UniformDistribution</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">num_qubits</span><span class="p">))</span>
+<span class="c1"># 正規分布</span>
+<span class="c1"># init_dist = NormalDistribution(sum(num_qubits))</span>
+<span class="c1"># # # ランダム</span>
+<span class="c1"># init_dist = QuantumCircuit((sum(num_qubits)))</span>
+<span class="c1"># init_dist.initialize(random_statevector(2**sum(num_qubits)).data, range(sum(num_qubits)))</span>
+
+<span class="c1"># 変分量子回路の設定</span>
+<span class="n">var_form</span> <span class="o">=</span> <span class="n">TwoLocal</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">num_qubits</span><span class="p">)),</span> <span class="s2">&quot;ry&quot;</span><span class="p">,</span> <span class="s2">&quot;cz&quot;</span><span class="p">,</span> <span class="n">reps</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="c1"># 初期分布作成回路と変分量子回路の結合</span>
+<span class="n">g_circuit</span> <span class="o">=</span> <span class="n">var_form</span><span class="o">.</span><span class="n">compose</span><span class="p">(</span><span class="n">init_dist</span><span class="p">,</span> <span class="n">front</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">g_circuit</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s2">&quot;mpl&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/c3a6c2cd71d3f224b1b83494538c7d8c4df88cd8ccf7694e9c338862a07f02d6.png" src="../_images/c3a6c2cd71d3f224b1b83494538c7d8c4df88cd8ccf7694e9c338862a07f02d6.png" />
+</div>
+</div>
+<hr class="docutils" />
+</section>
+</section>
+<section id="training">
+<h1>Training<a class="headerlink" href="#training" title="Permalink to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># from qiskit.utils import QuantumInstance</span>
+<span class="c1"># from qiskit_machine_learning.algorithms.distribution_learners import NumPyDiscriminator, PyTorchDiscriminator</span>
+
+
+<span class="n">init_params</span> <span class="o">=</span> <span class="p">[</span><span class="mf">3.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span> <span class="mf">1.6</span><span class="p">]</span>
+
+<span class="n">qgan</span><span class="o">.</span><span class="n">set_generator</span><span class="p">(</span><span class="n">generator_circuit</span><span class="o">=</span><span class="n">g_circuit</span><span class="p">,</span> <span class="n">generator_init_params</span><span class="o">=</span><span class="n">init_params</span><span class="p">)</span>
+
+<span class="c1"># The parameters have an order issue that following is a temp. workaround</span>
+<span class="n">qgan</span><span class="o">.</span><span class="n">_generator</span><span class="o">.</span><span class="n">_free_parameters</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">g_circuit</span><span class="o">.</span><span class="n">parameters</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">p</span><span class="p">:</span> <span class="n">p</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+
+<span class="n">discriminator</span> <span class="o">=</span> <span class="n">PyTorchDiscriminator</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">num_qubits</span><span class="p">))</span>
+<span class="n">qgan</span><span class="o">.</span><span class="n">set_discriminator</span><span class="p">(</span><span class="n">discriminator</span><span class="p">)</span>
+
+<span class="c1"># Set quantum instance to run the quantum generator</span>
+<span class="n">quantum_instance</span> <span class="o">=</span> <span class="n">QuantumInstance</span><span class="p">(</span>
+    <span class="n">backend</span><span class="o">=</span><span class="n">BasicAer</span><span class="o">.</span><span class="n">get_backend</span><span class="p">(</span><span class="s2">&quot;statevector_simulator&quot;</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">qgan</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">quantum_instance</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Training results:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;loss_d :&quot;</span><span class="p">,</span> <span class="n">result</span><span class="p">[</span><span class="s2">&quot;loss_d&quot;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;loss_g :&quot;</span><span class="p">,</span> <span class="n">result</span><span class="p">[</span><span class="s2">&quot;loss_d&quot;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;rel_entr&quot;</span><span class="p">,</span> <span class="n">result</span><span class="p">[</span><span class="s2">&quot;rel_entr&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ipython-input-5-dd8f7be0fe92&gt;:17: DeprecationWarning: The __init__ function is deprecated as of version 0.5.0 and will be removed no sooner than 3 months after the release with no direct replacement for it. Instead, please refer to the new QGAN tutorial.
+  discriminator = PyTorchDiscriminator(len(num_qubits))
+&lt;ipython-input-5-dd8f7be0fe92&gt;:21: DeprecationWarning: The class ``qiskit.utils.quantum_instance.QuantumInstance`` is deprecated as of qiskit-terra 0.24.0. It will be removed no earlier than 3 months after the release date. For code migration guidelines, visit https://qisk.it/qi_migration.
+  quantum_instance = QuantumInstance(
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Training results:
+loss_d : 0.6918
+loss_g : 0.6918
+rel_entr 0.0994
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">samples_g</span><span class="p">,</span> <span class="n">prob_g</span> <span class="o">=</span> <span class="n">qgan</span><span class="o">.</span><span class="n">generator</span><span class="o">.</span><span class="n">get_output</span><span class="p">(</span><span class="n">qgan</span><span class="o">.</span><span class="n">quantum_instance</span><span class="p">,</span> <span class="n">shots</span><span class="o">=</span><span class="mi">10000</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;generated prob. :&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">prob_g</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">samples_g</span><span class="p">)</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span> <span class="n">prob_g</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;generated&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">prob_data</span><span class="p">,</span> <span class="s2">&quot;-o&quot;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;original&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;best&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>generated prob. : [0.014 0.55  0.21  0.226]
+</pre></div>
+</div>
+<img alt="../_images/aa366e47354aa164647ff7f5996a1a72dea01372852b34751b37aa83384b520f.png" src="../_images/aa366e47354aa164647ff7f5996a1a72dea01372852b34751b37aa83384b520f.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># @title version</span>
+
+<span class="o">%</span><span class="k">load_ext</span> watermark
+<span class="o">%</span><span class="k">watermark</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Last updated: 2023-08-21T10:10:34.229916+00:00
+
+Python implementation: CPython
+Python version       : 3.10.12
+IPython version      : 7.34.0
+
+Compiler    : GCC 11.4.0
+OS          : Linux
+Release     : 5.15.109+
+Machine     : x86_64
+Processor   : x86_64
+CPU cores   : 2
+Architecture: 64bit
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./team_a"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Quantum GANs</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reference">Reference</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#training">Training</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By IBM Community Japan チーム 2023-b-07-a
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright IBM Corp. 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
