@@ -9,6 +9,7 @@ parts:
     - file: result_c
     - file: result_b
     - file: result_a
+    - file: result_d
 
 
 
