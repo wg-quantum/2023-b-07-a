@@ -62,6 +62,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'result_b';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -365,7 +367,11 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">はじめに</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">コンテンツ</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">3</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">7</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">2-4  計算例</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#point">point</a></li>
 </ul>
             </nav>
         </div>
@@ -380,37 +386,148 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
 <h1>2. ショアのアルゴリズム（初学者向け解説）<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
 <section id="id2">
-<h2>はじめに<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
-<p>はじめに、</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qiskit</span> <span class="kn">import</span> <span class="n">QuantumCircuit</span><span class="p">,</span> <span class="n">QuantumRegister</span><span class="p">,</span> <span class="n">ClassicalRegister</span>
-
-<span class="n">qr</span> <span class="o">=</span> <span class="n">QuantumRegister</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">cr</span> <span class="o">=</span> <span class="n">ClassicalRegister</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">qc</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">qr</span><span class="p">,</span> <span class="n">cr</span><span class="p">)</span>
-
-<span class="n">qc</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="n">qr</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-<span class="n">qc</span><span class="o">.</span><span class="n">measure</span><span class="p">(</span><span class="n">qr</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">cr</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-
-
-<span class="n">qc</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s2">&quot;mpl&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">qiskit</span> <span class="kn">import</span> <span class="n">QuantumCircuit</span><span class="p">,</span> <span class="n">QuantumRegister</span><span class="p">,</span> <span class="n">ClassicalRegister</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">qr</span> <span class="o">=</span> <span class="n">QuantumRegister</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">cr</span> <span class="o">=</span> <span class="n">ClassicalRegister</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;qiskit&#39;
-</pre></div>
-</div>
-</div>
-</div>
+<h2>コンテンツ<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+<p>1 ショアのアルゴリズム選定理由</p>
+<p>2 ショアのアルゴリズム解説
+2-1 ダイアグラム
+2-2 位数
+2-3 解説
+2-4 計算例</p>
+<p>3 Qiskitの利用
+3-1 Qiskit日本語版と英語版
+3-2 Qiskitの比較</p>
+<p>4 まとめ</p>
+<p>1 ショアのアルゴリズム選定理由</p>
+<p>A) 量子コンピュータの利用の優位性を認識</p>
+<p>B) 量子位相推定、量子フーリエ変換も学習</p>
+<p>C) Qiskitを利用し量子コンピュータで実行</p>
+<p>2 ショアのアルゴリズム解説</p>
+<p>2-1 ダイアグラム</p>
+<p>自然数Mについて因数を求めます。
+a,b,p,q,r,x を以下と設定します。
+M＝pqとなるp,qを求める。(p,qは因数)
+a,bはa≧1, b≧2
+xは、1&lt; x ≦ M-1
+r</p>
+<p><img alt="image.png" src="attachment:image.png" /></p>
+<p>ステップ5を量子アルゴリズム/量子コンピュータにて短時間で実施することで計算量を大幅に削減することが可能となります。他のステップについては古典コンピュータにて実施しています。</p>
+<p>2-2 位数とは？</p>
+<p>自然数　Mと相互に素なxを仮定して因数を求めたい時
+x^r　をMで割ったあまりがyとすると</p>
+<p><span class="math notranslate nohighlight">\( 𝑦=𝑥^r mod M \)</span> ・・・・①</p>
+<p>が関係式となります。</p>
+<p>ここでM=21 x=5 とした時に　yとrの関係を表とグラフで表すと周期性があることがわかります。</p>
+<p>この時y=1となるrは周期的になっていることがわかります。<br />
+この時、最小の自然数 r　を位数　とします。<br />
+この例では、位数＝６　となります。</p>
+<p><img alt="image-3.png" src="attachment:image-3.png" /></p>
+<p><img alt="image-8.png" src="attachment:image-8.png" /></p>
+<p>①式を変換していきます。</p>
+<p><span class="math notranslate nohighlight">\( 𝑦=𝑥^r mod M \)</span><br />
+y=1を代入して<br />
+<span class="math notranslate nohighlight">\( 1=𝑥^𝑟 mod 𝑀 \)</span><br />
+モジュラー関数からMの倍数で表現すると<br />
+<span class="math notranslate nohighlight">\( 𝑥^𝑟=𝑚𝑀+1 \)</span><br />
+両辺から1を引いて<br />
+<span class="math notranslate nohighlight">\( 𝑥^𝑟−1=𝑚𝑀 \)</span>
+これを因数分解すると</p>
+<p><span class="math notranslate nohighlight">\(
+(x^\frac{r}{2}+1)(x^\frac{r}{2}-1)=mM 
+\)</span></p>
+<p>となります。
+再度モジュラー関数にて変換すると<br />
+<span class="math notranslate nohighlight">\( (x^\frac{r}{2}+1)(x^\frac{r}{2}-1)modM=0 \)</span>　・・・・②</p>
+<p>②から
+<span class="math notranslate nohighlight">\( (x^\frac{r}{2}+1)\)</span> または <span class="math notranslate nohighlight">\( (x^\frac{r}{2}-1)\)</span> がMと同じ約数を持つはずとわかります。</p>
+<p>ここで<span class="math notranslate nohighlight">\( \frac{r}{2} \)</span> が正数でなければ <span class="math notranslate nohighlight">\( x^\frac{r}{2} \)</span> が整数になりませんので
+必ずrは偶数である必要があります。<br />
+もしrが算出された後、奇数の場合には残念ながらxの再設定から実施する必要があります。</p>
+<p>ここで、</p>
+<p><span class="math notranslate nohighlight">\( gcd ((x^\frac{r}{2}+1),M) &gt; 1 \)</span> ・・・・　③
+または　
+<span class="math notranslate nohighlight">\( gcd ((x^\frac{r}{2}-1),M) &gt; 1 \)</span> ・・・・　④
+の際にMとの公約数が因数となります。</p>
+<p>例　M=21 x=5 の場合</p>
+<p>r=6ですので③、④式に代入すると</p>
+<p><span class="math notranslate nohighlight">\( gcd ((x^\frac{r}{2}+1),M) &gt; 1 \)</span><br />
+<span class="math notranslate nohighlight">\( gcd ((5^\frac{6}{2}+1),21) &gt; 1 \)</span><br />
+<span class="math notranslate nohighlight">\( gcd ((5^\frac{6}{2}+1),21) &gt; 1 \)</span><br />
+<span class="math notranslate nohighlight">\( gcd (126,21) &gt; 1 \)</span><br />
+<span class="math notranslate nohighlight">\( gcd(126,21=21 \)</span><br />
+==&gt; うーむ・・・・</p>
+<p><span class="math notranslate nohighlight">\( gcd ((x^\frac{r}{2}-1),M) &gt; 1 \)</span><br />
+<span class="math notranslate nohighlight">\( gcd ((5^\frac{6}{2}-1),21) &gt; 1 \)</span><br />
+<span class="math notranslate nohighlight">\( gcd (124,21) &gt; 1 \)</span><br />
+<span class="math notranslate nohighlight">\( gcd(124,21)=1 \)</span><br />
+==&gt; こちらはなさそう・・・・</p>
+<p>ステップ８　→　ステップ７　に振り出しに戻ります。</p>
+<p>気を取り直してxを再設定
+例　M=21 x=2 の場合</p>
+<p><img alt="image.png" src="attachment:image.png" /></p>
+<p>r=6ですので③式に代入すると</p>
+<p><span class="math notranslate nohighlight">\( gcd ((x^\frac{r}{2}+1),M) &gt; 1 \)</span><br />
+<span class="math notranslate nohighlight">\( gcd ((2^\frac{6}{2}+1),21) &gt; 1 \)</span><br />
+<span class="math notranslate nohighlight">\( gcd ((2^\frac{6}{2}+1),21) &gt; 1 \)</span><br />
+<span class="math notranslate nohighlight">\( gcd (9,21) &gt; 1 \)</span><br />
+<span class="math notranslate nohighlight">\( gcd(9,21=3 \)</span></p>
+</section>
+<section id="id3">
+<h2>3<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
+<p>r=6ですので④式に代入すると</p>
+<p><span class="math notranslate nohighlight">\( gcd ((x^\frac{r}{2}-1),M) &gt; 1 \)</span><br />
+<span class="math notranslate nohighlight">\( gcd ((2^\frac{6}{2}-1),21) &gt; 1 \)</span><br />
+<span class="math notranslate nohighlight">\( gcd (7,21) &gt; 1 \)</span><br />
+<span class="math notranslate nohighlight">\( gcd(7,21)=1 \)</span></p>
+</section>
+<section id="id4">
+<h2>7<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h2>
+<p>おお！因数分解できました。
+できるだけ小さい素数をxに設定するのが良さそうですね。</p>
+<p>小さい数字でしたので、なんとかできていましたがビット数が増えていくと古典コンピュータではやりきれなくなります。
+そこで量子アルゴリズムと量子コンピュータを適応してみましょう。</p>
+<p><img alt="image-2.png" src="attachment:image-2.png" /></p>
+<p>分かりやすく量子回路にてみてみます。</p>
+<p><img alt="image.png" src="attachment:image.png" /></p>
+<p>固有値と位相キックバックとは
+<img alt="image.png" src="attachment:image.png" /></p>
+<p>固有値は、何回ユニタリー行列を作用させても変化しない。</p>
+<p>位相キックバックは、標的量子ビットの位相θを制御量子ビットに反映される
+位相キックバックの効果は状態|1&gt;でしか作用しません。(|1&gt;以外の時は打ち消しあって消えてしまうからです。)</p>
+</section>
+<section id="id5">
+<h2>2-4  計算例<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h2>
+<p>M=21, x=5, n=4 の時</p>
+<p><img alt="image.png" src="attachment:image.png" /></p>
+<p><img alt="image.png" src="attachment:image.png" /></p>
+<p><img alt="image.png" src="attachment:image.png" /></p>
+<p><img alt="image.png" src="attachment:image.png" /></p>
+<p><img alt="image.png" src="attachment:image.png" /></p>
+<p><img alt="image.png" src="attachment:image.png" /></p>
+<p><img alt="image.png" src="attachment:image.png" /></p>
+<p>3 Qiskit Textbookの利用</p>
+<p>Qiskit Textbookを利用すればブラウザー上でショアのアルゴリズムを体験できます。
+今回は、日本語版にて学習を実施しました。</p>
+<p><a class="reference external" href="https://ja.learn.qiskit.org/course/ch-algorithms/shors-algorithm">https://ja.learn.qiskit.org/course/ch-algorithms/shors-algorithm</a></p>
+<p>最初からつまづきました。</p>
+<p>ModuleNotFoundError: No module named ‘tabulate’</p>
+<p>実際の出力はこちら
+<img alt="image.png" src="attachment:image.png" /></p>
+<p>検索を行うと先人は、問題なく実行できている・・・・
+tabulateをimportしてもうまくいかない・・・・・</p>
+<p>英語版を見てみてください。　とアドバイスをもらい確認
+<img alt="image.png" src="attachment:image.png" /></p>
+<p>エラーのあった7行目<br />
+他のも確認してみると・・・・<br />
+from tabulate import tabulate から　from pandas as pd に変更されている.</p>
+<p><img alt="image.png" src="attachment:image.png" /></p>
+<p>全体を通して確認すると複数の相違点が確認できました。<br />
+Referenceのversion情報をみてみるとqiskitのVersionが大きく違う！！<br />
+<img alt="image.png" src="attachment:image.png" /></p>
+<p>なるほど、英語版は最新が反映されているが、翻訳のタイミングで古い場合があるようです。</p>
+</section>
+<section id="point">
+<h2>point<a class="headerlink" href="#point" title="Permalink to this heading">#</a></h2>
+<p>日本語版で構文エラーが発生した場合は、Versionの確認を行なって相違がある場合には英語版を参考に修正する</p>
 </section>
 </section>
 
@@ -477,7 +594,11 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">はじめに</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">コンテンツ</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">3</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">7</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">2-4  計算例</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#point">point</a></li>
 </ul>
   </nav></div>
 
