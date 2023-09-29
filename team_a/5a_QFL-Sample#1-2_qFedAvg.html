@@ -1,0 +1,1764 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>QFL Sample#1-2 qFedAvg &#8212; IBM Community Japan 2023 ナレッジモール研究会</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'team_a/5a_QFL-Sample#1-2_qFedAvg';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    量子コンピューターの活用研究
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">コンテンツ</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../result_c.html">1. Qiskit認定資格取得のための基礎学習</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../result_b.html">2. ショアのアルゴリズム（初学者向け解説）</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../result_a.html">3. 量子機械学習</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../result_d.html">4. 成果公開に向けたGitHub環境活用</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/wg-quantum/2023-b-07-a" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/wg-quantum/2023-b-07-a/issues/new?title=Issue%20on%20page%20%2Fteam_a/5a_QFL-Sample#1-2_qFedAvg.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/team_a/5a_QFL-Sample#1-2_qFedAvg.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>QFL Sample#1-2 qFedAvg</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="qfl-sample-1-2-qfedavg">
+<h1>QFL Sample#1-2 qFedAvg<a class="headerlink" href="#qfl-sample-1-2-qfedavg" title="Permalink to this heading">#</a></h1>
+<p>References:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://arxiv.org/abs/2209.00768">Paper</a></p></li>
+<li><p><a class="reference external" href="https://github.com/haimengzhao/quantum-fed-infer/blob/main/qFedAvg.ipynb">Github</a></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/haimengzhao/quantum-fed-infer.git
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cloning into &#39;quantum-fed-infer&#39;...
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>remote: Enumerating objects: 134, done.
+remote: Counting objects:   0% (1/134)
+remote: Counting objects:   1% (2/134)
+remote: Counting objects:   2% (3/134)
+remote: Counting objects:   3% (5/134)
+remote: Counting objects:   4% (6/134)
+remote: Counting objects:   5% (7/134)
+remote: Counting objects:   6% (9/134)
+remote: Counting objects:   7% (10/134)
+remote: Counting objects:   8% (11/134)
+remote: Counting objects:   9% (13/134)
+remote: Counting objects:  10% (14/134)
+remote: Counting objects:  11% (15/134)
+remote: Counting objects:  12% (17/134)
+remote: Counting objects:  13% (18/134)
+remote: Counting objects:  14% (19/134)
+remote: Counting objects:  15% (21/134)
+remote: Counting objects:  16% (22/134)
+remote: Counting objects:  17% (23/134)
+remote: Counting objects:  18% (25/134)
+remote: Counting objects:  19% (26/134)
+remote: Counting objects:  20% (27/134)
+remote: Counting objects:  21% (29/134)
+remote: Counting objects:  22% (30/134)
+remote: Counting objects:  23% (31/134)
+remote: Counting objects:  24% (33/134)
+remote: Counting objects:  25% (34/134)
+remote: Counting objects:  26% (35/134)
+remote: Counting objects:  27% (37/134)
+remote: Counting objects:  28% (38/134)
+remote: Counting objects:  29% (39/134)
+remote: Counting objects:  30% (41/134)
+remote: Counting objects:  31% (42/134)
+remote: Counting objects:  32% (43/134)
+remote: Counting objects:  33% (45/134)
+remote: Counting objects:  34% (46/134)
+remote: Counting objects:  35% (47/134)
+remote: Counting objects:  36% (49/134)
+remote: Counting objects:  37% (50/134)
+remote: Counting objects:  38% (51/134)
+remote: Counting objects:  39% (53/134)
+remote: Counting objects:  40% (54/134)
+remote: Counting objects:  41% (55/134)
+remote: Counting objects:  42% (57/134)
+remote: Counting objects:  43% (58/134)
+remote: Counting objects:  44% (59/134)
+remote: Counting objects:  45% (61/134)
+remote: Counting objects:  46% (62/134)
+remote: Counting objects:  47% (63/134)
+remote: Counting objects:  48% (65/134)
+remote: Counting objects:  49% (66/134)
+remote: Counting objects:  50% (67/134)
+remote: Counting objects:  51% (69/134)
+remote: Counting objects:  52% (70/134)
+remote: Counting objects:  53% (72/134)
+remote: Counting objects:  54% (73/134)
+remote: Counting objects:  55% (74/134)
+remote: Counting objects:  56% (76/134)
+remote: Counting objects:  57% (77/134)
+remote: Counting objects:  58% (78/134)
+remote: Counting objects:  59% (80/134)
+remote: Counting objects:  60% (81/134)
+remote: Counting objects:  61% (82/134)
+remote: Counting objects:  62% (84/134)
+remote: Counting objects:  63% (85/134)
+remote: Counting objects:  64% (86/134)
+remote: Counting objects:  65% (88/134)
+remote: Counting objects:  66% (89/134)
+remote: Counting objects:  67% (90/134)
+remote: Counting objects:  68% (92/134)
+remote: Counting objects:  69% (93/134)
+remote: Counting objects:  70% (94/134)
+remote: Counting objects:  71% (96/134)
+remote: Counting objects:  72% (97/134)
+remote: Counting objects:  73% (98/134)
+remote: Counting objects:  74% (100/134)
+remote: Counting objects:  75% (101/134)
+remote: Counting objects:  76% (102/134)
+remote: Counting objects:  77% (104/134)
+remote: Counting objects:  78% (105/134)
+remote: Counting objects:  79% (106/134)
+remote: Counting objects:  80% (108/134)
+remote: Counting objects:  81% (109/134)
+remote: Counting objects:  82% (110/134)
+remote: Counting objects:  83% (112/134)
+remote: Counting objects:  84% (113/134)
+remote: Counting objects:  85% (114/134)
+remote: Counting objects:  86% (116/134)
+remote: Counting objects:  87% (117/134)
+remote: Counting objects:  88% (118/134)
+remote: Counting objects:  89% (120/134)
+remote: Counting objects:  90% (121/134)
+remote: Counting objects:  91% (122/134)
+remote: Counting objects:  92% (124/134)
+remote: Counting objects:  93% (125/134)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>remote: Counting objects:  94% (126/134)
+remote: Counting objects:  95% (128/134)
+remote: Counting objects:  96% (129/134)
+remote: Counting objects:  97% (130/134)
+remote: Counting objects:  98% (132/134)
+remote: Counting objects:  99% (133/134)
+remote: Counting objects: 100% (134/134)
+remote: Counting objects: 100% (134/134), done.
+remote: Compressing objects:   0% (1/108)
+remote: Compressing objects:   1% (2/108)
+remote: Compressing objects:   2% (3/108)
+remote: Compressing objects:   3% (4/108)
+remote: Compressing objects:   4% (5/108)
+remote: Compressing objects:   5% (6/108)
+remote: Compressing objects:   6% (7/108)
+remote: Compressing objects:   7% (8/108)
+remote: Compressing objects:   8% (9/108)
+remote: Compressing objects:   9% (10/108)
+remote: Compressing objects:  10% (11/108)
+remote: Compressing objects:  11% (12/108)
+remote: Compressing objects:  12% (13/108)
+remote: Compressing objects:  13% (15/108)
+remote: Compressing objects:  14% (16/108)
+remote: Compressing objects:  15% (17/108)
+remote: Compressing objects:  16% (18/108)
+remote: Compressing objects:  17% (19/108)
+remote: Compressing objects:  18% (20/108)
+remote: Compressing objects:  19% (21/108)
+remote: Compressing objects:  20% (22/108)
+remote: Compressing objects:  21% (23/108)
+remote: Compressing objects:  22% (24/108)
+remote: Compressing objects:  23% (25/108)
+remote: Compressing objects:  24% (26/108)
+remote: Compressing objects:  25% (27/108)
+remote: Compressing objects:  26% (29/108)
+remote: Compressing objects:  27% (30/108)
+remote: Compressing objects:  28% (31/108)
+remote: Compressing objects:  29% (32/108)
+remote: Compressing objects:  30% (33/108)
+remote: Compressing objects:  31% (34/108)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>remote: Compressing objects:  32% (35/108)
+remote: Compressing objects:  33% (36/108)
+remote: Compressing objects:  34% (37/108)
+remote: Compressing objects:  35% (38/108)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>remote: Compressing objects:  36% (39/108)
+remote: Compressing objects:  37% (40/108)
+remote: Compressing objects:  38% (42/108)
+remote: Compressing objects:  39% (43/108)
+remote: Compressing objects:  40% (44/108)
+remote: Compressing objects:  41% (45/108)
+remote: Compressing objects:  42% (46/108)
+remote: Compressing objects:  43% (47/108)
+remote: Compressing objects:  44% (48/108)
+remote: Compressing objects:  45% (49/108)
+remote: Compressing objects:  46% (50/108)
+remote: Compressing objects:  47% (51/108)
+remote: Compressing objects:  48% (52/108)
+remote: Compressing objects:  49% (53/108)
+remote: Compressing objects:  50% (54/108)
+remote: Compressing objects:  51% (56/108)
+remote: Compressing objects:  52% (57/108)
+remote: Compressing objects:  53% (58/108)
+remote: Compressing objects:  54% (59/108)
+remote: Compressing objects:  55% (60/108)
+remote: Compressing objects:  56% (61/108)
+remote: Compressing objects:  57% (62/108)
+remote: Compressing objects:  58% (63/108)
+remote: Compressing objects:  59% (64/108)
+remote: Compressing objects:  60% (65/108)
+remote: Compressing objects:  61% (66/108)
+remote: Compressing objects:  62% (67/108)
+remote: Compressing objects:  63% (69/108)
+remote: Compressing objects:  64% (70/108)
+remote: Compressing objects:  65% (71/108)
+remote: Compressing objects:  66% (72/108)
+remote: Compressing objects:  67% (73/108)
+remote: Compressing objects:  68% (74/108)
+remote: Compressing objects:  69% (75/108)
+remote: Compressing objects:  70% (76/108)
+remote: Compressing objects:  71% (77/108)
+remote: Compressing objects:  72% (78/108)
+remote: Compressing objects:  73% (79/108)
+remote: Compressing objects:  74% (80/108)
+remote: Compressing objects:  75% (81/108)
+remote: Compressing objects:  76% (83/108)
+remote: Compressing objects:  77% (84/108)
+remote: Compressing objects:  78% (85/108)
+remote: Compressing objects:  79% (86/108)
+remote: Compressing objects:  80% (87/108)
+remote: Compressing objects:  81% (88/108)
+remote: Compressing objects:  82% (89/108)
+remote: Compressing objects:  83% (90/108)
+remote: Compressing objects:  84% (91/108)
+remote: Compressing objects:  85% (92/108)
+remote: Compressing objects:  86% (93/108)
+remote: Compressing objects:  87% (94/108)
+remote: Compressing objects:  88% (96/108)
+remote: Compressing objects:  89% (97/108)
+remote: Compressing objects:  90% (98/108)
+remote: Compressing objects:  91% (99/108)
+remote: Compressing objects:  92% (100/108)
+remote: Compressing objects:  93% (101/108)
+remote: Compressing objects:  94% (102/108)
+remote: Compressing objects:  95% (103/108)
+remote: Compressing objects:  96% (104/108)
+remote: Compressing objects:  97% (105/108)
+remote: Compressing objects:  98% (106/108)
+remote: Compressing objects:  99% (107/108)
+remote: Compressing objects: 100% (108/108)
+remote: Compressing objects: 100% (108/108), done.
+Receiving objects:   0% (1/134)
+Receiving objects:   1% (2/134)
+Receiving objects:   2% (3/134)
+Receiving objects:   3% (5/134)
+Receiving objects:   4% (6/134)
+Receiving objects:   5% (7/134)
+Receiving objects:   6% (9/134)
+Receiving objects:   7% (10/134)
+Receiving objects:   8% (11/134)
+Receiving objects:   9% (13/134)
+Receiving objects:  10% (14/134)
+Receiving objects:  11% (15/134)
+Receiving objects:  12% (17/134)
+Receiving objects:  13% (18/134)
+Receiving objects:  14% (19/134)
+Receiving objects:  15% (21/134)
+Receiving objects:  16% (22/134)
+Receiving objects:  17% (23/134)
+Receiving objects:  18% (25/134)
+Receiving objects:  19% (26/134)
+Receiving objects:  20% (27/134)
+Receiving objects:  21% (29/134)
+Receiving objects:  22% (30/134)
+Receiving objects:  23% (31/134)
+Receiving objects:  24% (33/134)
+Receiving objects:  25% (34/134)
+Receiving objects:  26% (35/134)
+Receiving objects:  27% (37/134)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Receiving objects:  28% (38/134)
+Receiving objects:  29% (39/134)
+Receiving objects:  30% (41/134)
+Receiving objects:  31% (42/134)
+Receiving objects:  32% (43/134)
+Receiving objects:  33% (45/134)
+Receiving objects:  34% (46/134)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Receiving objects:  35% (47/134)
+Receiving objects:  36% (49/134)
+Receiving objects:  37% (50/134)
+Receiving objects:  38% (51/134)
+Receiving objects:  39% (53/134)
+Receiving objects:  40% (54/134)
+Receiving objects:  41% (55/134)
+Receiving objects:  42% (57/134)
+Receiving objects:  43% (58/134)
+Receiving objects:  44% (59/134)
+Receiving objects:  45% (61/134)
+Receiving objects:  46% (62/134)
+Receiving objects:  47% (63/134)
+Receiving objects:  48% (65/134)
+Receiving objects:  49% (66/134)
+Receiving objects:  50% (67/134)
+Receiving objects:  51% (69/134)
+Receiving objects:  52% (70/134)
+Receiving objects:  53% (72/134)
+Receiving objects:  54% (73/134)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Receiving objects:  55% (74/134)
+Receiving objects:  56% (76/134)
+Receiving objects:  57% (77/134)
+Receiving objects:  58% (78/134)
+Receiving objects:  59% (80/134)
+Receiving objects:  60% (81/134)
+Receiving objects:  61% (82/134)
+Receiving objects:  62% (84/134)
+Receiving objects:  63% (85/134)
+Receiving objects:  64% (86/134)
+Receiving objects:  65% (88/134)
+Receiving objects:  66% (89/134)
+Receiving objects:  67% (90/134)
+Receiving objects:  68% (92/134)
+Receiving objects:  69% (93/134)
+Receiving objects:  70% (94/134)
+Receiving objects:  71% (96/134)
+Receiving objects:  72% (97/134)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Receiving objects:  73% (98/134)
+Receiving objects:  74% (100/134)
+Receiving objects:  75% (101/134)
+Receiving objects:  76% (102/134)
+Receiving objects:  77% (104/134)
+Receiving objects:  78% (105/134)
+Receiving objects:  79% (106/134)
+Receiving objects:  80% (108/134)
+Receiving objects:  81% (109/134)
+Receiving objects:  82% (110/134)
+Receiving objects:  83% (112/134)
+Receiving objects:  84% (113/134)
+Receiving objects:  85% (114/134)
+Receiving objects:  86% (116/134)
+Receiving objects:  87% (117/134)
+Receiving objects:  88% (118/134)
+Receiving objects:  89% (120/134)
+Receiving objects:  90% (121/134)
+Receiving objects:  91% (122/134)
+Receiving objects:  92% (124/134)
+remote: Total 134 (delta 58), reused 92 (delta 25), pack-reused 0
+Receiving objects:  93% (125/134)
+Receiving objects:  94% (126/134)
+Receiving objects:  95% (128/134)
+Receiving objects:  96% (129/134)
+Receiving objects:  97% (130/134)
+Receiving objects:  98% (132/134)
+Receiving objects:  99% (133/134)
+Receiving objects: 100% (134/134)
+Receiving objects: 100% (134/134), 2.08 MiB | 11.16 MiB/s, done.
+Resolving deltas:   0% (0/58)
+Resolving deltas:   1% (1/58)
+Resolving deltas:   3% (2/58)
+Resolving deltas:   5% (3/58)
+Resolving deltas:   6% (4/58)
+Resolving deltas:   8% (5/58)
+Resolving deltas:  10% (6/58)
+Resolving deltas:  12% (7/58)
+Resolving deltas:  13% (8/58)
+Resolving deltas:  15% (9/58)
+Resolving deltas:  17% (10/58)
+Resolving deltas:  18% (11/58)
+Resolving deltas:  20% (12/58)
+Resolving deltas:  22% (13/58)
+Resolving deltas:  24% (14/58)
+Resolving deltas:  25% (15/58)
+Resolving deltas:  27% (16/58)
+Resolving deltas:  29% (17/58)
+Resolving deltas:  31% (18/58)
+Resolving deltas:  32% (19/58)
+Resolving deltas:  34% (20/58)
+Resolving deltas:  36% (21/58)
+Resolving deltas:  37% (22/58)
+Resolving deltas:  39% (23/58)
+Resolving deltas:  41% (24/58)
+Resolving deltas:  43% (25/58)
+Resolving deltas:  44% (26/58)
+Resolving deltas:  46% (27/58)
+Resolving deltas:  48% (28/58)
+Resolving deltas:  50% (29/58)
+Resolving deltas:  51% (30/58)
+Resolving deltas:  53% (31/58)
+Resolving deltas:  55% (32/58)
+Resolving deltas:  56% (33/58)
+Resolving deltas:  58% (34/58)
+Resolving deltas:  60% (35/58)
+Resolving deltas:  62% (36/58)
+Resolving deltas:  63% (37/58)
+Resolving deltas:  65% (38/58)
+Resolving deltas:  67% (39/58)
+Resolving deltas:  68% (40/58)
+Resolving deltas:  70% (41/58)
+Resolving deltas:  72% (42/58)
+Resolving deltas:  74% (43/58)
+Resolving deltas:  75% (44/58)
+Resolving deltas:  77% (45/58)
+Resolving deltas:  79% (46/58)
+Resolving deltas:  81% (47/58)
+Resolving deltas:  82% (48/58)
+Resolving deltas:  84% (49/58)
+Resolving deltas:  86% (50/58)
+Resolving deltas:  87% (51/58)
+Resolving deltas:  89% (52/58)
+Resolving deltas:  91% (53/58)
+Resolving deltas:  93% (54/58)
+Resolving deltas:  94% (55/58)
+Resolving deltas:  96% (56/58)
+Resolving deltas:  98% (57/58)
+Resolving deltas: 100% (58/58)
+Resolving deltas: 100% (58/58), done.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pwd</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;/home/runner/work/2023-b-07-a/2023-b-07-a/src/team_a&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>ls
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 0_Compare_of_qGAN_and_GAN.md
+ 1_pennylane_mnist.ipynb
+ 2_ibm_quiskit_mnist.ipynb
+ 3_ibm_quiskit_tutorial.ipynb
+&#39;5-1_Quantum Federated Leerning.md&#39;
+ 5a_QFL-Sample#1-1_Centralized_Case.ipynb
+ 5a_QFL-Sample#1-2_qFedAvg.ipynb
+ Fig-1.png
+ Fig-2.png
+ Fig-3.png
+ Fig-4.png
+ Fig-5.png
+ Fig-6.png
+ Fig-7.png
+ Fig-8.png
+&#39;Screenshot 2023-09-28 at 23.11.19.png&#39;
+ quantum-fed-infer
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="n">path</span> <span class="o">=</span> <span class="s1">&#39;/home/wsuser/work/quantum-fed-infer&#39;</span>
+
+<span class="c1">#作業ディレクトリをpathに移動する</span>
+<span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+
+<span class="c1">#作業ディレクトリ直下のファイルを確認</span>
+<span class="o">!</span>ls
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">line</span> <span class="mi">5</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">path</span> <span class="o">=</span> <span class="s1">&#39;/home/wsuser/work/quantum-fed-infer&#39;</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="c1">#作業ディレクトリをpathに移動する</span>
+<span class="ne">----&gt; </span><span class="mi">5</span> <span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="c1">#作業ディレクトリ直下のファイルを確認</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="n">get_ipython</span><span class="p">()</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s1">&#39;ls&#39;</span><span class="p">)</span>
+
+<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;/home/wsuser/work/quantum-fed-infer&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>tensorcircuit
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting tensorcircuit
+  Downloading tensorcircuit-0.11.0-py3-none-any.whl (329 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">329.4/329.4 kB</span> <span class=" -Color -Color-Red">24.5 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25hRequirement already satisfied: networkx in /opt/conda/envs/Python-3.10-CUDA/lib/python3.10/site-packages (from tensorcircuit) (2.8.4)
+Requirement already satisfied: scipy in /opt/conda/envs/Python-3.10-CUDA/lib/python3.10/site-packages (from tensorcircuit) (1.8.1)
+Requirement already satisfied: numpy in /opt/conda/envs/Python-3.10-CUDA/lib/python3.10/site-packages (from tensorcircuit) (1.23.1)
+Collecting tensornetwork
+  Downloading tensornetwork-0.4.6-py3-none-any.whl (364 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">364.3/364.3 kB</span> <span class=" -Color -Color-Red">34.3 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25hRequirement already satisfied: opt-einsum&gt;=2.3.0 in /opt/conda/envs/Python-3.10-CUDA/lib/python3.10/site-packages (from tensornetwork-&gt;tensorcircuit) (3.3.0)
+Requirement already satisfied: h5py&gt;=2.9.0 in /opt/conda/envs/Python-3.10-CUDA/lib/python3.10/site-packages (from tensornetwork-&gt;tensorcircuit) (3.6.0)
+Requirement already satisfied: graphviz&gt;=0.11.1 in /opt/conda/envs/Python-3.10-CUDA/lib/python3.10/site-packages (from tensornetwork-&gt;tensorcircuit) (0.20.1)
+Installing collected packages: tensornetwork, tensorcircuit
+Successfully installed tensorcircuit-0.11.0 tensornetwork-0.4.6
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>-U<span class="w"> </span>qiskit
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting qiskit
+  Downloading qiskit-0.44.1-py3-none-any.whl (8.2 kB)
+Collecting qiskit-terra==0.25.1
+  Downloading qiskit_terra-0.25.1-cp38-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (6.1 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">6.1/6.1 MB</span> <span class=" -Color -Color-Red">78.5 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>:00:0100:01
+?25hCollecting ply&gt;=3.10
+  Downloading ply-3.11-py2.py3-none-any.whl (49 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">49.6/49.6 kB</span> <span class=" -Color -Color-Red">23.8 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25hRequirement already satisfied: psutil&gt;=5 in /opt/conda/envs/Python-3.10-CUDA/lib/python3.10/site-packages (from qiskit-terra==0.25.1-&gt;qiskit) (5.9.0)
+Requirement already satisfied: python-dateutil&gt;=2.8.0 in /opt/conda/envs/Python-3.10-CUDA/lib/python3.10/site-packages (from qiskit-terra==0.25.1-&gt;qiskit) (2.8.2)
+Collecting symengine&lt;0.10,&gt;=0.9
+  Downloading symengine-0.9.2-cp310-cp310-manylinux2010_x86_64.whl (37.5 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">37.5/37.5 MB</span> <span class=" -Color -Color-Red">62.6 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>00:0100:01
+?25hCollecting stevedore&gt;=3.0.0
+  Downloading stevedore-5.1.0-py3-none-any.whl (49 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">49.6/49.6 kB</span> <span class=" -Color -Color-Red">12.7 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25hCollecting rustworkx&gt;=0.13.0
+  Downloading rustworkx-0.13.1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (2.0 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">2.0/2.0 MB</span> <span class=" -Color -Color-Red">107.7 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25hRequirement already satisfied: dill&gt;=0.3 in /opt/conda/envs/Python-3.10-CUDA/lib/python3.10/site-packages (from qiskit-terra==0.25.1-&gt;qiskit) (0.3.5.1)
+Requirement already satisfied: scipy&gt;=1.5 in /opt/conda/envs/Python-3.10-CUDA/lib/python3.10/site-packages (from qiskit-terra==0.25.1-&gt;qiskit) (1.8.1)
+Requirement already satisfied: numpy&gt;=1.17 in /opt/conda/envs/Python-3.10-CUDA/lib/python3.10/site-packages (from qiskit-terra==0.25.1-&gt;qiskit) (1.23.1)
+Collecting sympy&gt;=1.3
+  Downloading sympy-1.12-py3-none-any.whl (5.7 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">5.7/5.7 MB</span> <span class=" -Color -Color-Red">136.0 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>00:01
+?25hRequirement already satisfied: typing-extensions in /opt/conda/envs/Python-3.10-CUDA/lib/python3.10/site-packages (from qiskit-terra==0.25.1-&gt;qiskit) (4.3.0)
+Requirement already satisfied: six&gt;=1.5 in /opt/conda/envs/Python-3.10-CUDA/lib/python3.10/site-packages (from python-dateutil&gt;=2.8.0-&gt;qiskit-terra==0.25.1-&gt;qiskit) (1.16.0)
+Collecting pbr!=2.1.0,&gt;=2.0.0
+  Downloading pbr-5.11.1-py2.py3-none-any.whl (112 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">112.7/112.7 kB</span> <span class=" -Color -Color-Red">48.1 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25hCollecting mpmath&gt;=0.19
+  Downloading mpmath-1.3.0-py3-none-any.whl (536 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">536.2/536.2 kB</span> <span class=" -Color -Color-Red">45.1 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25hInstalling collected packages: ply, mpmath, sympy, symengine, rustworkx, pbr, stevedore, qiskit-terra, qiskit
+Successfully installed mpmath-1.3.0 pbr-5.11.1 ply-3.11 qiskit-0.44.1 qiskit-terra-0.25.1 rustworkx-0.13.1 stevedore-5.1.0 symengine-0.9.2 sympy-1.12
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>-U<span class="w"> </span>cirq
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting cirq
+  Downloading cirq-1.2.0-py3-none-any.whl (8.1 kB)
+Collecting cirq-pasqal==1.2.0
+  Downloading cirq_pasqal-1.2.0-py3-none-any.whl (31 kB)
+Collecting cirq-ft==1.2.0
+  Downloading cirq_ft-1.2.0-py3-none-any.whl (142 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">142.7/142.7 kB</span> <span class=" -Color -Color-Red">53.1 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25hCollecting cirq-ionq==1.2.0
+  Downloading cirq_ionq-1.2.0-py3-none-any.whl (58 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">58.2/58.2 kB</span> <span class=" -Color -Color-Red">14.9 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25hCollecting cirq-aqt==1.2.0
+  Downloading cirq_aqt-1.2.0-py3-none-any.whl (27 kB)
+Collecting cirq-rigetti==1.2.0
+  Downloading cirq_rigetti-1.2.0-py3-none-any.whl (66 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">66.5/66.5 kB</span> <span class=" -Color -Color-Red">17.7 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25hCollecting cirq-google==1.2.0
+  Downloading cirq_google-1.2.0-py3-none-any.whl (579 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">579.1/579.1 kB</span> <span class=" -Color -Color-Red">43.3 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25hCollecting cirq-web==1.2.0
+  Downloading cirq_web-1.2.0-py3-none-any.whl (596 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">596.4/596.4 kB</span> <span class=" -Color -Color-Red">50.6 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25hCollecting cirq-core==1.2.0
+  Downloading cirq_core-1.2.0-py3-none-any.whl (1.8 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">1.8/1.8 MB</span> <span class=" -Color -Color-Red">107.5 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25hRequirement already satisfied: requests~=2.18 in /opt/conda/envs/Python-3.10-CUDA/lib/python3.10/site-packages (from cirq-aqt==1.2.0-&gt;cirq) (2.31.0)
+Requirement already satisfied: scipy in /opt/conda/envs/Python-3.10-CUDA/lib/python3.10/site-packages (from cirq-core==1.2.0-&gt;cirq) (1.8.1)
+Requirement already satisfied: numpy~=1.16 in /opt/conda/envs/Python-3.10-CUDA/lib/python3.10/site-packages (from cirq-core==1.2.0-&gt;cirq) (1.23.1)
+Requirement already satisfied: pandas in /opt/conda/envs/Python-3.10-CUDA/lib/python3.10/site-packages (from cirq-core==1.2.0-&gt;cirq) (1.4.3)
+Requirement already satisfied: networkx&gt;=2.4 in /opt/conda/envs/Python-3.10-CUDA/lib/python3.10/site-packages (from cirq-core==1.2.0-&gt;cirq) (2.8.4)
+Requirement already satisfied: matplotlib~=3.0 in /opt/conda/envs/Python-3.10-CUDA/lib/python3.10/site-packages (from cirq-core==1.2.0-&gt;cirq) (3.5.2)
+Requirement already satisfied: sortedcontainers~=2.0 in /opt/conda/envs/Python-3.10-CUDA/lib/python3.10/site-packages (from cirq-core==1.2.0-&gt;cirq) (2.4.0)
+Requirement already satisfied: tqdm in /opt/conda/envs/Python-3.10-CUDA/lib/python3.10/site-packages (from cirq-core==1.2.0-&gt;cirq) (4.64.0)
+Requirement already satisfied: sympy in /opt/conda/envs/Python-3.10-CUDA/lib/python3.10/site-packages (from cirq-core==1.2.0-&gt;cirq) (1.12)
+Collecting duet~=0.2.8
+  Downloading duet-0.2.9-py3-none-any.whl (29 kB)
+Requirement already satisfied: typing-extensions&gt;=4.2 in /opt/conda/envs/Python-3.10-CUDA/lib/python3.10/site-packages (from cirq-core==1.2.0-&gt;cirq) (4.3.0)
+Requirement already satisfied: nbconvert in /opt/conda/envs/Python-3.10-CUDA/lib/python3.10/site-packages (from cirq-ft==1.2.0-&gt;cirq) (5)
+Requirement already satisfied: nbformat in /opt/conda/envs/Python-3.10-CUDA/lib/python3.10/site-packages (from cirq-ft==1.2.0-&gt;cirq) (5.3.0)
+Requirement already satisfied: ipywidgets in /opt/conda/envs/Python-3.10-CUDA/lib/python3.10/site-packages (from cirq-ft==1.2.0-&gt;cirq) (7.6.5)
+Collecting cachetools&gt;=5.3
+  Downloading cachetools-5.3.1-py3-none-any.whl (9.3 kB)
+Requirement already satisfied: attrs in /opt/conda/envs/Python-3.10-CUDA/lib/python3.10/site-packages (from cirq-ft==1.2.0-&gt;cirq) (21.4.0)
+Requirement already satisfied: protobuf&gt;=3.15.0 in /opt/conda/envs/Python-3.10-CUDA/lib/python3.10/site-packages (from cirq-google==1.2.0-&gt;cirq) (3.19.6)
+Collecting proto-plus&gt;=1.20.0
+  Downloading proto_plus-1.22.3-py3-none-any.whl (48 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">48.1/48.1 kB</span> <span class=" -Color -Color-Red">23.0 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25hCollecting google-api-core[grpc]&gt;=1.14.0
+  Downloading google_api_core-2.12.0-py3-none-any.whl (121 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">121.4/121.4 kB</span> <span class=" -Color -Color-Red">34.7 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25hCollecting pyquil~=3.2.0
+  Downloading pyquil-3.2.1-py3-none-any.whl (221 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">221.0/221.0 kB</span> <span class=" -Color -Color-Red">41.3 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25hCollecting google-auth&lt;3.0.dev0,&gt;=2.14.1
+  Downloading google_auth-2.23.1-py2.py3-none-any.whl (181 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">181.9/181.9 kB</span> <span class=" -Color -Color-Red">27.5 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25hRequirement already satisfied: googleapis-common-protos&lt;2.0.dev0,&gt;=1.56.2 in /opt/conda/envs/Python-3.10-CUDA/lib/python3.10/site-packages (from google-api-core[grpc]&gt;=1.14.0-&gt;cirq-google==1.2.0-&gt;cirq) (1.56.4)
+Collecting grpcio-status&lt;2.0.dev0,&gt;=1.33.2
+  Downloading grpcio_status-1.58.0-py3-none-any.whl (14 kB)
+Requirement already satisfied: grpcio&lt;2.0dev,&gt;=1.33.2 in /opt/conda/envs/Python-3.10-CUDA/lib/python3.10/site-packages (from google-api-core[grpc]&gt;=1.14.0-&gt;cirq-google==1.2.0-&gt;cirq) (1.42.0)
+Requirement already satisfied: pyparsing&gt;=2.2.1 in /opt/conda/envs/Python-3.10-CUDA/lib/python3.10/site-packages (from matplotlib~=3.0-&gt;cirq-core==1.2.0-&gt;cirq) (3.0.9)
+Requirement already satisfied: python-dateutil&gt;=2.7 in /opt/conda/envs/Python-3.10-CUDA/lib/python3.10/site-packages (from matplotlib~=3.0-&gt;cirq-core==1.2.0-&gt;cirq) (2.8.2)
+Requirement already satisfied: kiwisolver&gt;=1.0.1 in /opt/conda/envs/Python-3.10-CUDA/lib/python3.10/site-packages (from matplotlib~=3.0-&gt;cirq-core==1.2.0-&gt;cirq) (1.4.2)
+Requirement already satisfied: cycler&gt;=0.10 in /opt/conda/envs/Python-3.10-CUDA/lib/python3.10/site-packages (from matplotlib~=3.0-&gt;cirq-core==1.2.0-&gt;cirq) (0.11.0)
+Requirement already satisfied: fonttools&gt;=4.22.0 in /opt/conda/envs/Python-3.10-CUDA/lib/python3.10/site-packages (from matplotlib~=3.0-&gt;cirq-core==1.2.0-&gt;cirq) (4.25.0)
+Requirement already satisfied: pillow&gt;=6.2.0 in /opt/conda/envs/Python-3.10-CUDA/lib/python3.10/site-packages (from matplotlib~=3.0-&gt;cirq-core==1.2.0-&gt;cirq) (9.3.0)
+Requirement already satisfied: packaging&gt;=20.0 in /opt/conda/envs/Python-3.10-CUDA/lib/python3.10/site-packages (from matplotlib~=3.0-&gt;cirq-core==1.2.0-&gt;cirq) (21.3)
+Collecting retry&lt;0.10.0,&gt;=0.9.2
+  Downloading retry-0.9.2-py2.py3-none-any.whl (8.0 kB)
+Collecting lark&lt;0.12.0,&gt;=0.11.1
+  Downloading lark-0.11.3.tar.gz (229 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">229.9/229.9 kB</span> <span class=" -Color -Color-Red">54.6 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25h  Preparing metadata (setup.py) ... ?25ldone
+?25hCollecting qcs-api-client&lt;0.22.0,&gt;=0.20.13
+  Downloading qcs_api_client-0.21.6-py3-none-any.whl (151 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">151.7/151.7 kB</span> <span class=" -Color -Color-Red">27.3 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25hCollecting rpcq&lt;4.0.0,&gt;=3.10.0
+  Downloading rpcq-3.11.0.tar.gz (45 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">45.6/45.6 kB</span> <span class=" -Color -Color-Red">19.1 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25h  Preparing metadata (setup.py) ... ?25ldone
+?25hRequirement already satisfied: urllib3&lt;3,&gt;=1.21.1 in /opt/conda/envs/Python-3.10-CUDA/lib/python3.10/site-packages (from requests~=2.18-&gt;cirq-aqt==1.2.0-&gt;cirq) (1.26.11)
+Requirement already satisfied: idna&lt;4,&gt;=2.5 in /opt/conda/envs/Python-3.10-CUDA/lib/python3.10/site-packages (from requests~=2.18-&gt;cirq-aqt==1.2.0-&gt;cirq) (3.3)
+Requirement already satisfied: certifi&gt;=2017.4.17 in /opt/conda/envs/Python-3.10-CUDA/lib/python3.10/site-packages (from requests~=2.18-&gt;cirq-aqt==1.2.0-&gt;cirq) (2023.7.22)
+Requirement already satisfied: charset-normalizer&lt;4,&gt;=2 in /opt/conda/envs/Python-3.10-CUDA/lib/python3.10/site-packages (from requests~=2.18-&gt;cirq-aqt==1.2.0-&gt;cirq) (2.0.4)
+Requirement already satisfied: ipython&gt;=4.0.0 in /opt/conda/envs/Python-3.10-CUDA/lib/python3.10/site-packages (from ipywidgets-&gt;cirq-ft==1.2.0-&gt;cirq) (8.4.0)
+Requirement already satisfied: ipython-genutils~=0.2.0 in /opt/conda/envs/Python-3.10-CUDA/lib/python3.10/site-packages (from ipywidgets-&gt;cirq-ft==1.2.0-&gt;cirq) (0.2.0)
+Requirement already satisfied: jupyterlab-widgets&gt;=1.0.0 in /opt/conda/envs/Python-3.10-CUDA/lib/python3.10/site-packages (from ipywidgets-&gt;cirq-ft==1.2.0-&gt;cirq) (1.0.0)
+Requirement already satisfied: ipykernel&gt;=4.5.1 in /opt/conda/envs/Python-3.10-CUDA/lib/python3.10/site-packages (from ipywidgets-&gt;cirq-ft==1.2.0-&gt;cirq) (6.9.1)
+Requirement already satisfied: traitlets&gt;=4.3.1 in /opt/conda/envs/Python-3.10-CUDA/lib/python3.10/site-packages (from ipywidgets-&gt;cirq-ft==1.2.0-&gt;cirq) (5.1.1)
+Requirement already satisfied: widgetsnbextension~=3.5.0 in /opt/conda/envs/Python-3.10-CUDA/lib/python3.10/site-packages (from ipywidgets-&gt;cirq-ft==1.2.0-&gt;cirq) (3.5.2)
+Requirement already satisfied: jsonschema&gt;=2.6 in /opt/conda/envs/Python-3.10-CUDA/lib/python3.10/site-packages (from nbformat-&gt;cirq-ft==1.2.0-&gt;cirq) (4.4.0)
+Requirement already satisfied: fastjsonschema in /opt/conda/envs/Python-3.10-CUDA/lib/python3.10/site-packages (from nbformat-&gt;cirq-ft==1.2.0-&gt;cirq) (2.16.2)
+Requirement already satisfied: jupyter-core in /opt/conda/envs/Python-3.10-CUDA/lib/python3.10/site-packages (from nbformat-&gt;cirq-ft==1.2.0-&gt;cirq) (4.11.2)
+Requirement already satisfied: pytz&gt;=2020.1 in /opt/conda/envs/Python-3.10-CUDA/lib/python3.10/site-packages (from pandas-&gt;cirq-core==1.2.0-&gt;cirq) (2022.1)
+Requirement already satisfied: mpmath&gt;=0.19 in /opt/conda/envs/Python-3.10-CUDA/lib/python3.10/site-packages (from sympy-&gt;cirq-core==1.2.0-&gt;cirq) (1.3.0)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: rsa&lt;5,&gt;=3.1.4 in /opt/conda/envs/Python-3.10-CUDA/lib/python3.10/site-packages (from google-auth&lt;3.0.dev0,&gt;=2.14.1-&gt;google-api-core[grpc]&gt;=1.14.0-&gt;cirq-google==1.2.0-&gt;cirq) (4.7.2)
+Requirement already satisfied: pyasn1-modules&gt;=0.2.1 in /opt/conda/envs/Python-3.10-CUDA/lib/python3.10/site-packages (from google-auth&lt;3.0.dev0,&gt;=2.14.1-&gt;google-api-core[grpc]&gt;=1.14.0-&gt;cirq-google==1.2.0-&gt;cirq) (0.2.8)
+Collecting urllib3&lt;3,&gt;=1.21.1
+  Downloading urllib3-2.0.5-py3-none-any.whl (123 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">123.8/123.8 kB</span> <span class=" -Color -Color-Red">22.3 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25hRequirement already satisfied: six&gt;=1.5.2 in /opt/conda/envs/Python-3.10-CUDA/lib/python3.10/site-packages (from grpcio&lt;2.0dev,&gt;=1.33.2-&gt;google-api-core[grpc]&gt;=1.14.0-&gt;cirq-google==1.2.0-&gt;cirq) (1.16.0)
+Collecting protobuf&gt;=3.15.0
+  Downloading protobuf-4.24.3-cp37-abi3-manylinux2014_x86_64.whl (311 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">311.6/311.6 kB</span> <span class=" -Color -Color-Red">36.5 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25hCollecting grpcio&lt;2.0dev,&gt;=1.33.2
+  Downloading grpcio-1.58.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (5.3 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">5.3/5.3 MB</span> <span class=" -Color -Color-Red">121.0 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>00:01
+?25hRequirement already satisfied: jupyter-client&lt;8.0 in /opt/conda/envs/Python-3.10-CUDA/lib/python3.10/site-packages (from ipykernel&gt;=4.5.1-&gt;ipywidgets-&gt;cirq-ft==1.2.0-&gt;cirq) (7.3.5)
+Requirement already satisfied: matplotlib-inline&lt;0.2.0,&gt;=0.1.0 in /opt/conda/envs/Python-3.10-CUDA/lib/python3.10/site-packages (from ipykernel&gt;=4.5.1-&gt;ipywidgets-&gt;cirq-ft==1.2.0-&gt;cirq) (0.1.6)
+Requirement already satisfied: tornado&lt;7.0,&gt;=4.2 in /opt/conda/envs/Python-3.10-CUDA/lib/python3.10/site-packages (from ipykernel&gt;=4.5.1-&gt;ipywidgets-&gt;cirq-ft==1.2.0-&gt;cirq) (6.3.2)
+Requirement already satisfied: nest-asyncio in /opt/conda/envs/Python-3.10-CUDA/lib/python3.10/site-packages (from ipykernel&gt;=4.5.1-&gt;ipywidgets-&gt;cirq-ft==1.2.0-&gt;cirq) (1.5.5)
+Requirement already satisfied: debugpy&lt;2.0,&gt;=1.0.0 in /opt/conda/envs/Python-3.10-CUDA/lib/python3.10/site-packages (from ipykernel&gt;=4.5.1-&gt;ipywidgets-&gt;cirq-ft==1.2.0-&gt;cirq) (1.5.1)
+Requirement already satisfied: pygments&gt;=2.4.0 in /opt/conda/envs/Python-3.10-CUDA/lib/python3.10/site-packages (from ipython&gt;=4.0.0-&gt;ipywidgets-&gt;cirq-ft==1.2.0-&gt;cirq) (2.11.2)
+Requirement already satisfied: pexpect&gt;4.3 in /opt/conda/envs/Python-3.10-CUDA/lib/python3.10/site-packages (from ipython&gt;=4.0.0-&gt;ipywidgets-&gt;cirq-ft==1.2.0-&gt;cirq) (4.8.0)
+Requirement already satisfied: prompt-toolkit!=3.0.0,!=3.0.1,&lt;3.1.0,&gt;=2.0.0 in /opt/conda/envs/Python-3.10-CUDA/lib/python3.10/site-packages (from ipython&gt;=4.0.0-&gt;ipywidgets-&gt;cirq-ft==1.2.0-&gt;cirq) (3.0.20)
+Requirement already satisfied: backcall in /opt/conda/envs/Python-3.10-CUDA/lib/python3.10/site-packages (from ipython&gt;=4.0.0-&gt;ipywidgets-&gt;cirq-ft==1.2.0-&gt;cirq) (0.2.0)
+Requirement already satisfied: setuptools&gt;=18.5 in /opt/conda/envs/Python-3.10-CUDA/lib/python3.10/site-packages (from ipython&gt;=4.0.0-&gt;ipywidgets-&gt;cirq-ft==1.2.0-&gt;cirq) (65.6.3)
+Requirement already satisfied: decorator in /opt/conda/envs/Python-3.10-CUDA/lib/python3.10/site-packages (from ipython&gt;=4.0.0-&gt;ipywidgets-&gt;cirq-ft==1.2.0-&gt;cirq) (5.1.1)
+Requirement already satisfied: jedi&gt;=0.16 in /opt/conda/envs/Python-3.10-CUDA/lib/python3.10/site-packages (from ipython&gt;=4.0.0-&gt;ipywidgets-&gt;cirq-ft==1.2.0-&gt;cirq) (0.18.1)
+Requirement already satisfied: stack-data in /opt/conda/envs/Python-3.10-CUDA/lib/python3.10/site-packages (from ipython&gt;=4.0.0-&gt;ipywidgets-&gt;cirq-ft==1.2.0-&gt;cirq) (0.2.0)
+Requirement already satisfied: pickleshare in /opt/conda/envs/Python-3.10-CUDA/lib/python3.10/site-packages (from ipython&gt;=4.0.0-&gt;ipywidgets-&gt;cirq-ft==1.2.0-&gt;cirq) (0.7.5)
+Requirement already satisfied: pyrsistent!=0.17.0,!=0.17.1,!=0.17.2,&gt;=0.14.0 in /opt/conda/envs/Python-3.10-CUDA/lib/python3.10/site-packages (from jsonschema&gt;=2.6-&gt;nbformat-&gt;cirq-ft==1.2.0-&gt;cirq) (0.18.0)
+Collecting httpx&lt;0.24.0,&gt;=0.23.0
+  Downloading httpx-0.23.3-py3-none-any.whl (71 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">71.5/71.5 kB</span> <span class=" -Color -Color-Red">19.8 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25hRequirement already satisfied: PyJWT&lt;3.0.0,&gt;=2.4.0 in /opt/conda/envs/Python-3.10-CUDA/lib/python3.10/site-packages (from qcs-api-client&lt;0.22.0,&gt;=0.20.13-&gt;pyquil~=3.2.0-&gt;cirq-rigetti==1.2.0-&gt;cirq) (2.4.0)
+Collecting retrying&lt;2.0.0,&gt;=1.3.3
+  Downloading retrying-1.3.4-py3-none-any.whl (11 kB)
+Collecting toml&lt;0.11.0,&gt;=0.10.2
+  Downloading toml-0.10.2-py2.py3-none-any.whl (16 kB)
+Collecting pydantic&lt;2.0.0,&gt;=1.7.2
+  Downloading pydantic-1.10.13-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (3.1 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">3.1/3.1 MB</span> <span class=" -Color -Color-Red">81.2 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>:00:01
+?25hCollecting iso8601&lt;2.0.0,&gt;=1.0.2
+  Downloading iso8601-1.1.0-py3-none-any.whl (9.9 kB)
+Collecting rfc3339&lt;7.0,&gt;=6.2
+  Downloading rfc3339-6.2-py3-none-any.whl (5.5 kB)
+Requirement already satisfied: py&lt;2.0.0,&gt;=1.4.26 in /opt/conda/envs/Python-3.10-CUDA/lib/python3.10/site-packages (from retry&lt;0.10.0,&gt;=0.9.2-&gt;pyquil~=3.2.0-&gt;cirq-rigetti==1.2.0-&gt;cirq) (1.11.0)
+Collecting msgpack&lt;2.0,&gt;=0.6
+  Downloading msgpack-1.0.6-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (530 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">530.8/530.8 kB</span> <span class=" -Color -Color-Red">63.1 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25hCollecting python-rapidjson
+  Downloading python_rapidjson-1.11-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (1.7 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">1.7/1.7 MB</span> <span class=" -Color -Color-Red">108.4 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25hRequirement already satisfied: pyzmq&gt;=17 in /opt/conda/envs/Python-3.10-CUDA/lib/python3.10/site-packages (from rpcq&lt;4.0.0,&gt;=3.10.0-&gt;pyquil~=3.2.0-&gt;cirq-rigetti==1.2.0-&gt;cirq) (23.2.0)
+Requirement already satisfied: ruamel.yaml in /opt/conda/envs/Python-3.10-CUDA/lib/python3.10/site-packages (from rpcq&lt;4.0.0,&gt;=3.10.0-&gt;pyquil~=3.2.0-&gt;cirq-rigetti==1.2.0-&gt;cirq) (0.16.12)
+Requirement already satisfied: notebook&gt;=4.4.1 in /opt/conda/envs/Python-3.10-CUDA/lib/python3.10/site-packages (from widgetsnbextension~=3.5.0-&gt;ipywidgets-&gt;cirq-ft==1.2.0-&gt;cirq) (6.4.12)
+Collecting sniffio
+  Downloading sniffio-1.3.0-py3-none-any.whl (10 kB)
+Collecting rfc3986[idna2008]&lt;2,&gt;=1.3
+  Downloading rfc3986-1.5.0-py2.py3-none-any.whl (31 kB)
+Collecting httpcore&lt;0.17.0,&gt;=0.15.0
+  Downloading httpcore-0.16.3-py3-none-any.whl (69 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">69.6/69.6 kB</span> <span class=" -Color -Color-Red">30.6 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25hRequirement already satisfied: parso&lt;0.9.0,&gt;=0.8.0 in /opt/conda/envs/Python-3.10-CUDA/lib/python3.10/site-packages (from jedi&gt;=0.16-&gt;ipython&gt;=4.0.0-&gt;ipywidgets-&gt;cirq-ft==1.2.0-&gt;cirq) (0.8.3)
+Requirement already satisfied: entrypoints in /opt/conda/envs/Python-3.10-CUDA/lib/python3.10/site-packages (from jupyter-client&lt;8.0-&gt;ipykernel&gt;=4.5.1-&gt;ipywidgets-&gt;cirq-ft==1.2.0-&gt;cirq) (0.4)
+Requirement already satisfied: argon2-cffi in /opt/conda/envs/Python-3.10-CUDA/lib/python3.10/site-packages (from notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets-&gt;cirq-ft==1.2.0-&gt;cirq) (21.3.0)
+Requirement already satisfied: prometheus-client in /opt/conda/envs/Python-3.10-CUDA/lib/python3.10/site-packages (from notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets-&gt;cirq-ft==1.2.0-&gt;cirq) (0.14.1)
+Requirement already satisfied: jinja2 in /opt/conda/envs/Python-3.10-CUDA/lib/python3.10/site-packages (from notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets-&gt;cirq-ft==1.2.0-&gt;cirq) (3.0.3)
+Requirement already satisfied: Send2Trash&gt;=1.8.0 in /opt/conda/envs/Python-3.10-CUDA/lib/python3.10/site-packages (from notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets-&gt;cirq-ft==1.2.0-&gt;cirq) (1.8.0)
+Requirement already satisfied: terminado&gt;=0.8.3 in /opt/conda/envs/Python-3.10-CUDA/lib/python3.10/site-packages (from notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets-&gt;cirq-ft==1.2.0-&gt;cirq) (0.13.1)
+Requirement already satisfied: ptyprocess&gt;=0.5 in /opt/conda/envs/Python-3.10-CUDA/lib/python3.10/site-packages (from pexpect&gt;4.3-&gt;ipython&gt;=4.0.0-&gt;ipywidgets-&gt;cirq-ft==1.2.0-&gt;cirq) (0.7.0)
+Requirement already satisfied: wcwidth in /opt/conda/envs/Python-3.10-CUDA/lib/python3.10/site-packages (from prompt-toolkit!=3.0.0,!=3.0.1,&lt;3.1.0,&gt;=2.0.0-&gt;ipython&gt;=4.0.0-&gt;ipywidgets-&gt;cirq-ft==1.2.0-&gt;cirq) (0.2.5)
+Requirement already satisfied: pyasn1&lt;0.5.0,&gt;=0.4.6 in /opt/conda/envs/Python-3.10-CUDA/lib/python3.10/site-packages (from pyasn1-modules&gt;=0.2.1-&gt;google-auth&lt;3.0.dev0,&gt;=2.14.1-&gt;google-api-core[grpc]&gt;=1.14.0-&gt;cirq-google==1.2.0-&gt;cirq) (0.4.8)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: pure-eval in /opt/conda/envs/Python-3.10-CUDA/lib/python3.10/site-packages (from stack-data-&gt;ipython&gt;=4.0.0-&gt;ipywidgets-&gt;cirq-ft==1.2.0-&gt;cirq) (0.2.2)
+Requirement already satisfied: executing in /opt/conda/envs/Python-3.10-CUDA/lib/python3.10/site-packages (from stack-data-&gt;ipython&gt;=4.0.0-&gt;ipywidgets-&gt;cirq-ft==1.2.0-&gt;cirq) (0.8.3)
+Requirement already satisfied: asttokens in /opt/conda/envs/Python-3.10-CUDA/lib/python3.10/site-packages (from stack-data-&gt;ipython&gt;=4.0.0-&gt;ipywidgets-&gt;cirq-ft==1.2.0-&gt;cirq) (2.0.5)
+Collecting anyio&lt;5.0,&gt;=3.0
+  Downloading anyio-4.0.0-py3-none-any.whl (83 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">83.1/83.1 kB</span> <span class=" -Color -Color-Red">38.4 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25hCollecting h11&lt;0.15,&gt;=0.13
+  Downloading h11-0.14.0-py3-none-any.whl (58 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">58.3/58.3 kB</span> <span class=" -Color -Color-Red">28.0 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25hRequirement already satisfied: argon2-cffi-bindings in /opt/conda/envs/Python-3.10-CUDA/lib/python3.10/site-packages (from argon2-cffi-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets-&gt;cirq-ft==1.2.0-&gt;cirq) (21.2.0)
+Requirement already satisfied: MarkupSafe&gt;=2.0 in /opt/conda/envs/Python-3.10-CUDA/lib/python3.10/site-packages (from jinja2-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets-&gt;cirq-ft==1.2.0-&gt;cirq) (2.1.1)
+Collecting exceptiongroup&gt;=1.0.2
+  Downloading exceptiongroup-1.1.3-py3-none-any.whl (14 kB)
+Requirement already satisfied: cffi&gt;=1.0.1 in /opt/conda/envs/Python-3.10-CUDA/lib/python3.10/site-packages (from argon2-cffi-bindings-&gt;argon2-cffi-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets-&gt;cirq-ft==1.2.0-&gt;cirq) (1.15.1)
+Requirement already satisfied: pycparser in /opt/conda/envs/Python-3.10-CUDA/lib/python3.10/site-packages (from cffi&gt;=1.0.1-&gt;argon2-cffi-bindings-&gt;argon2-cffi-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets-&gt;cirq-ft==1.2.0-&gt;cirq) (2.21)
+Building wheels for collected packages: lark, rpcq
+  Building wheel for lark (setup.py) ... ?25ldone
+?25h  Created wheel for lark: filename=lark-0.11.3-py2.py3-none-any.whl size=99644 sha256=2c6b96ef1e25006b8799a5aa342e96bdd5e9ce4e99bf8a3c61295deba4b1b0a8
+  Stored in directory: /tmp/wsuser/.cache/pip/wheels/7d/72/22/a2dbd112cf05c55adf2e1ead5fba8aa527b848f01cdd99687c
+  Building wheel for rpcq (setup.py) ... ?25ldone
+?25h  Created wheel for rpcq: filename=rpcq-3.11.0-py3-none-any.whl size=45985 sha256=7e5c8bcf7eb7931e8c631be39de3f55b385d36e7128ecc8ad132a09491bacb58
+  Stored in directory: /tmp/wsuser/.cache/pip/wheels/91/97/0a/b384d94155345284ec00712ab814cbfb5bc2b631080b4fa4c3
+Successfully built lark rpcq
+Installing collected packages: rfc3986, rfc3339, lark, urllib3, toml, sniffio, retrying, retry, python-rapidjson, pydantic, protobuf, msgpack, iso8601, h11, grpcio, exceptiongroup, duet, cachetools, rpcq, proto-plus, google-auth, anyio, httpcore, grpcio-status, google-api-core, cirq-core, httpx, cirq-web, cirq-pasqal, cirq-ionq, cirq-aqt, qcs-api-client, cirq-google, pyquil, cirq-rigetti, cirq-ft, cirq
+  Attempting uninstall: urllib3
+    Found existing installation: urllib3 1.26.11
+    Uninstalling urllib3-1.26.11:
+      Successfully uninstalled urllib3-1.26.11
+  Attempting uninstall: protobuf
+    Found existing installation: protobuf 3.19.6
+    Uninstalling protobuf-3.19.6:
+      Successfully uninstalled protobuf-3.19.6
+  Attempting uninstall: grpcio
+    Found existing installation: grpcio 1.42.0
+    Uninstalling grpcio-1.42.0:
+      Successfully uninstalled grpcio-1.42.0
+  Attempting uninstall: cachetools
+    Found existing installation: cachetools 4.2.2
+    Uninstalling cachetools-4.2.2:
+      Successfully uninstalled cachetools-4.2.2
+  Attempting uninstall: google-auth
+    Found existing installation: google-auth 1.33.0
+    Uninstalling google-auth-1.33.0:
+      Successfully uninstalled google-auth-1.33.0
+<span class=" -Color -Color-Red">ERROR: pip&#39;s dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.</span>
+<span class=" -Color -Color-Red">watson-nlp 3.6.0 requires urllib3==1.26.11, but you have urllib3 2.0.5 which is incompatible.</span>
+<span class=" -Color -Color-Red">watson-core 1.24.1 requires protobuf&lt;4,&gt;=3.19.1, but you have protobuf 4.24.3 which is incompatible.</span>
+<span class=" -Color -Color-Red">tensorflow 2.9.3 requires protobuf&lt;3.20,&gt;=3.9.2, but you have protobuf 4.24.3 which is incompatible.</span>
+<span class=" -Color -Color-Red">tensorflow-metadata 1.8.0 requires protobuf&lt;4,&gt;=3.13, but you have protobuf 4.24.3 which is incompatible.</span>
+<span class=" -Color -Color-Red">tensorboard 2.9.1 requires protobuf&lt;3.20,&gt;=3.9.2, but you have protobuf 4.24.3 which is incompatible.</span>
+<span class=" -Color -Color-Red">pytorch-lightning 1.6.5 requires protobuf&lt;=3.20.1, but you have protobuf 4.24.3 which is incompatible.</span>
+<span class=" -Color -Color-Red">onnx 1.12.0 requires protobuf&lt;=3.20.1,&gt;=3.12.2, but you have protobuf 4.24.3 which is incompatible.</span>
+<span class=" -Color -Color-Red">mysql-connector-python 8.0.33 requires protobuf&lt;=3.20.3,&gt;=3.11.0, but you have protobuf 4.24.3 which is incompatible.</span>
+<span class=" -Color -Color-Red">jtd-to-proto 0.6.1 requires protobuf==3.*, but you have protobuf 4.24.3 which is incompatible.</span>
+<span class=" -Color -Color-Red">ibm-cos-sdk-core 2.12.0 requires urllib3&lt;1.27,&gt;=1.26.9, but you have urllib3 2.0.5 which is incompatible.</span>
+<span class=" -Color -Color-Red">ibm-cloud-sdk-core 3.16.5 requires urllib3&lt;2.0.0,&gt;=1.26.0, but you have urllib3 2.0.5 which is incompatible.</span>
+<span class=" -Color -Color-Red">grpcio-tools 1.42.0 requires protobuf&lt;4.0dev,&gt;=3.5.0.post1, but you have protobuf 4.24.3 which is incompatible.</span>
+<span class=" -Color -Color-Red">botocore 1.27.28 requires urllib3&lt;1.27,&gt;=1.25.4, but you have urllib3 2.0.5 which is incompatible.</span>
+Successfully installed anyio-4.0.0 cachetools-5.3.1 cirq-1.2.0 cirq-aqt-1.2.0 cirq-core-1.2.0 cirq-ft-1.2.0 cirq-google-1.2.0 cirq-ionq-1.2.0 cirq-pasqal-1.2.0 cirq-rigetti-1.2.0 cirq-web-1.2.0 duet-0.2.9 exceptiongroup-1.1.3 google-api-core-2.12.0 google-auth-2.23.1 grpcio-1.58.0 grpcio-status-1.58.0 h11-0.14.0 httpcore-0.16.3 httpx-0.23.3 iso8601-1.1.0 lark-0.11.3 msgpack-1.0.6 proto-plus-1.22.3 protobuf-4.24.3 pydantic-1.10.13 pyquil-3.2.1 python-rapidjson-1.11 qcs-api-client-0.21.6 retry-0.9.2 retrying-1.3.4 rfc3339-6.2 rfc3986-1.5.0 rpcq-3.11.0 sniffio-1.3.0 toml-0.10.2 urllib3-2.0.5
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>optax
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting optax
+  Downloading optax-0.1.7-py3-none-any.whl (154 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">154.1/154.1 kB</span> <span class=" -Color -Color-Red">27.4 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25hCollecting jax&gt;=0.1.55
+  Downloading jax-0.4.16-py3-none-any.whl (1.6 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">1.6/1.6 MB</span> <span class=" -Color -Color-Red">49.7 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25hRequirement already satisfied: absl-py&gt;=0.7.1 in /opt/conda/envs/Python-3.10-CUDA/lib/python3.10/site-packages (from optax) (1.0.0)
+Requirement already satisfied: numpy&gt;=1.18.0 in /opt/conda/envs/Python-3.10-CUDA/lib/python3.10/site-packages (from optax) (1.23.1)
+Collecting chex&gt;=0.1.5
+  Downloading chex-0.1.83-py3-none-any.whl (94 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">94.7/94.7 kB</span> <span class=" -Color -Color-Red">18.9 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25hCollecting jaxlib&gt;=0.1.37
+  Downloading jaxlib-0.4.16-cp310-cp310-manylinux2014_x86_64.whl (84.5 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">84.5/84.5 MB</span> <span class=" -Color -Color-Red">38.5 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>00:0100:01
+?25hRequirement already satisfied: six in /opt/conda/envs/Python-3.10-CUDA/lib/python3.10/site-packages (from absl-py&gt;=0.7.1-&gt;optax) (1.16.0)
+Requirement already satisfied: toolz&gt;=0.9.0 in /opt/conda/envs/Python-3.10-CUDA/lib/python3.10/site-packages (from chex&gt;=0.1.5-&gt;optax) (0.11.2)
+Requirement already satisfied: typing-extensions&gt;=4.2.0 in /opt/conda/envs/Python-3.10-CUDA/lib/python3.10/site-packages (from chex&gt;=0.1.5-&gt;optax) (4.3.0)
+Collecting numpy&gt;=1.18.0
+  Downloading numpy-1.26.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (18.2 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">18.2/18.2 MB</span> <span class=" -Color -Color-Red">95.7 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>00:0100:01
+?25hCollecting ml-dtypes&gt;=0.2.0
+  Downloading ml_dtypes-0.3.1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (206 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">206.7/206.7 kB</span> <span class=" -Color -Color-Red">65.4 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25hRequirement already satisfied: opt-einsum in /opt/conda/envs/Python-3.10-CUDA/lib/python3.10/site-packages (from jax&gt;=0.1.55-&gt;optax) (3.3.0)
+Requirement already satisfied: scipy&gt;=1.7 in /opt/conda/envs/Python-3.10-CUDA/lib/python3.10/site-packages (from jax&gt;=0.1.55-&gt;optax) (1.8.1)
+Collecting numpy&gt;=1.18.0
+  Downloading numpy-1.24.4-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (17.3 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">17.3/17.3 MB</span> <span class=" -Color -Color-Red">102.6 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>00:0100:01
+?25hInstalling collected packages: numpy, ml-dtypes, jaxlib, jax, chex, optax
+  Attempting uninstall: numpy
+    Found existing installation: numpy 1.23.1
+    Uninstalling numpy-1.23.1:
+      Successfully uninstalled numpy-1.23.1
+<span class=" -Color -Color-Red">ERROR: pip&#39;s dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.</span>
+<span class=" -Color -Color-Red">tensorflow 2.9.3 requires protobuf&lt;3.20,&gt;=3.9.2, but you have protobuf 4.24.3 which is incompatible.</span>
+<span class=" -Color -Color-Red">tensorboard 2.9.1 requires protobuf&lt;3.20,&gt;=3.9.2, but you have protobuf 4.24.3 which is incompatible.</span>
+<span class=" -Color -Color-Red">pytorch-lightning 1.6.5 requires protobuf&lt;=3.20.1, but you have protobuf 4.24.3 which is incompatible.</span>
+<span class=" -Color -Color-Red">onnx 1.12.0 requires protobuf&lt;=3.20.1,&gt;=3.12.2, but you have protobuf 4.24.3 which is incompatible.</span>
+<span class=" -Color -Color-Red">numba 0.56.1 requires numpy&lt;1.24,&gt;=1.18, but you have numpy 1.24.4 which is incompatible.</span>
+<span class=" -Color -Color-Red">autoai-ts-libs 2.0.13 requires numpy&lt;1.24,&gt;=1.19.2; python_version &gt;= &quot;3.9&quot;, but you have numpy 1.24.4 which is incompatible.</span>
+<span class=" -Color -Color-Red">autoai-libs 1.14.10 requires numpy&lt;1.24,&gt;=1.19.2; python_version &gt;= &quot;3.9&quot;, but you have numpy 1.24.4 which is incompatible.</span>
+Successfully installed chex-0.1.83 jax-0.4.16 jaxlib-0.4.16 ml-dtypes-0.3.1 numpy-1.24.4 optax-0.1.7
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tensorcircuit</span> <span class="k">as</span> <span class="nn">tc</span>
+<span class="kn">import</span> <span class="nn">optax</span>
+<span class="kn">import</span> <span class="nn">jax.numpy</span> <span class="k">as</span> <span class="nn">jnp</span>
+<span class="kn">import</span> <span class="nn">jax</span>
+<span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.mixture</span> <span class="kn">import</span> <span class="n">GaussianMixture</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;CUDA_DEVICE_ORDER&quot;</span><span class="p">]</span><span class="o">=</span><span class="s2">&quot;PCI_BUS_ID&quot;</span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;CUDA_VISIBLE_DEVICES&quot;</span><span class="p">]</span><span class="o">=</span><span class="s2">&quot;1&quot;</span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;XLA_PYTHON_CLIENT_PREALLOCATE&quot;</span><span class="p">]</span><span class="o">=</span><span class="s2">&quot;false&quot;</span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;TF_FORCE_GPU_ALLOW_GROWTH&quot;</span><span class="p">]</span><span class="o">=</span><span class="s2">&quot;true&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;font.family&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;serif&quot;</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;mathtext.fontset&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;cm&#39;</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;mathtext.rm&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;serif&#39;</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;font&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">key</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">PRNGKey</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">tf</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">set_seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span> <span class="o">=</span> <span class="s1">&#39;mnist&#39;</span>
+<span class="c1"># dataset = &#39;fashion&#39;</span>
+<span class="n">readout_mode</span> <span class="o">=</span> <span class="s1">&#39;softmax&#39;</span>
+<span class="c1"># readout_mode = &#39;sample&#39;</span>
+<span class="n">encoding_mode</span> <span class="o">=</span> <span class="s1">&#39;vanilla&#39;</span>
+<span class="c1"># encoding_mode = &#39;mean&#39;</span>
+<span class="c1"># encoding_mode = &#39;half&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="mi">8</span>
+<span class="n">n_node</span> <span class="o">=</span> <span class="mi">8</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">K</span> <span class="o">=</span> <span class="n">tc</span><span class="o">.</span><span class="n">set_backend</span><span class="p">(</span><span class="s1">&#39;jax&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># numpy data</span>
+<span class="k">if</span> <span class="n">dataset</span> <span class="o">==</span> <span class="s1">&#39;mnist&#39;</span><span class="p">:</span>
+    <span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">),</span> <span class="p">(</span><span class="n">x_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">mnist</span><span class="o">.</span><span class="n">load_data</span><span class="p">()</span>
+<span class="k">elif</span> <span class="n">dataset</span> <span class="o">==</span> <span class="s1">&#39;fashion&#39;</span><span class="p">:</span>
+    <span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">),</span> <span class="p">(</span><span class="n">x_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">fashion_mnist</span><span class="o">.</span><span class="n">load_data</span><span class="p">()</span>
+<span class="n">ind</span> <span class="o">=</span> <span class="n">y_test</span> <span class="o">==</span> <span class="mi">9</span>
+<span class="n">x_test</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">x_test</span><span class="p">[</span><span class="o">~</span><span class="n">ind</span><span class="p">],</span> <span class="n">y_test</span><span class="p">[</span><span class="o">~</span><span class="n">ind</span><span class="p">]</span>
+<span class="n">ind</span> <span class="o">=</span> <span class="n">y_test</span> <span class="o">==</span> <span class="mi">8</span>
+<span class="n">x_test</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">x_test</span><span class="p">[</span><span class="o">~</span><span class="n">ind</span><span class="p">],</span> <span class="n">y_test</span><span class="p">[</span><span class="o">~</span><span class="n">ind</span><span class="p">]</span>
+<span class="n">ind</span> <span class="o">=</span> <span class="n">y_train</span> <span class="o">==</span> <span class="mi">9</span>
+<span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span> <span class="o">=</span> <span class="n">x_train</span><span class="p">[</span><span class="o">~</span><span class="n">ind</span><span class="p">],</span> <span class="n">y_train</span><span class="p">[</span><span class="o">~</span><span class="n">ind</span><span class="p">]</span>
+<span class="n">ind</span> <span class="o">=</span> <span class="n">y_train</span> <span class="o">==</span> <span class="mi">8</span>
+<span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span> <span class="o">=</span> <span class="n">x_train</span><span class="p">[</span><span class="o">~</span><span class="n">ind</span><span class="p">],</span> <span class="n">y_train</span><span class="p">[</span><span class="o">~</span><span class="n">ind</span><span class="p">]</span>
+
+<span class="n">x_train</span> <span class="o">=</span> <span class="n">x_train</span> <span class="o">/</span> <span class="mf">255.0</span>
+<span class="k">if</span> <span class="n">encoding_mode</span> <span class="o">==</span> <span class="s1">&#39;vanilla&#39;</span><span class="p">:</span>
+    <span class="n">mean</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">elif</span> <span class="n">encoding_mode</span> <span class="o">==</span> <span class="s1">&#39;mean&#39;</span><span class="p">:</span>
+    <span class="n">mean</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">encoding_mode</span> <span class="o">==</span> <span class="s1">&#39;half&#39;</span><span class="p">:</span>
+    <span class="n">mean</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="n">x_train</span> <span class="o">=</span> <span class="n">x_train</span> <span class="o">-</span> <span class="n">mean</span>
+<span class="n">x_train</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="n">x_train</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n">tf</span><span class="o">.</span><span class="n">newaxis</span><span class="p">],</span> <span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="mi">2</span><span class="o">**</span><span class="p">(</span><span class="n">n</span><span class="o">/</span><span class="mi">2</span><span class="p">)),</span> <span class="nb">int</span><span class="p">(</span><span class="mi">2</span><span class="o">**</span><span class="p">(</span><span class="n">n</span><span class="o">/</span><span class="mi">2</span><span class="p">))))</span><span class="o">.</span><span class="n">numpy</span><span class="p">()[</span><span class="o">...</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="o">**</span><span class="n">n</span><span class="p">)</span>
+<span class="n">x_train</span> <span class="o">=</span> <span class="n">x_train</span> <span class="o">/</span> <span class="n">jnp</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">jnp</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">x_train</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">keepdims</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+
+<span class="n">x_test</span> <span class="o">=</span> <span class="n">x_test</span> <span class="o">/</span> <span class="mf">255.0</span>
+<span class="n">x_test</span> <span class="o">=</span> <span class="n">x_test</span> <span class="o">-</span> <span class="n">mean</span>
+<span class="n">x_test</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="n">x_test</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n">tf</span><span class="o">.</span><span class="n">newaxis</span><span class="p">],</span> <span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="mi">2</span><span class="o">**</span><span class="p">(</span><span class="n">n</span><span class="o">/</span><span class="mi">2</span><span class="p">)),</span> <span class="nb">int</span><span class="p">(</span><span class="mi">2</span><span class="o">**</span><span class="p">(</span><span class="n">n</span><span class="o">/</span><span class="mi">2</span><span class="p">))))</span><span class="o">.</span><span class="n">numpy</span><span class="p">()[</span><span class="o">...</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="o">**</span><span class="n">n</span><span class="p">)</span>
+<span class="n">x_test</span> <span class="o">=</span> <span class="n">x_test</span> <span class="o">/</span> <span class="n">jnp</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">jnp</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">x_test</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">keepdims</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+<span class="n">y_test</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">one_hot</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">n_node</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">filter_pair</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="n">keep</span> <span class="o">=</span> <span class="p">(</span><span class="n">y</span> <span class="o">==</span> <span class="n">a</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">y</span> <span class="o">==</span> <span class="n">b</span><span class="p">)</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">keep</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="n">keep</span><span class="p">]</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">one_hot</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">n_node</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading data from https://storage.googleapis.com/tensorflow/tf-keras-datasets/mnist.npz
+11490434/11490434 [==============================] - 0s 0us/step
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2023-09-28 12:17:56.210797: W tensorflow/core/common_runtime/gpu/gpu_bfc_allocator.cc:42] Overriding orig_value setting because the TF_FORCE_GPU_ALLOW_GROWTH environment variable is set. Original config value was 0.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">clf</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">k</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="n">c</span><span class="o">.</span><span class="n">cnot</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+            <span class="n">c</span><span class="o">.</span><span class="n">rx</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">theta</span><span class="o">=</span><span class="n">params</span><span class="p">[</span><span class="mi">3</span> <span class="o">*</span> <span class="n">j</span><span class="p">,</span> <span class="n">i</span><span class="p">])</span>
+            <span class="n">c</span><span class="o">.</span><span class="n">rz</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">theta</span><span class="o">=</span><span class="n">params</span><span class="p">[</span><span class="mi">3</span> <span class="o">*</span> <span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">i</span><span class="p">])</span>
+            <span class="n">c</span><span class="o">.</span><span class="n">rx</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">theta</span><span class="o">=</span><span class="n">params</span><span class="p">[</span><span class="mi">3</span> <span class="o">*</span> <span class="n">j</span> <span class="o">+</span> <span class="mi">2</span><span class="p">,</span> <span class="n">i</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">c</span>
+
+<span class="k">def</span> <span class="nf">readout</span><span class="p">(</span><span class="n">c</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">readout_mode</span> <span class="o">==</span> <span class="s1">&#39;softmax&#39;</span><span class="p">:</span>
+        <span class="n">logits</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_node</span><span class="p">):</span>
+            <span class="n">logits</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">jnp</span><span class="o">.</span><span class="n">real</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">expectation</span><span class="p">([</span><span class="n">tc</span><span class="o">.</span><span class="n">gates</span><span class="o">.</span><span class="n">z</span><span class="p">(),</span> <span class="p">[</span><span class="n">i</span><span class="p">,]])))</span>
+        <span class="n">logits</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">logits</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="mi">10</span>
+        <span class="n">probs</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span><span class="n">logits</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">readout_mode</span> <span class="o">==</span> <span class="s1">&#39;sample&#39;</span><span class="p">:</span>
+        <span class="n">wf</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">wavefunction</span><span class="p">()[:</span><span class="n">n_node</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span>
+        <span class="n">probs</span> <span class="o">=</span> <span class="n">wf</span> <span class="o">/</span> <span class="n">jnp</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">wf</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">probs</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">loss</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="n">tc</span><span class="o">.</span><span class="n">Circuit</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="n">clf</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span>
+    <span class="n">probs</span> <span class="o">=</span> <span class="n">readout</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+    <span class="k">return</span> <span class="o">-</span><span class="n">jnp</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">jnp</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">y</span> <span class="o">*</span> <span class="n">jnp</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">probs</span> <span class="o">+</span> <span class="mf">1e-7</span><span class="p">),</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">loss</span> <span class="o">=</span> <span class="n">K</span><span class="o">.</span><span class="n">jit</span><span class="p">(</span><span class="n">loss</span><span class="p">,</span> <span class="n">static_argnums</span><span class="o">=</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">accuracy</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="n">tc</span><span class="o">.</span><span class="n">Circuit</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="n">clf</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span>
+    <span class="n">probs</span> <span class="o">=</span> <span class="n">readout</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">jnp</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">probs</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="n">jnp</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">accuracy</span> <span class="o">=</span> <span class="n">K</span><span class="o">.</span><span class="n">jit</span><span class="p">(</span><span class="n">accuracy</span><span class="p">,</span> <span class="n">static_argnums</span><span class="o">=</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">k</span> <span class="o">=</span> <span class="mi">48</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">compute_loss</span> <span class="o">=</span> <span class="n">K</span><span class="o">.</span><span class="n">jit</span><span class="p">(</span><span class="n">K</span><span class="o">.</span><span class="n">vectorized_value_and_grad</span><span class="p">(</span><span class="n">loss</span><span class="p">,</span> <span class="n">vectorized_argnums</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]),</span> <span class="n">static_argnums</span><span class="o">=</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+<span class="n">compute_accuracy</span> <span class="o">=</span> <span class="n">K</span><span class="o">.</span><span class="n">jit</span><span class="p">(</span><span class="n">K</span><span class="o">.</span><span class="n">vmap</span><span class="p">(</span><span class="n">accuracy</span><span class="p">,</span> <span class="n">vectorized_argnums</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]),</span> <span class="n">static_argnums</span><span class="o">=</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">params_list</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">opt_state_list</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">data_list</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">iter_list</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">n_node</span><span class="o">-</span><span class="mi">1</span><span class="p">)):</span>
+    <span class="n">x_train_node</span><span class="p">,</span> <span class="n">y_train_node</span> <span class="o">=</span> <span class="n">filter_pair</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">node</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">Dataset</span><span class="o">.</span><span class="n">from_tensor_slices</span><span class="p">((</span><span class="n">x_train_node</span><span class="p">,</span> <span class="n">y_train_node</span><span class="p">))</span><span class="o">.</span><span class="n">batch</span><span class="p">(</span><span class="mi">128</span><span class="p">)</span>
+    <span class="n">data_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    <span class="n">iter_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">iter</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
+
+    <span class="n">key</span><span class="p">,</span> <span class="n">subkey</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+    <span class="n">params</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">subkey</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span> <span class="o">*</span> <span class="n">k</span><span class="p">,</span> <span class="n">n</span><span class="p">))</span>
+    <span class="n">opt</span> <span class="o">=</span> <span class="n">optax</span><span class="o">.</span><span class="n">adam</span><span class="p">(</span><span class="n">learning_rate</span><span class="o">=</span><span class="mf">1e-2</span><span class="p">)</span>
+    <span class="n">opt_state</span> <span class="o">=</span> <span class="n">opt</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+    <span class="n">params_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+    <span class="n">opt_state_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">opt_state</span><span class="p">)</span>
+
+
+<span class="n">loss_list</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">acc_list</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span> <span class="n">leave</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_node</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">iter_list</span><span class="p">[</span><span class="n">node</span><span class="p">])</span>
+            <span class="k">except</span> <span class="ne">StopIteration</span><span class="p">:</span>
+                <span class="n">iter_list</span><span class="p">[</span><span class="n">node</span><span class="p">]</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">data_list</span><span class="p">[</span><span class="n">node</span><span class="p">])</span>
+                <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">iter_list</span><span class="p">[</span><span class="n">node</span><span class="p">])</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+            <span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+            <span class="n">loss_val</span><span class="p">,</span> <span class="n">grad_val</span> <span class="o">=</span> <span class="n">compute_loss</span><span class="p">(</span><span class="n">params_list</span><span class="p">[</span><span class="n">node</span><span class="p">],</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span>
+            <span class="n">updates</span><span class="p">,</span> <span class="n">opt_state_list</span><span class="p">[</span><span class="n">node</span><span class="p">]</span> <span class="o">=</span> <span class="n">opt</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">grad_val</span><span class="p">,</span> <span class="n">opt_state_list</span><span class="p">[</span><span class="n">node</span><span class="p">],</span> <span class="n">params_list</span><span class="p">[</span><span class="n">node</span><span class="p">])</span>
+            <span class="n">params_list</span><span class="p">[</span><span class="n">node</span><span class="p">]</span> <span class="o">=</span> <span class="n">optax</span><span class="o">.</span><span class="n">apply_updates</span><span class="p">(</span><span class="n">params_list</span><span class="p">[</span><span class="n">node</span><span class="p">],</span> <span class="n">updates</span><span class="p">)</span>
+        
+        <span class="n">avg_params</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">jnp</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">params_list</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_node</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+            <span class="n">params_list</span><span class="p">[</span><span class="n">node</span><span class="p">]</span> <span class="o">=</span> <span class="n">avg_params</span>
+        
+        <span class="k">if</span> <span class="n">b</span> <span class="o">%</span> <span class="mi">25</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">avg_loss</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">compute_loss</span><span class="p">(</span><span class="n">avg_params</span><span class="p">,</span> <span class="n">x_test</span><span class="p">[:</span><span class="mi">1024</span><span class="p">],</span> <span class="n">y_test</span><span class="p">[:</span><span class="mi">1024</span><span class="p">],</span> <span class="n">k</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
+            <span class="n">loss_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">avg_loss</span><span class="p">)</span>
+            <span class="n">acc_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">compute_accuracy</span><span class="p">(</span><span class="n">avg_params</span><span class="p">,</span> <span class="n">x_test</span><span class="p">[:</span><span class="mi">1024</span><span class="p">],</span> <span class="n">y_test</span><span class="p">[:</span><span class="mi">1024</span><span class="p">],</span> <span class="n">k</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Epoch </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">, batch </span><span class="si">{</span><span class="n">b</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="mi">100</span><span class="si">}</span><span class="s2">, loss </span><span class="si">{</span><span class="n">avg_loss</span><span class="si">}</span><span class="s2">, accuracy </span><span class="si">{</span><span class="n">acc_list</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">loss_list</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">acc_list</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;loss&#39;</span><span class="p">,</span> <span class="s1">&#39;accuracy&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 7/7 [00:01&lt;00:00,  6.09it/s]
+  0%|          | 0/5 [00:00&lt;?, ?it/s]2023-09-28 12:22:54.965215: E external/xla/xla/service/slow_operation_alarm.cc:65] 
+********************************
+[Compiling module jit_wrapper] Very slow compile? If you want to file a bug, run with envvar XLA_FLAGS=--xla_dump_to=/tmp/foo and attach the results.
+********************************
+2023-09-28 12:34:53.820115: E external/xla/xla/service/slow_operation_alarm.cc:133] The operation took 13m58.854231332s
+
+********************************
+[Compiling module jit_wrapper] Very slow compile? If you want to file a bug, run with envvar XLA_FLAGS=--xla_dump_to=/tmp/foo and attach the results.
+********************************
+2023-09-28 12:45:41.503286: E external/xla/xla/service/slow_operation_alarm.cc:133] The operation took 9m43.273378627s
+
+********************************
+[Compiling module jit_wrapper] Very slow compile? If you want to file a bug, run with envvar XLA_FLAGS=--xla_dump_to=/tmp/foo and attach the results.
+********************************
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 0, batch 0/100, loss 2.189169406890869, accuracy 0.1142578125
+Epoch 0, batch 25/100, loss 1.1674399375915527, accuracy 0.6689453125
+Epoch 0, batch 50/100, loss 0.9042024612426758, accuracy 0.779296875
+Epoch 0, batch 75/100, loss 0.8043765425682068, accuracy 0.8095703125
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2023-09-28 13:02:45.068681: E external/xla/xla/service/slow_operation_alarm.cc:133] The operation took 10m7.195417344s
+
+********************************
+[Compiling module jit_wrapper] Very slow compile? If you want to file a bug, run with envvar XLA_FLAGS=--xla_dump_to=/tmp/foo and attach the results.
+********************************
+2023-09-28 13:05:55.735661: E external/xla/xla/service/slow_operation_alarm.cc:65] 
+********************************
+[Compiling module jit_wrapper] Very slow compile? If you want to file a bug, run with envvar XLA_FLAGS=--xla_dump_to=/tmp/foo and attach the results.
+********************************
+2023-09-28 13:18:11.335150: E external/xla/xla/service/slow_operation_alarm.cc:133] The operation took 14m15.59875907s
+
+********************************
+[Compiling module jit_wrapper] Very slow compile? If you want to file a bug, run with envvar XLA_FLAGS=--xla_dump_to=/tmp/foo and attach the results.
+********************************
+2023-09-28 13:33:27.343269: E external/xla/xla/service/slow_operation_alarm.cc:133] The operation took 14m11.931728781s
+
+********************************
+[Compiling module jit_wrapper] Very slow compile? If you want to file a bug, run with envvar XLA_FLAGS=--xla_dump_to=/tmp/foo and attach the results.
+********************************
+2023-09-28 13:36:32.016486: E external/xla/xla/service/slow_operation_alarm.cc:65] 
+********************************
+[Compiling module jit_wrapper] Very slow compile? If you want to file a bug, run with envvar XLA_FLAGS=--xla_dump_to=/tmp/foo and attach the results.
+********************************
+2023-09-28 13:44:59.853793: E external/xla/xla/service/slow_operation_alarm.cc:133] The operation took 10m27.836539211s
+
+********************************
+[Compiling module jit_wrapper] Very slow compile? If you want to file a bug, run with envvar XLA_FLAGS=--xla_dump_to=/tmp/foo and attach the results.
+********************************
+2023-09-28 13:48:06.255285: E external/xla/xla/service/slow_operation_alarm.cc:65] 
+********************************
+[Compiling module jit_wrapper] Very slow compile? If you want to file a bug, run with envvar XLA_FLAGS=--xla_dump_to=/tmp/foo and attach the results.
+********************************
+2023-09-28 13:57:08.181872: E external/xla/xla/service/slow_operation_alarm.cc:133] The operation took 11m1.925771858s
+
+********************************
+[Compiling module jit_wrapper] Very slow compile? If you want to file a bug, run with envvar XLA_FLAGS=--xla_dump_to=/tmp/foo and attach the results.
+********************************
+2023-09-28 14:00:14.012433: E external/xla/xla/service/slow_operation_alarm.cc:65] 
+********************************
+[Compiling module jit_wrapper] Very slow compile? If you want to file a bug, run with envvar XLA_FLAGS=--xla_dump_to=/tmp/foo and attach the results.
+********************************
+2023-09-28 14:08:57.472134: E external/xla/xla/service/slow_operation_alarm.cc:133] The operation took 10m43.459012187s
+
+********************************
+[Compiling module jit_wrapper] Very slow compile? If you want to file a bug, run with envvar XLA_FLAGS=--xla_dump_to=/tmp/foo and attach the results.
+********************************
+2023-09-28 14:24:23.161217: E external/xla/xla/service/slow_operation_alarm.cc:133] The operation took 14m15.837835855s
+
+********************************
+[Compiling module jit_wrapper] Very slow compile? If you want to file a bug, run with envvar XLA_FLAGS=--xla_dump_to=/tmp/foo and attach the results.
+********************************
+ 20%|██        | 1/5 [2:04:50&lt;8:19:22, 7490.52s/it]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1, batch 0/100, loss 0.7529951333999634, accuracy 0.826171875
+Epoch 1, batch 25/100, loss 0.7293537855148315, accuracy 0.83203125
+Epoch 1, batch 50/100, loss 0.7100242376327515, accuracy 0.845703125
+Epoch 1, batch 75/100, loss 0.7142137885093689, accuracy 0.8330078125
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 40%|████      | 2/5 [2:09:50&lt;2:43:03, 3261.06s/it]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 2, batch 0/100, loss 0.7080438733100891, accuracy 0.8310546875
+Epoch 2, batch 25/100, loss 0.6743723750114441, accuracy 0.8505859375
+Epoch 2, batch 50/100, loss 0.6577105522155762, accuracy 0.857421875
+Epoch 2, batch 75/100, loss 0.652215838432312, accuracy 0.8623046875
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 60%|██████    | 3/5 [2:14:50&lt;1:03:37, 1908.83s/it]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 3, batch 0/100, loss 0.6515226364135742, accuracy 0.8681640625
+Epoch 3, batch 25/100, loss 0.6394554376602173, accuracy 0.8662109375
+Epoch 3, batch 50/100, loss 0.6202593445777893, accuracy 0.8671875
+Epoch 3, batch 75/100, loss 0.611396312713623, accuracy 0.8623046875
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 80%|████████  | 4/5 [2:19:52&lt;21:14, 1274.40s/it]  
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 4, batch 0/100, loss 0.614986777305603, accuracy 0.8740234375
+Epoch 4, batch 25/100, loss 0.6040697693824768, accuracy 0.8701171875
+Epoch 4, batch 50/100, loss 0.5960255265235901, accuracy 0.873046875
+Epoch 4, batch 75/100, loss 0.5879905223846436, accuracy 0.8720703125
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                 
+</pre></div>
+</div>
+<img alt="../_images/d990fb5a086bd45d329d0b120790f80c6c8699ba5c5fce08690835f3a45be7b7.png" src="../_images/d990fb5a086bd45d329d0b120790f80c6c8699ba5c5fce08690835f3a45be7b7.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="n">mnist</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">jnp</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;./</span><span class="si">{</span><span class="n">dataset</span><span class="si">}</span><span class="s1">/fedavg_loss.npy&#39;</span><span class="p">,</span> <span class="n">loss_list</span><span class="p">)</span>
+<span class="n">jnp</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;./</span><span class="si">{</span><span class="n">dataset</span><span class="si">}</span><span class="s1">/fedavg_acc.npy&#39;</span><span class="p">,</span> <span class="n">acc_list</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">pred</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="n">tc</span><span class="o">.</span><span class="n">Circuit</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="n">clf</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span>
+    <span class="n">probs</span> <span class="o">=</span> <span class="n">readout</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">probs</span>
+<span class="n">pred</span> <span class="o">=</span> <span class="n">K</span><span class="o">.</span><span class="n">vmap</span><span class="p">(</span><span class="n">pred</span><span class="p">,</span> <span class="n">vectorized_argnums</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">jnp</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">pred</span><span class="p">(</span><span class="n">avg_params</span><span class="p">,</span> <span class="n">x_test</span><span class="p">[:</span><span class="mi">1024</span><span class="p">],</span> <span class="n">k</span><span class="p">)</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="n">y_test</span><span class="p">[:</span><span class="mi">1024</span><span class="p">]</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Array(0.8769531, dtype=float32)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cent_loss</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;./</span><span class="si">{</span><span class="n">dataset</span><span class="si">}</span><span class="s1">/central_loss.npy&#39;</span><span class="p">)</span>
+<span class="n">cent_acc</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;./</span><span class="si">{</span><span class="n">dataset</span><span class="si">}</span><span class="s1">/central_acc.npy&#39;</span><span class="p">)</span>
+<span class="n">loss_list</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;./</span><span class="si">{</span><span class="n">dataset</span><span class="si">}</span><span class="s1">/fedavg_loss.npy&#39;</span><span class="p">)</span>
+<span class="n">acc_list</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;./</span><span class="si">{</span><span class="n">dataset</span><span class="si">}</span><span class="s1">/fedavg_acc.npy&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">jnp</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">acc_list</span><span class="p">))</span><span class="o">/</span><span class="mi">4</span><span class="p">,</span> <span class="n">acc_list</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;FedAvg&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">markerfacecolor</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">jnp</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">cent_acc</span><span class="p">))</span><span class="o">/</span><span class="mi">8</span><span class="p">,</span> <span class="n">cent_acc</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Centralized&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="n">markerfacecolor</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">)</span>
+<span class="c1"># plt.hlines(0.7490, 0, 5, color=&#39;black&#39;, linestyles=&#39;dashed&#39;)</span>
+<span class="c1"># plt.ylim(0.3, 0.8)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Top-1 accuracy&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Epochs&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">twinx</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">jnp</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">loss_list</span><span class="p">))</span><span class="o">/</span><span class="mi">4</span><span class="p">,</span> <span class="n">loss_list</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;FedAvg&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">markerfacecolor</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">jnp</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">cent_loss</span><span class="p">))</span><span class="o">/</span><span class="mi">8</span><span class="p">,</span> <span class="n">cent_loss</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Centralized&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="n">markerfacecolor</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">)</span>
+<span class="c1"># plt.hlines(0.1909, 0, 5, color=&#39;black&#39;, linestyles=&#39;dashed&#39;)</span>
+<span class="c1"># plt.ylim(0.1, 0.5)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Loss&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">jnp</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;center right&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;./</span><span class="si">{</span><span class="n">dataset</span><span class="si">}</span><span class="s1">/cent_fedavg.pdf&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="nn">Input In [43],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">cent_loss</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;./</span><span class="si">{</span><span class="n">dataset</span><span class="si">}</span><span class="s1">/central_loss.npy&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">cent_acc</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;./</span><span class="si">{</span><span class="n">dataset</span><span class="si">}</span><span class="s1">/central_acc.npy&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">loss_list</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;./</span><span class="si">{</span><span class="n">dataset</span><span class="si">}</span><span class="s1">/fedavg_loss.npy&#39;</span><span class="p">)</span>
+
+<span class="nn">File /opt/conda/envs/Python-3.10-CUDA/lib/python3.10/site-packages/jax/_src/numpy/lax_numpy.py:285,</span> in <span class="ni">load</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">281</span> <span class="nd">@util</span><span class="o">.</span><span class="n">_wraps</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">,</span> <span class="n">update_doc</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">282</span> <span class="k">def</span> <span class="nf">load</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Array</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">283</span>   <span class="c1"># The main purpose of this wrapper is to recover bfloat16 data types.</span>
+<span class="g g-Whitespace">    </span><span class="mi">284</span>   <span class="c1"># Note: this will only work for files created via np.save(), not np.savez().</span>
+<span class="ne">--&gt; </span><span class="mi">285</span>   <span class="n">out</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">286</span>   <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">287</span>     <span class="c1"># numpy does not recognize bfloat16, so arrays are serialized as void16</span>
+<span class="g g-Whitespace">    </span><span class="mi">288</span>     <span class="k">if</span> <span class="n">out</span><span class="o">.</span><span class="n">dtype</span> <span class="o">==</span> <span class="s1">&#39;V2&#39;</span><span class="p">:</span>
+
+<span class="nn">File /opt/conda/envs/Python-3.10-CUDA/lib/python3.10/site-packages/numpy/lib/npyio.py:390,</span> in <span class="ni">load</span><span class="nt">(file, mmap_mode, allow_pickle, fix_imports, encoding)</span>
+<span class="g g-Whitespace">    </span><span class="mi">263</span> <span class="nd">@set_module</span><span class="p">(</span><span class="s1">&#39;numpy&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">264</span> <span class="k">def</span> <span class="nf">load</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">mmap_mode</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">allow_pickle</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">fix_imports</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">265</span>          <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;ASCII&#39;</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">max_header_size</span><span class="o">=</span><span class="nb">format</span><span class="o">.</span><span class="n">_MAX_HEADER_SIZE</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">266</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">267</span><span class="sd">     Load arrays or pickled objects from ``.npy``, ``.npz`` or pickled files.</span>
+<span class="g g-Whitespace">    </span><span class="mi">268</span><span class="sd"> </span>
+<span class="sd">   (...)</span>
+<span class="g g-Whitespace">    </span><span class="mi">382</span><span class="sd"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">383</span><span class="sd">     &quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">384</span>     <span class="k">if</span> <span class="n">encoding</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;ASCII&#39;</span><span class="p">,</span> <span class="s1">&#39;latin1&#39;</span><span class="p">,</span> <span class="s1">&#39;bytes&#39;</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">385</span>         <span class="c1"># The &#39;encoding&#39; value for pickle also affects what encoding</span>
+<span class="g g-Whitespace">    </span><span class="mi">386</span>         <span class="c1"># the serialized binary data of NumPy arrays is loaded</span>
+<span class="g g-Whitespace">    </span><span class="mi">387</span>         <span class="c1"># in. Pickle does not pass on the encoding information to</span>
+<span class="g g-Whitespace">    </span><span class="mi">388</span>         <span class="c1"># NumPy. The unpickling code in numpy.core.multiarray is</span>
+<span class="g g-Whitespace">    </span><span class="mi">389</span>         <span class="c1"># written to assume that unicode data appearing where binary</span>
+<span class="ne">--&gt; </span><span class="mi">390</span>         <span class="c1"># should be is in &#39;latin1&#39;. &#39;bytes&#39; is also safe, as is &#39;ASCII&#39;.</span>
+<span class="g g-Whitespace">    </span><span class="mi">391</span>         <span class="c1">#</span>
+<span class="g g-Whitespace">    </span><span class="mi">392</span>         <span class="c1"># Other encoding values can corrupt binary data, and we</span>
+<span class="g g-Whitespace">    </span><span class="mi">393</span>         <span class="c1"># purposefully disallow them. For the same reason, the errors=</span>
+<span class="g g-Whitespace">    </span><span class="mi">394</span>         <span class="c1"># argument is not exposed, as values other than &#39;strict&#39;</span>
+<span class="g g-Whitespace">    </span><span class="mi">395</span>         <span class="c1"># result can similarly silently corrupt numerical data.</span>
+<span class="g g-Whitespace">    </span><span class="mi">396</span>         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;encoding must be &#39;ASCII&#39;, &#39;latin1&#39;, or &#39;bytes&#39;&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">398</span>     <span class="n">pickle_kwargs</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">encoding</span><span class="o">=</span><span class="n">encoding</span><span class="p">,</span> <span class="n">fix_imports</span><span class="o">=</span><span class="n">fix_imports</span><span class="p">)</span>
+
+<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;./mnist/central_loss.npy&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./team_a"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By IBM Community Japan チーム 2023-b-07-a
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright IBM Corp. 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
