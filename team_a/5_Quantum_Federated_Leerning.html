@@ -365,7 +365,6 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#toc">TOC</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1. はじめに</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">背景</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#qfl">QFLのモチベーション</a></li>
@@ -460,110 +459,6 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="quantum-federated-learning">
 <h1>Quantum Federated Learningとは<a class="headerlink" href="#quantum-federated-learning" title="Permalink to this heading">#</a></h1>
-<section id="toc">
-<h2>TOC<a class="headerlink" href="#toc" title="Permalink to this heading">#</a></h2>
-<ul class="simple">
-<li><p><span class="xref myst">Quantum Federated Learningとは</span></p>
-<ul>
-<li><p><span class="xref myst">TOC</span></p></li>
-<li><p><span class="xref myst">1. はじめに</span></p>
-<ul>
-<li><p><span class="xref myst">背景</span></p></li>
-<li><p><span class="xref myst">QFLのモチベーション</span></p></li>
-<li><p><span class="xref myst">関連研究</span></p></li>
-</ul>
-</li>
-<li><p><span class="xref myst">2. QC と FL のいくつかの用語と基本的事項</span></p>
-<ul>
-<li><p><span class="xref myst">2.1. FLの基礎</span></p>
-<ul>
-<li><p><span class="xref myst">データの分布</span></p></li>
-<li><p><span class="xref myst">ネットワーク・アーキテクチャー</span></p></li>
-<li><p><span class="xref myst">プライバシー・メカニズム</span></p></li>
-<li><p><span class="xref myst">モデル集約</span></p></li>
-</ul>
-</li>
-<li><p><span class="xref myst">2.2. 量子力学とQCの基礎</span></p>
-<ul>
-<li><p><span class="xref myst">量子力学の原理</span></p></li>
-<li><p><span class="xref myst">QCの基礎</span></p></li>
-</ul>
-</li>
-<li><p><span class="xref myst">2.3. 量子アルゴリズムと複雑性</span></p>
-<ul>
-<li><p><span class="xref myst">QML</span></p>
-<ul>
-<li><p><span class="xref myst">量子畳み込みニューラルネットワーク (QCNN)</span></p></li>
-<li><p><span class="xref myst">量子 LSTM (QLSTM)</span></p></li>
-<li><p><span class="xref myst">量子生成的敵対ネットワーク (QGAN)</span></p></li>
-<li><p><span class="xref myst">量子転移学習</span></p></li>
-<li><p><span class="xref myst">ハイブリッド古典-量子 NN</span></p></li>
-</ul>
-</li>
-<li><p><span class="xref myst">QSM</span></p></li>
-<li><p><span class="xref myst">QOA</span></p>
-<ul>
-<li><p><span class="xref myst">量子回路分割 (quantum circuit cutting; QCC)</span></p></li>
-<li><p><span class="xref myst">Grover のアルゴリズム</span></p></li>
-<li><p><span class="xref myst">HHL アルゴリズム</span></p></li>
-<li><p><span class="xref myst">変分量子固有値ソルバー (Variational Quantum Eigensolver; VQE)</span></p></li>
-<li><p><span class="xref myst">量子近似最適化アルゴリズム (QAOA)</span></p></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p><span class="xref myst">3. QFLの分類</span></p>
-<ul>
-<li><p><span class="xref myst">3.1. EffQFL</span></p></li>
-<li><p><span class="xref myst">3.2. SecQFL</span></p></li>
-</ul>
-</li>
-<li><p><span class="xref myst">4. EFFQFL</span></p>
-<ul>
-<li><p><span class="xref myst">4.1. データ処理ベースの EffQFL</span></p></li>
-<li><p><span class="xref myst">4.2. モデル最適化ベースの EffQFL</span></p>
-<ul>
-<li><p><span class="xref myst">グローバル・モデル最適化ベースの EffQFL</span></p></li>
-<li><p><span class="xref myst">ローカル・モデル最適化ベースの EffQFL</span></p></li>
-</ul>
-</li>
-<li><p><span class="xref myst">4.3. クライアント選択ベースの EffQFL</span></p></li>
-</ul>
-</li>
-<li><p><span class="xref myst">5. SecQFL</span></p>
-<ul>
-<li><p><span class="xref myst">5.1. データ・プライバシー・ベースの SecQFL</span></p></li>
-<li><p><span class="xref myst">5.2. モデル・セキュリティー・ベースの SecQFL</span></p></li>
-<li><p><span class="xref myst">5.3. 頑強性ベースの SecQFL</span></p></li>
-</ul>
-</li>
-<li><p><span class="xref myst">6. 実装に関して</span></p>
-<ul>
-<li><p><span class="xref myst">6.1. QFLのためのプラットフォームとライブラリ</span></p></li>
-<li><p><span class="xref myst">6.2. アプリケーション</span></p></li>
-<li><p><span class="xref myst">6.3. 評価指標</span></p></li>
-</ul>
-</li>
-<li><p><span class="xref myst">7. 課題、オープンな機会、有望な将来の研究の方向性</span></p>
-<ul>
-<li><p><span class="xref myst">量子ハードウェアの制限とリソース制約</span></p></li>
-<li><p><span class="xref myst">7.1. ノイズおよび誤りの軽減</span></p></li>
-<li><p><span class="xref myst">7.2. モデルおよびデータの不均質性</span></p></li>
-<li><p><span class="xref myst">7.3. QFL と 古典的 FL の間の相互運用性</span></p></li>
-<li><p><span class="xref myst">7.4. 標準化とベンチマーキング</span></p></li>
-<li><p><span class="xref myst">7.5. 倫理と法的考慮</span></p></li>
-<li><p><span class="xref myst">7.6. QFL の有望な将来研究の方向性</span></p></li>
-</ul>
-</li>
-<li><p><span class="xref myst">8. 結び</span></p></li>
-<li><p><span class="xref myst">9. 参考文献</span></p></li>
-<li><p><span class="xref myst">10. QFLの実装サンプルコード</span></p></li>
-</ul>
-</li>
-</ul>
-</section>
 <section id="id1">
 <h2>1. はじめに<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
 <p>量子連合学習 (QFL) は、量子コンピューティング (QC) と連合学習 (FL) の原理を融合し、学習プロセスにおけるプライバシー、セキュリティー、効率性を高めるために量子テクノロジーを活用することを目的とする、新しい学際的な分野です。<br />
@@ -609,12 +504,8 @@ QC により、従来は古典的なコンピューティングでは計算的�
 <section id="id4">
 <h4>データの分布<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h4>
 <p>データ分布に基づいて、FL は水平的 FL (HFL)、垂直的 FL (VFL)、および連合転移学習 (FTL) に分類できます。HFL は、お客様が同じ特徴量空間を持っているが、異なるサンプル (つまり、IID データ) を持っている場合に使用されます。このシナリオでは、クライアントは、生データを共有せずにモデルをトレーニングするためにコラボレーションします。 HFL は、複数の組織または個人が機密情報を共有することなく共同でモデルをトレーニングする必要がある場合に特に役立ちます。 VFL は、クライアントが異なる特徴量空間を持っているが、同じサンプル集合を共有している場合に使用されます。 クライアントは、生の特徴量データを共有することなく、共同でモデルをトレーニングします。 VFL を使用すると、様々なクライアントからの補完的な特徴量集合を組み合わせて、より正確で頑健なモデルをトレーニングできます。 FTL は、FL と転移学習 (TL) を組み合わせます。FTL では、1 つのドメインで学習された知識は、データ・プライバシーを保持しながら別のドメインに転移されます。 クライアントは、事前トレーニングされたモデルや他の分野の知識を活用して、モデル・トレーニングの効率とパフォーマンスを向上させることができます。</p>
-<div align="center">
-  <figure>
-    <figcaption>図０: 連合学習のシナリオによるタイプ</figcaption>
-    <img src="Screenshot 2023-09-28 at 23.11.19.png" alt="図１: VQC の基本構造" />
-  </figure>
-</div>
+<figcaption>図０: 連合学習のシナリオによるタイプ</figcaption>
+<img src="Screenshot 2023-09-28 at 23.11.19.png" alt="図１: VQC の基本構造" />
 </section>
 <section id="id5">
 <h4>ネットワーク・アーキテクチャー<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h4>
@@ -660,12 +551,8 @@ $<span class="math notranslate nohighlight">\(|\psi\rangle = \alpha|0\rangle + \
 <h4>QML<a class="headerlink" href="#qml" title="Permalink to this heading">#</a></h4>
 <p>変分量子分類器 (VQC)<br />
 VQC は QC の原理を使ってデータに対して分類タスクを行います。 VQC は、古典的な最適化技術を使用して最適化されたパラメータ化された量子回路である変分回路の概念に基づいて構築されています。 VQC の目的は、コスト関数を最小化する最適なパラメーターを見つけることです。 VQC は、データ・エンコーディング（量子ビットとして符号化するプロセス）、変分回路、測定、最適化、評価などの 5 つのステップに分けることができます。図１が示す VQC の基本構造にあるように、 CNOT ゲートと回転ゲート (Rotation Operator Gate) の２種類の量子ゲートから構成されています。回転ゲート <span class="math notranslate nohighlight">\(R_x(\theta)\)</span>、<span class="math notranslate nohighlight">\(R_y(\theta)\)</span>、<span class="math notranslate nohighlight">\(R_z(\theta)\)</span> は、三つのデカルト座標軸周りの回転行列であり、<span class="math notranslate nohighlight">\(\theta\)</span> は、座標軸に対する回転角度です。</p>
-<div align="center">
-  <figure>
-    <figcaption>図１: VQC の基本構造 (Ren et al 2023)</figcaption>
-    <img src="Fig-1.png" alt="図１: VQC の基本構造" />
-  </figure>
-</div>
+<figcaption>図１: VQC の基本構造 (Ren et al 2023)</figcaption>
+<img src="Fig-1.png" alt="図１: VQC の基本構造" />
 <section id="qcnn">
 <h5>量子畳み込みニューラルネットワーク (QCNN)<a class="headerlink" href="#qcnn" title="Permalink to this heading">#</a></h5>
 <p>QCNN は、ニューラルネットワーク (NN) のトレーニングと推論を加速するために QC の可能性を探索する研究領域です。 参照 [9] は、古典的な ML で広く使われている建築物である畳み込み NN (CNN) の量子バージョンを提案している。 QCNN は、特定の画像認識タスクで従来の CNN よりも優れたパフォーマンスを実現できます。</p>
@@ -690,12 +577,8 @@ VQC は QC の原理を使ってデータに対して分類タスクを行いま
 <section id="qsm">
 <h4>QSM<a class="headerlink" href="#qsm" title="Permalink to this heading">#</a></h4>
 <p>QSM アプローチは、データ伝送のセキュリティーを強化するために量子通信に依存しています。 図 2 は、量子通信における主要な情報キャリアである光子の文脈における量子通信の原理を簡潔に説明しています。 量子セキュリティーは、測定の不可逆性にかかっています。 従来、古典的なビットは二極化の方向によって表現されます。 図 2 に示すように、盗聴者 Eve が使用する X 基底は、二極化の元の方向を 50% の確率で 2 つの方向に変化させます。 したがって、盗聴者によって測定されると、量子ビット・エラー率 (QBER) が高くなります。 QKD と量子セキュア直接通信 (quantum secure direct communication; QSDC) はどちらも、盗聴に対するセキュリティを提供するために上記の量子通信の原理を活用するセキュアな通信プロトコルです。 QKD は暗号鍵の交換に重点を置いていますが、QSDC は秘密メッセージの直接伝送を可能にします。</p>
-<div align="center">
-  <figure>
-    <figcaption>図２：量子通信の原理 (Ren et al 2023)</figcaption>
-    <img src="Fig-2.png" alt="図２：量子通信の原理" />
-  </figure>
-</div>
+<figcaption>図２：量子通信の原理 (Ren et al 2023)</figcaption>
+<img src="Fig-2.png" alt="図２：量子通信の原理" />
 <p>本稿では、これ以上の解説は割愛します。</p>
 </section>
 <section id="qoa">
@@ -704,12 +587,8 @@ VQC は QC の原理を使ってデータに対して分類タスクを行いま
 <section id="quantum-circuit-cutting-qcc">
 <h5>量子回路分割 (quantum circuit cutting; QCC)<a class="headerlink" href="#quantum-circuit-cutting-qcc" title="Permalink to this heading">#</a></h5>
 <p>現代の量子コンピューターは NISQ デバイスであり、低い量子ビット数とノイズのある演算によって制約されており、スケーラビリティーという点でエンジニアリング上の大きな障害にも直面しています。 これらの課題を解決するために、QCC を活用して小型量子コンピュータの能力を強化する試みがなされています。 QCC は、特定の計算を実行するために必要なゲートと演算の数を減らすことを目的として、量子回路をより小さな下位回路に分解することによって実装を合理化し、全体的なランタイムとリソースの要求を低減することを目的としています。 QCC では、大規模な回路を識別し、独立して実行できる小さな下位回路に分割し、古典的計算資源で検出された結果を後処理する必要があります。 分割プロセスでは、ゲート間の依存関係を分析し、それらを並列に実行できるグループに分離する方法を見つけます。 図 3 は 1 量子ビット の場合の Pauli QCC 法を示していますが、そこでは QCC は Pauli 分解規則を適用して Pauli ゲート列に回路を分解しています。 これらの規則は、任意の単一量子ビットのユニタリ演算は、単一量子ビットの Pauli ゲートを使って実装できる、X, Y, Z 軸に関する回転の列へと分解できることを述べています。</p>
-<div align="center">
-  <figure>
-    <figcaption>図３：QCC の基本構造（1 量子ビットの場合のPauli 回路分割法の例） (Ren et al 2023)</figcaption>
-    <img src="Fig-3.png" alt="図３：QCC の基本構造（1 量子ビットの場合のPauli 回路分割法の例" />
-  </figure>
-</div>
+<figcaption>図３：QCC の基本構造（1 量子ビットの場合のPauli 回路分割法の例） (Ren et al 2023)</figcaption>
+<img src="Fig-3.png" alt="図３：QCC の基本構造（1 量子ビットの場合のPauli 回路分割法の例" />
 </section>
 <section id="grover">
 <h5>Grover のアルゴリズム<a class="headerlink" href="#grover" title="Permalink to this heading">#</a></h5>
@@ -722,12 +601,8 @@ VQC は QC の原理を使ってデータに対して分類タスクを行いま
 <section id="variational-quantum-eigensolver-vqe">
 <h5>変分量子固有値ソルバー (Variational Quantum Eigensolver; VQE)<a class="headerlink" href="#variational-quantum-eigensolver-vqe" title="Permalink to this heading">#</a></h5>
 <p>図 4 は、VQE の考え方を示しています。 VQE アルゴリズムの基本的な考え方は、パラメータ化された量子ゲートのセットを使って量子コンピュータ上で試行波動関数 (trial wave function)を準備することです。 これらのゲートは、 Pauli ゲートを使用して実装できる X 軸、Y 軸、Z 軸の回転など、単純で効率的なものとして選択されています。 これらのゲートのパラメーターは、エネルギー期待値を最小化するために、古典的なやり方で最適化されます。 VQE アルゴリズムは分子特性を研究するための強力なツールであり、古典的なコンピュータを使ってシミュレートするには大きすぎる分子の基底状態エネルギーを見つけることができる。 VQE は、問題のコスト関数を表すハミルトニアンを構築することにより、最適化問題を解くのに適用できます。 このハミルトニアンの基底状態エネルギーを見つけることで、VQE は本質的に最適化問題に対する最適解を見つけます。 VQE は、分子の基底状態エネルギーを見つけるという問題を量子回路へとまずエンコーディングすることによって機能します。 この回路は量子コンピュータ上で実行され、分子の基底状態を近似する出力状態を生成します。 その後、出力状態が測定され、測定された結果を使って分子のエネルギーの推定値が計算されます。 このエネルギー推定値は量子回路にフィードバックされ、回路が更新されると、真の基底状態エネルギーにより近い新しい出力状態を生成します。</p>
-<div align="center">
-  <figure>
-    <figcaption>図４：VQE の基本構造 (Ren et al 2023)</figcaption>
-    <img src="Fig-4.png" alt="図４：VQE の基本構造" />
-  </figure>
-</div>
+<figcaption>図４：VQE の基本構造 (Ren et al 2023)</figcaption>
+<img src="Fig-4.png" alt="図４：VQE の基本構造" />
 </section>
 <section id="qaoa">
 <h5>量子近似最適化アルゴリズム (QAOA)<a class="headerlink" href="#qaoa" title="Permalink to this heading">#</a></h5>
@@ -743,12 +618,8 @@ VQC は QC の原理を使ってデータに対して分類タスクを行いま
 <li><p>効率的な QFL (EffQFL)</p></li>
 <li><p>セキュアな QFL (SecQFL)</p></li>
 </ul>
-<div align="center">
-  <figure>
-    <figcaption>図５：QFL の分類  (Ren et al 2023)</figcaption>
-    <img src="Fig-5.png" alt="図５：QFL の分類 (Ren et al 2023)" />
-  </figure>
-</div>
+<figcaption>図５：QFL の分類  (Ren et al 2023)</figcaption>
+<img src="Fig-5.png" alt="図５：QFL の分類 (Ren et al 2023)" />
 <p>この分類は、各カテゴリーに関連する特性と量子アルゴリズムに基づいています。 EffecQFL と SecQFL の目的は、それぞれ FL タスクで QC の適用を成功させるために重要な QFL の 2 つの重要な側面に対処することです。 これらの 2 つの側面は、異なっていますが補完的な目標に重点があります。 以下に、EffQFL と SecQFL のアプローチの概要を示します。</p>
 <section id="effqfl">
 <h3>3.1. EffQFL<a class="headerlink" href="#effqfl" title="Permalink to this heading">#</a></h3>
@@ -800,23 +671,15 @@ FL アプローチは、ノイズ、ハードウェア・エラー、攻撃に�
 <section id="id13">
 <h2>4. EFFQFL<a class="headerlink" href="#id13" title="Permalink to this heading">#</a></h2>
 <p>このセクションでは、EffQFL の手法について説明します。 これらの技法の基本的なセットアップと構成を図 6 に示します。</p>
-<div align="center">
-  <figure>
-    <figcaption>図６：EffQFL アプローチの図解 (Ren et al 2023)</figcaption>
-    <img src="Fig-6.png" alt="図６：EffQFL アプローチの図解 (Ren et al 2023): a) データ処理ベースの EffQFL ； b) モデル最適化ベースの EffQFL ; c) クライアント選択ベースの EffQFL" />
-    <figcaption>a) データ処理ベース EffQFL、 b) モデル最適化ベース EffQFL、 c) クライアント選択ベース EffQFL</figcaption>
-  </figure>
-</div>
+<figcaption>図６：EffQFL アプローチの図解 (Ren et al 2023)</figcaption>
+<img src="Fig-6.png" alt="図６：EffQFL アプローチの図解 (Ren et al 2023): a) データ処理ベースの EffQFL ； b) モデル最適化ベースの EffQFL ; c) クライアント選択ベースの EffQFL" />
+<figcaption>a) データ処理ベース EffQFL、 b) モデル最適化ベース EffQFL、 c) クライアント選択ベース EffQFL</figcaption>
 <section id="id14">
 <h3>4.1. データ処理ベースの EffQFL<a class="headerlink" href="#id14" title="Permalink to this heading">#</a></h3>
 <p>データ処理ベースの EffQFL 手法は、古典的な特徴量工学技術に対する量子エンコード (図 7 に示す) の開発を強調しています。 これらの手法は、QC プロパティーを活用することにより、量子特徴量エンジニアリング手法の効率とパフォーマンスを向上させ、オーバーフィッティングを軽減し、データの可視化と理解を促進することを目的としています。 データ処理ベースの EffQFL 内の主なフォーカス領域には、以下が含まれます。</p>
-<div align="center">
-  <figure>
-    <figcaption>図７：量子エンコーディング (Ren et al 2023)</figcaption>
-    <img src="Fig-7.png" alt="図７：量子エンコーディング (Ren et al 2023)" />
-    <figcaption>(QuAM: Quantum Associative Memory; QRAM: Quantum Random Access Memory)</figcaption>
-  </figure>
-</div>
+<figcaption>図７：量子エンコーディング (Ren et al 2023)</figcaption>
+<img src="Fig-7.png" alt="図７：量子エンコーディング (Ren et al 2023)" />
+<figcaption>(QuAM: Quantum Associative Memory; QRAM: Quantum Random Access Memory)</figcaption>
 <ol class="arabic simple">
 <li><p>QDE<br />
 このアプローチは、異なるコード化スキームを調査することにより、古典的データを量子状態に効率的に変換することに重点を置いています。 目標は、量子系でのデータのエンコードと処理に必要なリソースを最小限にすることです。 研究者は、さまざまなタイプのデータ (連続型、離散型、またはカテゴリー型) を量子状態に効率的にエンコードする方法を研究し、その本質的な関係と特性を保持しながら、エンコードに必要な量子回路の複雑さとデータ表現の精度の間のトレードオフを検討します。 この領域は、特徴量エンジニアリングにおける従来の特徴量抽出および前処理の方法に類似しています。</p></li>
@@ -900,13 +763,9 @@ QML を使用する QFS は、これらのモデルから特徴量重要度情�
 <section id="id19">
 <h2>5. SecQFL<a class="headerlink" href="#id19" title="Permalink to this heading">#</a></h2>
 <p>このセクションでは、SecQFL のアプローチについて説明します。 これらの技法の基本的なセットアップと構成を図 8 に示します。 提案された分類法に基づいて、SecQFL のアプローチは、以下に詳述するように、データ・プライバシー・ベース、モデル・セキュリティー・ベース、頑健性ベースのアプローチに分割されます。 各カテゴリーは、量子力学の原則、QSM および QML 機能を活用することにより、QFL のプライバシーとセキュリティーを向上させることを目的としています。</p>
-<div align="center">
-  <figure>
-    <figcaption>図８：SecQFL アプローチの図解 (Ren et al 2023)</figcaption>
-    <img src="Fig-8.png" alt="図８：SecQFL アプローチの図解 (Ren et al 2023)" />
-    <figcaption>(a) データ・プライバシー・ベース SecQFL; b) モデル・セキュリティー・ベース SecQFL; c) 頑健性ベース SecQFL)</figcaption>
-  </figure>
-</div>
+<figcaption>図８：SecQFL アプローチの図解 (Ren et al 2023)</figcaption>
+<img src="Fig-8.png" alt="図８：SecQFL アプローチの図解 (Ren et al 2023)" />
+<figcaption>(a) データ・プライバシー・ベース SecQFL; b) モデル・セキュリティー・ベース SecQFL; c) 頑健性ベース SecQFL)</figcaption>
 <section id="id20">
 <h3>5.1. データ・プライバシー・ベースの SecQFL<a class="headerlink" href="#id20" title="Permalink to this heading">#</a></h3>
 <p>これらのアプローチは、QHE、QDP、QSMPC などのデータ・プライバシーを保護する量子プライバシー保持手法の開発に重点を置いています。これらの手法により、機密情報を漏えいすることなくデータから学習機能を取得できます。</p>
@@ -1133,7 +992,6 @@ QFL システムの責任ある開発、導入、および監視に関するガ�
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#toc">TOC</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1. はじめに</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">背景</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#qfl">QFLのモチベーション</a></li>
