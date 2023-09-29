@@ -367,11 +367,18 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">コンテンツ</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">3</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">7</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">2-4  計算例</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#point">point</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">コンテンツ</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">1. ショアのアルゴリズム選定理由</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">2. ショアのアルゴリズム解説</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">2-1 ダイアグラム</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">2-2 位数とは？</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">2-3  量子アルゴリズム解説</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">2-4  計算例</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#qiskit-textbook">3. Qiskit Textbookの利用</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -387,22 +394,28 @@ document.write(`
 <h1>2. ショアのアルゴリズム（初学者向け解説）<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
 <section id="id2">
 <h2>コンテンツ<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
-<p>1 ショアのアルゴリズム選定理由</p>
-<p>2 ショアのアルゴリズム解説
-2-1 ダイアグラム
-2-2 位数
-2-3 解説
-2-4 計算例</p>
-<p>3 Qiskitの利用
-3-1 Qiskit日本語版と英語版
-3-2 Qiskitの比較</p>
-<p>4 まとめ</p>
-<p>1 ショアのアルゴリズム選定理由</p>
+<ol class="arabic simple">
+<li><p>ショアのアルゴリズム選定理由<br></p></li>
+<li><p>ショアのアルゴリズム解説<br>
+2-1 ダイアグラム<br>
+2-2 位数<br>
+2-3 解説<br>
+2-4 計算例<br></p></li>
+<li><p>Qiskitの利用<br>
+3-1 Qiskit日本語版と英語版<br>
+3-2 Qiskitの比較<br></p></li>
+<li><p>まとめ</p></li>
+</ol>
+<section id="id3">
+<h3>1. ショアのアルゴリズム選定理由<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
 <p>A) 量子コンピュータの利用の優位性を認識</p>
 <p>B) 量子位相推定、量子フーリエ変換も学習</p>
 <p>C) Qiskitを利用し量子コンピュータで実行</p>
-<p>2 ショアのアルゴリズム解説</p>
-<p>2-1 ダイアグラム</p>
+</section>
+<section id="id4">
+<h3>2. ショアのアルゴリズム解説<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
+<section id="id5">
+<h4>2-1 ダイアグラム<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h4>
 <p>自然数Mについて因数を求めます。
 a,b,p,q,r,x を以下と設定します。
 M＝pqとなるp,qを求める。(p,qは因数)
@@ -411,7 +424,9 @@ xは、1&lt; x ≦ M-1
 r</p>
 <p><img alt="fig_1" src="_images/fig_1.png" /></p>
 <p>ステップ5を量子アルゴリズム/量子コンピュータにて短時間で実施することで計算量を大幅に削減することが可能となります。他のステップについては古典コンピュータにて実施しています。</p>
-<p>2-2 位数とは？</p>
+</section>
+<section id="id6">
+<h4>2-2 位数とは？<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h4>
 <p>自然数　Mと相互に素なxを仮定して因数を求めたい時
 x^r　をMで割ったあまりがyとすると</p>
 <p><span class="math notranslate nohighlight">\( 𝑦=𝑥^r mod M \)</span> ・・・・①</p>
@@ -463,71 +478,71 @@ y=1を代入して<br />
 <p>ステップ８　→　ステップ７　に振り出しに戻ります。</p>
 <p>気を取り直してxを再設定
 例　M=21 x=2 の場合</p>
-<p><img alt="image.png" src="attachment:image.png" /></p>
+<p><img alt="fig_3" src="_images/fig_3.png" /></p>
 <p>r=6ですので③式に代入すると</p>
 <p><span class="math notranslate nohighlight">\( gcd ((x^\frac{r}{2}+1),M) &gt; 1 \)</span> <br>
 <span class="math notranslate nohighlight">\( gcd ((2^\frac{6}{2}+1),21) &gt; 1 \)</span> <br>
 <span class="math notranslate nohighlight">\( gcd ((2^\frac{6}{2}+1),21) &gt; 1 \)</span> <br>
 <span class="math notranslate nohighlight">\( gcd (9,21) &gt; 1 \)</span> <br>
 <span class="math notranslate nohighlight">\( gcd(9,21)=3 \)</span> <br></p>
-</section>
-<section id="id3">
-<h2>3<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
+<p><strong>3</strong></p>
 <p>r=6ですので④式に代入すると</p>
 <p><span class="math notranslate nohighlight">\( gcd ((x^\frac{r}{2}-1),M) &gt; 1 \)</span> <br>
 <span class="math notranslate nohighlight">\( gcd ((2^\frac{6}{2}-1),21) &gt; 1 \)</span> <br>
 <span class="math notranslate nohighlight">\( gcd (7,21) &gt; 1 \)</span> <br>
 <span class="math notranslate nohighlight">\( gcd(7,21)=7 \)</span>  <br></p>
-</section>
-<section id="id4">
-<h2>7<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h2>
+<p><strong>7</strong></p>
 <p>おお！因数分解できました。
 できるだけ小さい素数をxに設定するのが良さそうですね。</p>
 <p>小さい数字でしたので、なんとかできていましたがビット数が増えていくと古典コンピュータではやりきれなくなります。
 そこで量子アルゴリズムと量子コンピュータを適応してみましょう。</p>
-<p><img alt="image-2.png" src="attachment:image-2.png" /></p>
+</section>
+<section id="id7">
+<h4>2-3  量子アルゴリズム解説<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h4>
+<p><img alt="fig_4" src="_images/fig_4.png" /></p>
 <p>分かりやすく量子回路にてみてみます。</p>
-<p><img alt="image.png" src="attachment:image.png" /></p>
+<p><img alt="fig_5" src="_images/fig_5.png" /></p>
 <p>固有値と位相キックバックとは
-<img alt="image.png" src="attachment:image.png" /></p>
+<img alt="fig_6" src="_images/fig_6.png" /></p>
 <p>固有値は、何回ユニタリー行列を作用させても変化しない。</p>
 <p>位相キックバックは、標的量子ビットの位相θを制御量子ビットに反映される
 位相キックバックの効果は状態|1&gt;でしか作用しません。(|1&gt;以外の時は打ち消しあって消えてしまうからです。)</p>
 </section>
-<section id="id5">
-<h2>2-4  計算例<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h2>
+<section id="id8">
+<h4>2-4  計算例<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h4>
 <p>M=21, x=5, n=4 の時</p>
-<p><img alt="image.png" src="attachment:image.png" /></p>
-<p><img alt="image.png" src="attachment:image.png" /></p>
-<p><img alt="image.png" src="attachment:image.png" /></p>
-<p><img alt="image.png" src="attachment:image.png" /></p>
-<p><img alt="image.png" src="attachment:image.png" /></p>
-<p><img alt="image.png" src="attachment:image.png" /></p>
-<p><img alt="image.png" src="attachment:image.png" /></p>
-<p>3 Qiskit Textbookの利用</p>
+<p><img alt="fig_7" src="_images/fig_7.png" /></p>
+<p><img alt="fig_8" src="_images/fig_8.png" />
+<img alt="fig_9" src="_images/fig_9.png" />
+<img alt="fig_10" src="_images/fig_10.png" />
+<img alt="fig_11" src="_images/fig_11.png" />
+<img alt="fig_12" src="_images/fig_12.png" /></p>
+</section>
+</section>
+<section id="qiskit-textbook">
+<h3>3. Qiskit Textbookの利用<a class="headerlink" href="#qiskit-textbook" title="Permalink to this heading">#</a></h3>
 <p>Qiskit Textbookを利用すればブラウザー上でショアのアルゴリズムを体験できます。
 今回は、日本語版にて学習を実施しました。</p>
 <p><a class="reference external" href="https://ja.learn.qiskit.org/course/ch-algorithms/shors-algorithm">https://ja.learn.qiskit.org/course/ch-algorithms/shors-algorithm</a></p>
 <p>最初からつまづきました。</p>
 <p>ModuleNotFoundError: No module named ‘tabulate’</p>
 <p>実際の出力はこちら
-<img alt="image.png" src="attachment:image.png" /></p>
+<img alt="fig_13" src="_images/fig_13.png" /></p>
 <p>検索を行うと先人は、問題なく実行できている・・・・
 tabulateをimportしてもうまくいかない・・・・・</p>
 <p>英語版を見てみてください。　とアドバイスをもらい確認
-<img alt="image.png" src="attachment:image.png" /></p>
+<img alt="fig_14" src="_images/fig_14.png" /></p>
 <p>エラーのあった7行目<br />
 他のも確認してみると・・・・<br />
 from tabulate import tabulate から　from pandas as pd に変更されている.</p>
-<p><img alt="image.png" src="attachment:image.png" /></p>
+<p><img alt="fig_15" src="_images/fig_15.png" /></p>
 <p>全体を通して確認すると複数の相違点が確認できました。<br />
 Referenceのversion情報をみてみるとqiskitのVersionが大きく違う！！<br />
-<img alt="image.png" src="attachment:image.png" /></p>
+<img alt="fig_16" src="_images/fig_16.png" /></p>
 <p>なるほど、英語版は最新が反映されているが、翻訳のタイミングで古い場合があるようです。</p>
+<p><strong>point</strong> <br>
+日本語版で構文エラーが発生した場合は、Versionの確認を行なって相違がある場合には英語版を参考に修正する</p>
 </section>
-<section id="point">
-<h2>point<a class="headerlink" href="#point" title="Permalink to this heading">#</a></h2>
-<p>日本語版で構文エラーが発生した場合は、Versionの確認を行なって相違がある場合には英語版を参考に修正する</p>
 </section>
 </section>
 
@@ -594,11 +609,18 @@ Referenceのversion情報をみてみるとqiskitのVersionが大きく違う！
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">コンテンツ</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">3</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">7</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">2-4  計算例</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#point">point</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">コンテンツ</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">1. ショアのアルゴリズム選定理由</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">2. ショアのアルゴリズム解説</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">2-1 ダイアグラム</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">2-2 位数とは？</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">2-3  量子アルゴリズム解説</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">2-4  計算例</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#qiskit-textbook">3. Qiskit Textbookの利用</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
