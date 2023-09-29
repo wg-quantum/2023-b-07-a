@@ -409,7 +409,7 @@ M＝pqとなるp,qを求める。(p,qは因数)
 a,bはa≧1, b≧2
 xは、1&lt; x ≦ M-1
 r</p>
-<p><img alt="image.png" src="attachment:image.png" /></p>
+<p><img alt="fig_1" src="_images/fig_1.png" /></p>
 <p>ステップ5を量子アルゴリズム/量子コンピュータにて短時間で実施することで計算量を大幅に削減することが可能となります。他のステップについては古典コンピュータにて実施しています。</p>
 <p>2-2 位数とは？</p>
 <p>自然数　Mと相互に素なxを仮定して因数を求めたい時
@@ -420,8 +420,8 @@ x^r　をMで割ったあまりがyとすると</p>
 <p>この時y=1となるrは周期的になっていることがわかります。<br />
 この時、最小の自然数 r　を位数　とします。<br />
 この例では、位数＝６　となります。</p>
-<p><img alt="image-3.png" src="attachment:image-3.png" /></p>
-<p><img alt="image-8.png" src="attachment:image-8.png" /></p>
+<p><img alt="fig_2" src="_images/fig_2.png" />
+<img alt="fig_3" src="_images/fig_3.png" /></p>
 <p>①式を変換していきます。</p>
 <p><span class="math notranslate nohighlight">\( 𝑦=𝑥^r mod M \)</span><br />
 y=1を代入して<br />
@@ -465,19 +465,19 @@ y=1を代入して<br />
 例　M=21 x=2 の場合</p>
 <p><img alt="image.png" src="attachment:image.png" /></p>
 <p>r=6ですので③式に代入すると</p>
-<p><span class="math notranslate nohighlight">\( gcd ((x^\frac{r}{2}+1),M) &gt; 1 \)</span><br />
-<span class="math notranslate nohighlight">\( gcd ((2^\frac{6}{2}+1),21) &gt; 1 \)</span><br />
-<span class="math notranslate nohighlight">\( gcd ((2^\frac{6}{2}+1),21) &gt; 1 \)</span><br />
-<span class="math notranslate nohighlight">\( gcd (9,21) &gt; 1 \)</span><br />
-<span class="math notranslate nohighlight">\( gcd(9,21=3 \)</span></p>
+<p><span class="math notranslate nohighlight">\( gcd ((x^\frac{r}{2}+1),M) &gt; 1 \)</span> <br>
+<span class="math notranslate nohighlight">\( gcd ((2^\frac{6}{2}+1),21) &gt; 1 \)</span> <br>
+<span class="math notranslate nohighlight">\( gcd ((2^\frac{6}{2}+1),21) &gt; 1 \)</span> <br>
+<span class="math notranslate nohighlight">\( gcd (9,21) &gt; 1 \)</span> <br>
+<span class="math notranslate nohighlight">\( gcd(9,21)=3 \)</span> <br></p>
 </section>
 <section id="id3">
 <h2>3<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
 <p>r=6ですので④式に代入すると</p>
-<p><span class="math notranslate nohighlight">\( gcd ((x^\frac{r}{2}-1),M) &gt; 1 \)</span><br />
-<span class="math notranslate nohighlight">\( gcd ((2^\frac{6}{2}-1),21) &gt; 1 \)</span><br />
-<span class="math notranslate nohighlight">\( gcd (7,21) &gt; 1 \)</span><br />
-<span class="math notranslate nohighlight">\( gcd(7,21)=1 \)</span></p>
+<p><span class="math notranslate nohighlight">\( gcd ((x^\frac{r}{2}-1),M) &gt; 1 \)</span> <br>
+<span class="math notranslate nohighlight">\( gcd ((2^\frac{6}{2}-1),21) &gt; 1 \)</span> <br>
+<span class="math notranslate nohighlight">\( gcd (7,21) &gt; 1 \)</span> <br>
+<span class="math notranslate nohighlight">\( gcd(7,21)=7 \)</span>  <br></p>
 </section>
 <section id="id4">
 <h2>7<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h2>
