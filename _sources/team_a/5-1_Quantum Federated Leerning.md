@@ -536,10 +536,10 @@ QFL の分野が進化し続ける中、これらのオープンな機会と今�
 ## 10. QFLの実装サンプルコード
 H. Zhao, “Non-IID quantum federated learning with one-shot. communication complexity,” Quantum Machine Intelligence, vol. 5, no. 1, p.3, 2023.　の論文の著者たちの実装について、以下のJupyter Notebookで紹介いたします：
 
-- [5a_QFL-Sample#1-1_Centralized_Case.ipynb](https://github.com/wg-quantum/2023-b-07-a/blob/Team_A/src/team_a/5a_QFL-Sample#1-1_Centralized_Case.ipynb)  
+- [5a_QFL-Sample#1-1_Centralized_Case.ipynb](https://github.com/wg-quantum/2023-b-07-a/blob/main/src/team_a/5a_QFL-Sample%231-1_Centralized_Case.ipynb)  
   上記論文の数値実験のうち、qFedAvgとの対照実験用のNotebookを実行したもの。
 
-- [5a_QFL-Sample#1-2_qFedAvg.ipynb](https://github.com/wg-quantum/2023-b-07-a/blob/Team_A/src/team_a/5a_QFL-Sample#1-2_qFedAvg.ipynb)  
+- [5a_QFL-Sample#1-2_qFedAvg.ipynb](https://github.com/wg-quantum/2023-b-07-a/blob/main/src/team_a/5a_QFL-Sample%231-2_qFedAvg.ipynb)  
   上記論文の数値実験のうち、量子連合平均法 (qFedAvg) によるHFL型QFLのNotebookを実行したもの。
 
 <!--
