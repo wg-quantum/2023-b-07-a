@@ -35,9 +35,7 @@ QFLに関連した研究の概観としては、Chen et al (2021)、Larasati et 
 - QSM (quantum-secured mechanisms)
 - QOA (quantum optimization algorithms)
 
-
 ## 2. QC と FL のいくつかの用語と基本的事項
-
 ### 2.1. FLの基礎
 FL は、複数のパーティーが、データをローカルに保持しそれによってデータ・プライバシーを保持しながら、共同で共有モデルをトレーニングできるようにする分散 ML アプローチです。 以下に、FL の一般的な分類をいくつか示します。
 
