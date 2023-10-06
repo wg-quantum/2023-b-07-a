@@ -10,6 +10,7 @@ parts:
     - file: result_b
     - file: result_a
     - file: result_d
+    - file: result_e
 
 
 
